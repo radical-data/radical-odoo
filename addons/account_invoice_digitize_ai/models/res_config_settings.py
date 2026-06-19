@@ -159,8 +159,7 @@ class ResConfigSettings(models.TransientModel):
         string='Maximum Rounding Tolerance',
         default=0.05,
         config_parameter='account_invoice_digitize_ai.ai_rounding_tolerance',
-        help='Maximum TTC difference (in invoice currency) that can be '
-        'corrected. Default: 0.05.',
+        help='Maximum TTC difference (in invoice currency) that can be corrected. Default: 0.05.',
     )
     ai_currency_symbol = fields.Char(
         related='currency_id.symbol',
@@ -259,9 +258,7 @@ class ResConfigSettings(models.TransientModel):
             for fname in ('ai_auto_apply_min_confidence', 'ai_preprocess_confidence_threshold'):
                 val = getattr(rec, fname, 0.0) or 0.0
                 if not (0.0 <= val <= 1.0):
-                    raise ValidationError(
-                        rec.env._('"%s" must be between 0.0 and 1.0.', rec._fields[fname].string)
-                    )
+                    raise ValidationError(rec.env._('"%s" must be between 0.0 and 1.0.', rec._fields[fname].string))
 
     @api.constrains('ai_rounding_tolerance')
     def _check_rounding_tolerance(self):
@@ -306,16 +303,23 @@ class ResConfigSettings(models.TransientModel):
 
     @api.depends()
     def _compute_ai_has_accounting(self):
-        installed = bool(self.env['ir.module.module'].sudo().search_count([
-            ('name', '=', 'account_accountant'),
-            ('state', '=', 'installed'),
-        ]))
+        installed = bool(
+            self.env['ir.module.module']
+            .sudo()
+            .search_count(
+                [
+                    ('name', '=', 'account_accountant'),
+                    ('state', '=', 'installed'),
+                ]
+            )
+        )
         for rec in self:
             rec.ai_has_accounting = installed
 
     def _compute_ai_optional_deps(self):
         from . import ai_document
         from .ai_qr_decoder import PYZBAR_AVAILABLE
+
         for rec in self:
             rec.ai_pyzbar_available = PYZBAR_AVAILABLE
             rec.ai_pdfplumber_available = ai_document.PDFPLUMBER_AVAILABLE

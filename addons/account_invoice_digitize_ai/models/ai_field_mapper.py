@@ -12,7 +12,6 @@ from .ai_vendor_score import AiVendorScore
 _logger = logging.getLogger(__name__)
 
 
-
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
@@ -218,7 +217,9 @@ class AccountMove(models.Model):
             if partner and partner.company_id and partner.company_id != company:
                 _logger.warning(
                     'force_partner_id %d restricted to company %s, current is %s — ignoring',
-                    force_partner_id, partner.company_id.name, company.name,
+                    force_partner_id,
+                    partner.company_id.name,
+                    company.name,
                 )
                 partner = None
             if partner:
@@ -414,11 +415,13 @@ class AccountMove(models.Model):
         if cache:
             purchase_taxes = cache.get_all_purchase_taxes(self.env, company)
         else:
-            purchase_taxes = self.env['account.tax'].search([
-                ('type_tax_use', '=', 'purchase'),
-                ('active', '=', True),
-                ('company_id', '=', company.id),
-            ])
+            purchase_taxes = self.env['account.tax'].search(
+                [
+                    ('type_tax_use', '=', 'purchase'),
+                    ('active', '=', True),
+                    ('company_id', '=', company.id),
+                ]
+            )
         available_rates = {t.amount for t in purchase_taxes}
         unmatched = sorted(r for r in extracted_rates if r not in available_rates)
         if unmatched:
@@ -429,7 +432,8 @@ class AccountMove(models.Model):
                     'Tax rates %s were extracted but no matching purchase tax '
                     'exists in Odoo. Please create the missing taxes in '
                     'Accounting > Configuration > Taxes.'
-                ) % rates_str,
+                )
+                % rates_str,
             }
 
     def _ai_check_guided_warnings(self, data, partner, vals, company, confidence, warnings):

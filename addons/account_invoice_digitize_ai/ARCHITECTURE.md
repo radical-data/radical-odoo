@@ -160,79 +160,105 @@ account_invoice_digitize_ai/
 ## Key Architecture Decisions
 
 ### AI Provider Abstraction
+
 All AI providers implement a common `AIProvider` interface. The extraction pipeline calls the active provider without knowing HTTP specifics. Adding a new provider requires only a new `ai_provider_xxx.py` file.
 
 ### Text-First Strategy
+
 PDFs are always processed text-first (cheaper). Vision mode (image) is used only as fallback for scanned documents or when text extraction produces garbled results.
 
 ### Factur-X Shortcut
+
 Structured invoices (Factur-X / ZUGFeRD) bypass AI entirely — data is extracted from embedded CII XML, parsed into the same format as Claude's response, and fed through the standard extraction pipeline at zero cost.
 
 ### Vision Retry Fallback
+
 When text-mode extraction fails cross-validation (≥2 failures), the pipeline automatically retries in vision mode (PDF pages as images). This catches garbled text extraction from poorly structured PDFs.
 
 ### Extraction Preview
+
 Single invoice extraction shows a preview dialog before applying data. Users see vendor, reference, date, total, line items, and warnings — then choose to apply or discard.
 
 ### Fiscal Context Cache
+
 Company-level fiscal data (expense accounts, purchase taxes) is cached in a module-level dict with daily TTL. Vendor-specific history remains uncached (varies per vendor).
 
 ### Batch Processing
+
 Users can select multiple invoices in list view and trigger batch extraction via a server action bound to `account.move`. Each extraction is committed individually to save progress.
 
 ### Product Matching
+
 Extracted vendor product codes are matched against `product.supplierinfo` (vendor-specific, then any vendor) and `product.product` (internal reference) for automatic product assignment.
 
 ### Document Recognition Abstraction
+
 Optional external document recognition providers (Azure Document Intelligence, AWS Textract) implement a common `DocumentPreprocessor` interface. Three modes: Full recognition (AI as backup), Combined (recognition + AI cross-check), Text extraction only (AI analyzes the result). User-configurable in settings.
 
 ### Structured Outputs (tool_use)
+
 The Anthropic provider uses the tool_use API with a JSON Schema (`EXTRACTION_TOOL_SCHEMA`) to guarantee valid JSON output. Claude is forced to return data matching the schema exactly, eliminating all JSON parsing failures. A legacy text-based fallback is preserved for backward compatibility.
 
 ### Resilient Network Handling
+
 All HTTP calls to AI providers retry on transient errors (timeout, connection reset, 5xx server errors) with exponential backoff (max 3 attempts). Rate-limit (429) retries were already present; v0.0.12 extends this to all transient failures.
 
 ### Purchase Order Matching (Optional)
+
 When the `purchase` module is installed, extracted PO references are matched against `purchase.order` records (3-tier: exact, fuzzy, amount/date). Invoice lines are linked to PO lines via `purchase_line_id`. When `purchase` is not installed, PO references are still extracted and displayed but not matched. Runtime detection via `'purchase.order' in env` — no hard dependency added.
 
 ### Zero External Dependencies
+
 The module uses only Odoo's standard Python dependencies (`requests` for HTTP). No `pip install` required. AWS SigV4 signing is implemented in pure Python (stdlib `hmac`, `hashlib`).
 
 ### Server Mode Only (v1)
+
 API calls are made from the Python backend. Odoo Online (SaaS) support is deferred to v2.
 
 ### Multi-Company Isolation
+
 Vendor memory, vendor scores, anomaly detection, and duplicate detection are all scoped per company. Each company maintains its own correction history and reliability scores. API settings (key, model) are shared globally.
 
 ### Always-On Lightweight Log
+
 `ai.extraction.log` is created for every extraction (not just debug mode). Lightweight fields (vendor name, confidence, duration, provider, mode) are always populated. Full prompt/response content is only stored when debug mode is enabled.
 
 ### Token-Based Fuzzy Partner Matching
+
 When exact and ilike name matching fail, a token-based fuzzy matcher (tier 2b) normalizes company names by removing legal suffixes (SA, GmbH, Ltd, etc.) and scores candidates using asymmetric Jaccard similarity. Handles abbreviated and reordered names.
 
 ### Extraction Result Cache
+
 Last extraction result is cached on `account.move` (`ai_last_extraction_data` + `ai_last_extraction_attachment_id`). If the user clicks "Discard" then "Digitize" again with the same attachment, the cached result is reused without calling the API. Cache is invalidated on attachment change. "Re-extract" button forces a fresh API call.
 
 ### Async Extraction (ir.cron)
+
 Optional background extraction mode: clicking "Digitize" queues the invoice (`ai_extraction_queued_at`), and a cron job (every 30s) processes the queue. No `bus.bus` dependency — user refreshes the page to see results. Falls back to synchronous mode when disabled.
 
 ### Language Detection
+
 `detect_language()` in `ai_document.py` uses keyword-based heuristics to identify the document language among 7 candidates (fr, de, en, es, it, nl, pt). The detected language is injected into the prompt context alongside number format, helping the AI interpret ambiguous terms and date formats correctly.
 
 ### Account Learning via Vendor Memory
+
 `ai.vendor.memory` stores line-level account corrections (`line_description` field). When a user changes an account on an invoice line, the `write()` override detects the correction and records it via `record_line_correction()`. On subsequent extractions, `_ai_resolve_account()` checks for matching overrides via `get_account_override()` — a tier 0 priority that takes precedence over all other account matching strategies in `_ai_build_line_vals()`.
 
 ### Auto-Apply High Confidence
+
 When enabled (`ai_auto_apply_enabled` + `ai_auto_apply_min_confidence` in settings), extractions that meet strict criteria are applied automatically without user preview. `_ai_can_auto_apply()` checks: vendor matched and reliable (≥3 extractions, ≥70% success rate via `_ai_is_vendor_reliable()`), all field confidences above threshold, no warnings, and valid document type. Applied in both synchronous and async extraction paths.
 
 ### Client-Side Polling Widget
+
 OWL component `AiExtractionStatusWidget` (`extraction_status_widget.js`) replaces the static statusbar for extraction status in `account_move_views.xml`. When status is `processing`, the widget polls the server every 5 seconds. On completion, it automatically opens the preview wizard, providing a seamless async extraction experience without requiring manual page refresh.
 
 ### QR Code Extraction (Swiss QR-bill + EPC QR)
+
 `ai_qr_decoder.py` is a pure utility module (not an Odoo model) that extracts QR codes from PDF images using `pyzbar` (optional dependency, same pattern as `pdfplumber`). Supports two payment QR formats: Swiss QR-bill (SPC/0200) and EPC/BCD (SCT). QR data (IBAN, amount, currency, reference) is injected into the AI prompt as high-confidence context and cross-validated against the AI extraction result. IBAN and currency are overridden by QR when they conflict; amount mismatch is penalized but not overridden. Configurable in settings (enabled by default).
 
 ### TTC Rounding Correction
+
 When invoices display TTC prices (common on receipts), converting each line to HT (`price / (1 + rate)`) introduces rounding at each line. Over N lines, this can accumulate into a small gap between the extracted total and Odoo's computed total. `_ai_fix_rounding_gap()` in `ai_rounding_fixer.py` detects this after line creation: if the gap is within the configured tolerance (default 0.01), it adjusts the highest-priced line's `price_unit` to close the gap, then verifies Odoo's recomputed total improved. If not, the adjustment is rolled back. Configurable in settings (`ai_rounding_correction` + `ai_rounding_tolerance`), enabled by default.
 
 ### Single Codebase, Multi-Version
+
 One codebase supports Odoo 16, 17, 18, and 19 with version-conditional logic abstracted behind helper methods. Odoo 19 breaking changes (company_id→company_ids, deprecated→active, journal_id NOT NULL, read-only model attributes, message_new API) are handled via runtime field detection.

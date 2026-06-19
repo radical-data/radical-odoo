@@ -75,11 +75,14 @@ class TestAsyncExtraction(TransactionCase):
         move = self._create_invoice_with_attachment()
         move.action_ai_extract()
 
-        with patch.object(
-            type(move),
-            '_ai_trigger_extraction',
-            return_value=self.mock_data,
-        ), patch.object(self.env.cr, 'commit'):
+        with (
+            patch.object(
+                type(move),
+                '_ai_trigger_extraction',
+                return_value=self.mock_data,
+            ),
+            patch.object(self.env.cr, 'commit'),
+        ):
             self.env['account.move']._ai_cron_process_queue()
 
         self.assertEqual(move.ai_extraction_status, 'done')
@@ -92,11 +95,14 @@ class TestAsyncExtraction(TransactionCase):
         move = self._create_invoice_with_attachment()
         move.action_ai_extract()
 
-        with patch.object(
-            type(move),
-            '_ai_trigger_extraction',
-            return_value=None,
-        ), patch.object(self.env.cr, 'commit'):
+        with (
+            patch.object(
+                type(move),
+                '_ai_trigger_extraction',
+                return_value=None,
+            ),
+            patch.object(self.env.cr, 'commit'),
+        ):
             self.env['account.move']._ai_cron_process_queue()
 
         self.assertEqual(move.ai_extraction_status, 'failed')
@@ -163,11 +169,14 @@ class TestAsyncExtraction(TransactionCase):
             m.ai_extraction_queued_at = fields.Datetime.now()
             moves.append(m)
 
-        with patch.object(
-            type(moves[0]),
-            '_ai_trigger_extraction',
-            return_value=self.mock_data,
-        ), patch.object(self.env.cr, 'commit'):
+        with (
+            patch.object(
+                type(moves[0]),
+                '_ai_trigger_extraction',
+                return_value=self.mock_data,
+            ),
+            patch.object(self.env.cr, 'commit'),
+        ):
             self.env['account.move']._ai_cron_process_queue()
 
         done = [m for m in moves if m.ai_extraction_status == 'done']

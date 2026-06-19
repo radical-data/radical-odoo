@@ -22,11 +22,13 @@ class AccountMove(models.Model):
         """Cron job: process queued AI extractions (background mode)."""
         # Mark stale items (queued > _CRON_STALE_MINUTES ago) as failed
         cutoff = fields.Datetime.now() - timedelta(minutes=_CRON_STALE_MINUTES)
-        stale = self.search([
-            ('ai_extraction_status', '=', 'processing'),
-            ('ai_extraction_queued_at', '!=', False),
-            ('ai_extraction_queued_at', '<', cutoff),
-        ])
+        stale = self.search(
+            [
+                ('ai_extraction_status', '=', 'processing'),
+                ('ai_extraction_queued_at', '!=', False),
+                ('ai_extraction_queued_at', '<', cutoff),
+            ]
+        )
         if stale:
             _logger.warning('AI cron: marking %d stale extractions as failed', len(stale))
             stale.write({'ai_extraction_status': 'failed', 'ai_extraction_queued_at': False})
@@ -92,7 +94,8 @@ class AccountMove(models.Model):
                 except Exception:
                     _logger.warning(
                         'AI cron: auto-apply failed for move %s',
-                        move.id, exc_info=True,
+                        move.id,
+                        exc_info=True,
                     )
             move.ai_extraction_status = 'done'
         move.ai_extraction_queued_at = False

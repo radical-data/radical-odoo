@@ -79,18 +79,20 @@ class TestAccountMatching(TransactionCase):
         acc_6241 = Account.create(acc_vals_6241)
 
         # Create posted invoice history: 5 lines on 607 (merchandise)
-        move = self.env['account.move'].create({
-            'move_type': 'in_invoice',
-            'partner_id': self.partner.id,
-            'invoice_date': '2025-01-15',
-            'invoice_line_ids': [
-                (0, 0, {'name': 'Laptop', 'quantity': 1, 'price_unit': 500, 'account_id': acc_607.id}),
-                (0, 0, {'name': 'Keyboard', 'quantity': 1, 'price_unit': 50, 'account_id': acc_607.id}),
-                (0, 0, {'name': 'Mouse', 'quantity': 1, 'price_unit': 25, 'account_id': acc_607.id}),
-                (0, 0, {'name': 'Monitor', 'quantity': 1, 'price_unit': 300, 'account_id': acc_607.id}),
-                (0, 0, {'name': 'Cable', 'quantity': 1, 'price_unit': 10, 'account_id': acc_607.id}),
-            ],
-        })
+        move = self.env['account.move'].create(
+            {
+                'move_type': 'in_invoice',
+                'partner_id': self.partner.id,
+                'invoice_date': '2025-01-15',
+                'invoice_line_ids': [
+                    (0, 0, {'name': 'Laptop', 'quantity': 1, 'price_unit': 500, 'account_id': acc_607.id}),
+                    (0, 0, {'name': 'Keyboard', 'quantity': 1, 'price_unit': 50, 'account_id': acc_607.id}),
+                    (0, 0, {'name': 'Mouse', 'quantity': 1, 'price_unit': 25, 'account_id': acc_607.id}),
+                    (0, 0, {'name': 'Monitor', 'quantity': 1, 'price_unit': 300, 'account_id': acc_607.id}),
+                    (0, 0, {'name': 'Cable', 'quantity': 1, 'price_unit': 10, 'account_id': acc_607.id}),
+                ],
+            }
+        )
         move.action_post()
 
         # Verify vendor default is 607 (most used)
@@ -104,10 +106,15 @@ class TestAccountMatching(TransactionCase):
         # THE KEY TEST: match_account with category='shipping' should return
         # 6241 (category), NOT 607 (vendor default)
         result = match_account(
-            self.env, 'shipping', 'Frais de port DHL', self.company, partner=self.partner,
+            self.env,
+            'shipping',
+            'Frais de port DHL',
+            self.company,
+            partner=self.partner,
         )
         self.assertEqual(
-            result, acc_6241,
+            result,
+            acc_6241,
             'Category mapping (shipping→6241) should override vendor default (607)',
         )
 

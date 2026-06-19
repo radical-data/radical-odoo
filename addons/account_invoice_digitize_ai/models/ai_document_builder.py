@@ -145,7 +145,9 @@ class AccountMove(models.Model):
     # Prompt building
     # ===================================================================
 
-    def _ai_build_content(self, doc_info, raw_data, mimetype, vendor, company, extract_lines, preprocess_context='', cfg=None):
+    def _ai_build_content(
+        self, doc_info, raw_data, mimetype, vendor, company, extract_lines, preprocess_context='', cfg=None
+    ):
         """Build prompt and content blocks for the AI provider.
 
         Args:

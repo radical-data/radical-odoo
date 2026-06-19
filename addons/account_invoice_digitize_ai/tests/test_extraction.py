@@ -194,9 +194,7 @@ class TestExtraction(TransactionCase):
 
     def _extract_direct(self, move):
         """Run extraction pipeline directly (non-preview) for testing."""
-        api_key = self.env['ir.config_parameter'].sudo().get_param(
-            'account_invoice_digitize_ai.ai_api_key'
-        )
+        api_key = self.env['ir.config_parameter'].sudo().get_param('account_invoice_digitize_ai.ai_api_key')
         attachment = move._ai_get_invoice_attachment()
         move._ai_trigger_extraction(api_key, attachment)
 
@@ -565,9 +563,7 @@ class TestEndToEndPipeline(TransactionCase):
 
     def _extract_direct(self, move):
         """Run extraction pipeline directly (non-preview) for testing."""
-        api_key = self.env['ir.config_parameter'].sudo().get_param(
-            'account_invoice_digitize_ai.ai_api_key'
-        )
+        api_key = self.env['ir.config_parameter'].sudo().get_param('account_invoice_digitize_ai.ai_api_key')
         attachment = move._ai_get_invoice_attachment()
         move._ai_trigger_extraction(api_key, attachment)
 

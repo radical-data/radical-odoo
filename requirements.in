@@ -1,6 +1,5 @@
---index-url https://wheelhouse.odoo-community.org/oca-simple-and-pypi
-
 # Build tooling used to install this deployment project package.
+# TODO: split these into requirements-build.in in a later lock-file refresh.
 hatchling
 hatch-odoo
 

@@ -139,9 +139,7 @@ class AIProvider(ABC):
         try:
             return resp.json()
         except (ValueError, json.JSONDecodeError):
-            return self._make_error(
-                'parse', 'Invalid JSON in %s API response.' % self.get_provider_name()
-            )
+            return self._make_error('parse', 'Invalid JSON in %s API response.' % self.get_provider_name())
 
     @staticmethod
     def _retry_wait(resp, attempt):
@@ -236,9 +234,7 @@ class AIProvider(ABC):
                     )
                     time.sleep(wait)
                     continue
-                return self._make_error(
-                    'max_retries', 'API request failed after %d retries.' % self.MAX_RETRIES
-                )
+                return self._make_error('max_retries', 'API request failed after %d retries.' % self.MAX_RETRIES)
 
             return self._handle_error_status(resp)
 
@@ -332,6 +328,7 @@ def _import_provider(name):
     if not entry:
         return None
     import importlib
+
     module = importlib.import_module('.' + entry[0], __package__)
     return getattr(module, entry[1])()
 

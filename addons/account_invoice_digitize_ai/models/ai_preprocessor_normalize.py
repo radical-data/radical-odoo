@@ -28,9 +28,18 @@ def build_result(vendor, buyer, invoice, totals, lines):
     }
 
 
-def build_vendor(name='', vat='', address='', email=None, phone=None,
-                 website=None, iban=None, bic=None, bank_name=None,
-                 confidence=0.0):
+def build_vendor(
+    name='',
+    vat='',
+    address='',
+    email=None,
+    phone=None,
+    website=None,
+    iban=None,
+    bic=None,
+    bank_name=None,
+    confidence=0.0,
+):
     """Build a normalized vendor dict."""
     return {
         'name': name,
@@ -56,14 +65,25 @@ def build_buyer(name='', vat=None, address=None, confidence=0.0):
     }
 
 
-def build_invoice(reference='', invoice_date=None, invoice_date_raw='',
-                  due_date=None, due_date_raw='', currency='',
-                  payment_reference=None, payment_terms_text=None,
-                  payment_method=None, purchase_order_ref=None,
-                  delivery_note_ref=None, narration=None,
-                  is_credit_note=False, is_reverse_charge=False,
-                  reverse_charge_text=None, original_invoice_ref=None,
-                  confidence=0.0):
+def build_invoice(
+    reference='',
+    invoice_date=None,
+    invoice_date_raw='',
+    due_date=None,
+    due_date_raw='',
+    currency='',
+    payment_reference=None,
+    payment_terms_text=None,
+    payment_method=None,
+    purchase_order_ref=None,
+    delivery_note_ref=None,
+    narration=None,
+    is_credit_note=False,
+    is_reverse_charge=False,
+    reverse_charge_text=None,
+    original_invoice_ref=None,
+    confidence=0.0,
+):
     """Build a normalized invoice dict."""
     return {
         'reference': reference,
@@ -86,8 +106,7 @@ def build_invoice(reference='', invoice_date=None, invoice_date_raw='',
     }
 
 
-def build_totals(untaxed_amount=0.0, tax_amount=0.0, total_amount=0.0,
-                 confidence=0.0):
+def build_totals(untaxed_amount=0.0, tax_amount=0.0, total_amount=0.0, confidence=0.0):
     """Build a normalized totals dict."""
     return {
         'untaxed_amount': untaxed_amount,
@@ -97,10 +116,17 @@ def build_totals(untaxed_amount=0.0, tax_amount=0.0, total_amount=0.0,
     }
 
 
-def build_line(description='', product_code=None, quantity=1.0,
-               unit_price=0.0, subtotal_untaxed=0.0, tax_rate=None,
-               suggested_account_category=None, discount_percent=None,
-               confidence=0.0):
+def build_line(
+    description='',
+    product_code=None,
+    quantity=1.0,
+    unit_price=0.0,
+    subtotal_untaxed=0.0,
+    tax_rate=None,
+    suggested_account_category=None,
+    discount_percent=None,
+    confidence=0.0,
+):
     """Build a normalized line item dict."""
     return {
         'description': description,

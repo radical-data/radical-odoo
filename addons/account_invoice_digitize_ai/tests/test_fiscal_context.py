@@ -11,12 +11,11 @@ class TestFiscalContextCache(TransactionCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.company = cls.env.company
-        cls.from_mod = (
-            'odoo.addons.account_invoice_digitize_ai.models.ai_fiscal_context'
-        )
+        cls.from_mod = 'odoo.addons.account_invoice_digitize_ai.models.ai_fiscal_context'
 
     def _get_module(self):
         from odoo.addons.account_invoice_digitize_ai.models import ai_fiscal_context
+
         return ai_fiscal_context
 
     def setUp(self):

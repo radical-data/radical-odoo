@@ -58,8 +58,7 @@ class GoogleProvider(AIProvider):
         return self._validate_with_request(
             '%s/%s:generateContent' % (API_BASE, self.VALIDATION_MODEL),
             self._headers(api_key),
-            {'contents': [{'role': 'user', 'parts': [{'text': 'Hi'}]}],
-             'generationConfig': {'maxOutputTokens': 5}},
+            {'contents': [{'role': 'user', 'parts': [{'text': 'Hi'}]}], 'generationConfig': {'maxOutputTokens': 5}},
         )
 
     def extract(self, api_key, system_prompt, user_content, model):

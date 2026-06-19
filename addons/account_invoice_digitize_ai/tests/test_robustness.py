@@ -562,23 +562,25 @@ class TestRoundingCorrection(TransactionCase):
 
     def _create_move_with_lines(self, price_unit=100.0):
         """Create a vendor bill with one line."""
-        move = self.env['account.move'].create({
-            'move_type': 'in_invoice',
-            'journal_id': self.purchase_journal.id,
-        })
-        move.write({
-            'invoice_line_ids': [
-                (0, 0, {'name': 'Service A', 'quantity': 1, 'price_unit': price_unit}),
-            ],
-        })
+        move = self.env['account.move'].create(
+            {
+                'move_type': 'in_invoice',
+                'journal_id': self.purchase_journal.id,
+            }
+        )
+        move.write(
+            {
+                'invoice_line_ids': [
+                    (0, 0, {'name': 'Service A', 'quantity': 1, 'price_unit': price_unit}),
+                ],
+            }
+        )
         return move
 
     @staticmethod
     def _product_lines(move):
         """Return only product lines (Odoo 19: display_type='product', older: False)."""
-        return move.invoice_line_ids.filtered(
-            lambda ln: ln.display_type in (False, 'product')
-        )
+        return move.invoice_line_ids.filtered(lambda ln: ln.display_type in (False, 'product'))
 
     def test_adjust_strategy_nudges_price(self):
         """Strategy 'adjust' should modify the price_unit of the existing line."""
@@ -602,9 +604,7 @@ class TestRoundingCorrection(TransactionCase):
 
         product_lines = self._product_lines(move)
         self.assertEqual(len(product_lines), lines_before + 1)
-        rounding_line = product_lines.filtered(
-            lambda ln: ln.name == 'Rounding compensation'
-        )
+        rounding_line = product_lines.filtered(lambda ln: ln.name == 'Rounding compensation')
         self.assertTrue(rounding_line)
         self.assertEqual(rounding_line.price_unit, 0.01)
 
@@ -617,9 +617,7 @@ class TestRoundingCorrection(TransactionCase):
 
         move._ai_fix_rounding_gap(totals)
 
-        rounding_line = self._product_lines(move).filtered(
-            lambda ln: ln.name == 'Ajustement arrondi'
-        )
+        rounding_line = self._product_lines(move).filtered(lambda ln: ln.name == 'Ajustement arrondi')
         self.assertTrue(rounding_line)
         # Clean up custom label
         self.ICP.set_param(self._p + 'ai_rounding_line_label', '')
@@ -632,9 +630,7 @@ class TestRoundingCorrection(TransactionCase):
 
         move._ai_fix_rounding_gap(totals)
 
-        rounding_line = self._product_lines(move).filtered(
-            lambda ln: ln.name == 'Rounding compensation'
-        )
+        rounding_line = self._product_lines(move).filtered(lambda ln: ln.name == 'Rounding compensation')
         self.assertFalse(rounding_line.tax_ids)
 
     def test_rounding_disabled(self):
@@ -814,24 +810,30 @@ class TestEmptyAttachmentGuard(TransactionCase):
 
     def test_empty_datas_sets_failed(self):
         move = self.env['account.move'].create({'move_type': 'in_invoice'})
-        att = self.env['ir.attachment'].create({
-            'name': 'empty.pdf',
-            'res_model': 'account.move',
-            'res_id': move.id,
-            'datas': False,
-            'mimetype': 'application/pdf',
-        })
-        with patch.object(type(self.env['account.move']), '_ai_get_config', return_value={
-            'provider_name': 'anthropic',
-            'model_id': 'claude-haiku-4-5-20251001',
-            'extract_lines': False,
-            'debug_mode': False,
-            'preprocess_provider': 'none',
-            'preprocess_mode': 'ocr_replacement',
-            'preprocess_threshold': 0.75,
-            'extraction_mode': 'guided',
-            'extract_qr_codes': True,
-        }):
+        att = self.env['ir.attachment'].create(
+            {
+                'name': 'empty.pdf',
+                'res_model': 'account.move',
+                'res_id': move.id,
+                'datas': False,
+                'mimetype': 'application/pdf',
+            }
+        )
+        with patch.object(
+            type(self.env['account.move']),
+            '_ai_get_config',
+            return_value={
+                'provider_name': 'anthropic',
+                'model_id': 'claude-haiku-4-5-20251001',
+                'extract_lines': False,
+                'debug_mode': False,
+                'preprocess_provider': 'none',
+                'preprocess_mode': 'ocr_replacement',
+                'preprocess_threshold': 0.75,
+                'extraction_mode': 'guided',
+                'extract_qr_codes': True,
+            },
+        ):
             move._ai_trigger_extraction('fake-key', att)
         self.assertEqual(move.ai_extraction_status, 'failed')
 

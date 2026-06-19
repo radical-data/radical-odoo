@@ -11,7 +11,7 @@ DB="$1"
 docker compose run --rm odoo \
   odoo shell \
   --no-http \
-  -d "$DB" <<'PY'
+  -d "$DB" << 'PY'
 required_modules = [
     "account",
     "l10n_nl",

@@ -12,3 +12,5 @@ filestore
 .idea
 repomix-output.xml
 requirements.lock.tmp
+.github
+.gitignore

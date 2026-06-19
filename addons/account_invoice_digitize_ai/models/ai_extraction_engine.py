@@ -73,7 +73,8 @@ class AccountMove(models.Model):
         if len(raw_data) > _AI_MAX_FILE_SIZE:
             _logger.warning(
                 'Attachment %s too large (%d bytes), skipping extraction',
-                attachment.id, len(raw_data),
+                attachment.id,
+                len(raw_data),
             )
             return None, None
         return raw_data, attachment.mimetype or ''
@@ -170,7 +171,12 @@ class AccountMove(models.Model):
         doc_info['raw_data'] = raw_data
         doc_info['mimetype'] = mimetype
         return self._ai_call_and_validate(
-            api_key, cfg, system_prompt, user_content, user_prompt, doc_info,
+            api_key,
+            cfg,
+            system_prompt,
+            user_content,
+            user_prompt,
+            doc_info,
         )
 
     @staticmethod
@@ -198,8 +204,7 @@ class AccountMove(models.Model):
         )
         self.ai_extraction_status = 'done'
 
-    def _ai_call_provider(self, api_key, cfg, system_prompt, user_content,
-                          user_prompt, mode='text'):
+    def _ai_call_provider(self, api_key, cfg, system_prompt, user_content, user_prompt, mode='text'):
         """Call AI provider, log the result, and return the raw API result dict."""
         from .ai_provider import get_provider
 
@@ -217,8 +222,7 @@ class AccountMove(models.Model):
         )
         return result
 
-    def _ai_call_and_validate(self, api_key, cfg, system_prompt, user_content,
-                              user_prompt, doc_info):
+    def _ai_call_and_validate(self, api_key, cfg, system_prompt, user_content, user_prompt, doc_info):
         """Call AI provider, validate and optionally retry in vision mode.
 
         Returns validated extraction data dict, or ``None`` on API error.
@@ -228,7 +232,12 @@ class AccountMove(models.Model):
             mode = 'vision'
 
         result = self._ai_call_provider(
-            api_key, cfg, system_prompt, user_content, user_prompt, mode=mode,
+            api_key,
+            cfg,
+            system_prompt,
+            user_content,
+            user_prompt,
+            mode=mode,
         )
 
         data = self._ai_check_api_result(result)
@@ -289,7 +298,12 @@ class AccountMove(models.Model):
         )
 
         result = self._ai_call_provider(
-            api_key, cfg, system_prompt, user_content, user_prompt, mode='vision',
+            api_key,
+            cfg,
+            system_prompt,
+            user_content,
+            user_prompt,
+            mode='vision',
         )
 
         if not result.get('success') or not result.get('data'):

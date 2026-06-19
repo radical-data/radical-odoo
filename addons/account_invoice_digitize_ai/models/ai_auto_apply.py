@@ -46,7 +46,9 @@ class AccountMove(models.Model):
         # All confidence scores must meet threshold
         try:
             min_conf = float(
-                self.env['ir.config_parameter'].sudo().get_param(
+                self.env['ir.config_parameter']
+                .sudo()
+                .get_param(
                     'account_invoice_digitize_ai.ai_auto_apply_min_confidence',
                     '0.85',
                 )

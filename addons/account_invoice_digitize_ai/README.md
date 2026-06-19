@@ -74,24 +74,24 @@ Intelligent invoice digitization for Odoo, powered by AI. Replaces Odoo's native
 
 ## Compatibility
 
-| Odoo Version | Status |
-|---|---|
-| Odoo 19 | Supported (branch `19.0`) |
-| Odoo 18 | Supported (branch `18.0`) |
-| Odoo 17 | Supported (branch `18.0`) |
-| Odoo 16 | Supported (branch `18.0`) |
+| Odoo Version | Status                    |
+| ------------ | ------------------------- |
+| Odoo 19      | Supported (branch `19.0`) |
+| Odoo 18      | Supported (branch `18.0`) |
+| Odoo 17      | Supported (branch `18.0`) |
+| Odoo 16      | Supported (branch `18.0`) |
 
-| Edition | Status |
-|---|---|
-| Community | Supported |
+| Edition    | Status    |
+| ---------- | --------- |
+| Community  | Supported |
 | Enterprise | Supported |
 
-| Hosting | Status | Notes |
-|---|---|---|
-| **Odoo.sh** | Supported | Full support. Custom modules and outbound API calls allowed. |
-| **On-premise** (self-hosted) | Supported | Full support. No restrictions. |
-| **Third-party hosting** | Supported | Works on any host that supports custom Odoo modules. |
-| **Odoo Online** (SaaS) | Not supported | Odoo Online does not allow custom modules. SaaS support is planned for v2. |
+| Hosting                      | Status        | Notes                                                                      |
+| ---------------------------- | ------------- | -------------------------------------------------------------------------- |
+| **Odoo.sh**                  | Supported     | Full support. Custom modules and outbound API calls allowed.               |
+| **On-premise** (self-hosted) | Supported     | Full support. No restrictions.                                             |
+| **Third-party hosting**      | Supported     | Works on any host that supports custom Odoo modules.                       |
+| **Odoo Online** (SaaS)       | Not supported | Odoo Online does not allow custom modules. SaaS support is planned for v2. |
 
 ## Requirements
 
@@ -104,13 +104,14 @@ Intelligent invoice digitization for Odoo, powered by AI. Replaces Odoo's native
 
 These packages are **not required** but unlock additional features:
 
-| Package | Feature | Install |
-|---|---|---|
-| `facturx` | Factur-X / ZUGFeRD structured invoice detection | `pip install facturx` |
-| `pdfplumber` | Structured table extraction from text-based PDFs | `pip install pdfplumber` |
-| `pyzbar` | QR code extraction (Swiss QR-bill, EPC QR) | `pip install pyzbar` + system library `libzbar` |
+| Package      | Feature                                          | Install                                         |
+| ------------ | ------------------------------------------------ | ----------------------------------------------- |
+| `facturx`    | Factur-X / ZUGFeRD structured invoice detection  | `pip install facturx`                           |
+| `pdfplumber` | Structured table extraction from text-based PDFs | `pip install pdfplumber`                        |
+| `pyzbar`     | QR code extraction (Swiss QR-bill, EPC QR)       | `pip install pyzbar` + system library `libzbar` |
 
 Install `libzbar` on your system:
+
 ```bash
 # Debian/Ubuntu
 sudo apt-get install libzbar0
@@ -126,12 +127,14 @@ The module detects these packages at runtime and degrades gracefully when they a
 ## Installation
 
 1. Clone or download this module into your Odoo addons directory:
+
    ```bash
    cd /path/to/odoo/addons
    git clone https://github.com/PaulArgoud/account-invoice-digitize-ai.git account_invoice_digitize_ai
    ```
 
 2. Restart the Odoo server:
+
    ```bash
    sudo systemctl restart odoo
    ```
@@ -147,39 +150,39 @@ The module detects these packages at runtime and degrades gracefully when they a
 
 1. Go to **Invoicing** > **Configuration** > **Settings**
 2. Scroll to the **AI Invoice Digitization** section
-3. *(Optional)* Configure **Document Recognition**:
+3. _(Optional)_ Configure **Document Recognition**:
    - **Service**: Select an external recognition service (Azure Document Intelligence or AWS Textract) or leave as "None (built-in)"
    - **Mode**: Choose how the recognition service works with the AI:
-     - *Full recognition* -- Recognition service extracts data, AI as backup only
-     - *Combined* -- Recognition service + AI cross-checks results
-     - *Text extraction only* -- Recognition service extracts text, AI analyzes it
+     - _Full recognition_ -- Recognition service extracts data, AI as backup only
+     - _Combined_ -- Recognition service + AI cross-checks results
+     - _Text extraction only_ -- Recognition service extracts text, AI analyzes it
    - **Credentials**: Enter the provider-specific credentials (Azure endpoint + key, or AWS access key + secret + region)
 4. Configure **Invoice Analysis**:
    - **AI Service**: Select your AI provider:
-     - *Anthropic (Claude)* -- Default, recommended. Claude Haiku (fast), Sonnet (balanced), Opus (max accuracy)
-     - *OpenAI (GPT)* -- GPT-4o (recommended), GPT-4o Mini (affordable)
-     - *Google (Gemini)* -- Gemini 2.0 Flash (very affordable), 2.5 Flash (balanced), 2.5 Pro (best quality)
-     - *xAI (Grok)* -- Grok 3 (advanced), Grok 3 Mini (affordable), Grok 2 (balanced)
-     - *DeepSeek* -- DeepSeek Chat (fast, very affordable), DeepSeek Reasoner (chain-of-thought)
-     - *Mistral AI* -- Mistral Small 3.2 (fast, affordable), Mistral Medium 3.1 (balanced), Mistral Large 3 (best quality)
+     - _Anthropic (Claude)_ -- Default, recommended. Claude Haiku (fast), Sonnet (balanced), Opus (max accuracy)
+     - _OpenAI (GPT)_ -- GPT-4o (recommended), GPT-4o Mini (affordable)
+     - _Google (Gemini)_ -- Gemini 2.0 Flash (very affordable), 2.5 Flash (balanced), 2.5 Pro (best quality)
+     - _xAI (Grok)_ -- Grok 3 (advanced), Grok 3 Mini (affordable), Grok 2 (balanced)
+     - _DeepSeek_ -- DeepSeek Chat (fast, very affordable), DeepSeek Reasoner (chain-of-thought)
+     - _Mistral AI_ -- Mistral Small 3.2 (fast, affordable), Mistral Medium 3.1 (balanced), Mistral Large 3 (best quality)
    - **API Key**: Enter your provider's API key
    - **Model**: Choose the AI model (list updates automatically based on selected provider)
    - **Extraction mode**: Choose how much accounting context the AI receives:
-     - *Guided (default)* -- Full context: chart of accounts, taxes, vendor history, automatic matching
-     - *Simplified* -- Taxes only: AI receives tax rates, accountant allocates accounts manually
-     - *Free* -- Raw extraction: no Odoo context, no automatic matching
+     - _Guided (default)_ -- Full context: chart of accounts, taxes, vendor history, automatic matching
+     - _Simplified_ -- Taxes only: AI receives tax rates, accountant allocates accounts manually
+     - _Free_ -- Raw extraction: no Odoo context, no automatic matching
    - **Extract invoice lines**: Extract individual line items (contextual help adapts to Accounting module presence)
    - **Automatic extraction**: Auto-extract when vendor bills arrive by email
    - **Background extraction**: Queue extractions for background processing (requires cron)
    - **QR code extraction**: Extract payment data from Swiss QR-bill and EPC QR codes (enabled by default, requires `pyzbar`)
-5. *(Optional)* Configure **Post-processing**:
+5. _(Optional)_ Configure **Post-processing**:
    - **Auto-apply high confidence**: Skip preview when all confidence scores are high and the vendor is reliable
    - **Rounding correction**: Compensate rounding differences with configurable strategy (adjust line or add rounding line) and tolerance
    - **Confidence indicators**: Show/hide colored confidence badges on extracted fields
    - **Learning from corrections**: Enable/disable learning, with configurable threshold per vendor
-6. *(Optional)* Configure **Advanced Options**:
+6. _(Optional)_ Configure **Advanced Options**:
    - **Detailed logging**: Record full extraction details for troubleshooting
-7. *(Optional)* Click **"Test Extraction"** to validate your configuration with a sample invoice (4 test modes: full pipeline, text extraction, document recognition, prompt preview)
+7. _(Optional)_ Click **"Test Extraction"** to validate your configuration with a sample invoice (4 test modes: full pipeline, text extraction, document recognition, prompt preview)
 
 ## Usage
 
@@ -206,11 +209,11 @@ The module detects these packages at runtime and degrades gracefully when they a
 ![Extraction Pipeline](static/description/pipeline.svg)
 
 1. **Document analysis** -- The module detects the file type, extracts text (or uses vision for scanned documents), and checks for structured data (Factur-X)
-2. **Document recognition** *(optional)* -- If configured, an external recognition service (Azure Document Intelligence or AWS Textract) processes the document before or instead of the AI
+2. **Document recognition** _(optional)_ -- If configured, an external recognition service (Azure Document Intelligence or AWS Textract) processes the document before or instead of the AI
 3. **AI extraction** -- The document is sent to the selected AI service. The prompt content depends on the extraction mode: chart of accounts + taxes + vendor history (guided), taxes only (simplified), or raw extraction (free)
 4. **Cross-validation** -- Extracted amounts are mathematically verified (totals, tax calculations, line item sums)
 5. **Field mapping** -- Data is mapped to Odoo fields with confidence scores. Matching depth depends on the extraction mode (full in guided, taxes only in simplified, none in free)
-6. **Learning** *(guided mode)* -- User corrections are stored per vendor and applied to future extractions
+6. **Learning** _(guided mode)_ -- User corrections are stored per vendor and applied to future extractions
 
 ### Extraction Pipeline (sequence diagram)
 
@@ -275,7 +278,7 @@ the standard location for module credentials. Values there are **not encrypted a
 rest** — they are kept in plaintext in the database and are readable by users with
 Settings administration rights. To protect the key:
 
-- Restrict the *Settings / Technical* access group to trusted administrators.
+- Restrict the _Settings / Technical_ access group to trusted administrators.
 - Rely on database/disk encryption and backup encryption at the infrastructure level.
 - Rotate the key if a database dump may have been exposed.
 

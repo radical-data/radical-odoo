@@ -39,7 +39,9 @@ class AiPreviewWizard(models.TransientModel):
 
     # Extracted line items (populated at creation from preview_data JSON)
     preview_line_ids = fields.One2many(
-        'ai.preview.line', 'wizard_id', string='Extracted Lines',
+        'ai.preview.line',
+        'wizard_id',
+        string='Extracted Lines',
     )
 
     @api.model_create_multi

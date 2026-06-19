@@ -42,15 +42,19 @@ class TestVisionRetryEdgeCases(TransactionCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.company = cls.env.company
-        cls.move = cls.env['account.move'].create({
-            'move_type': 'in_invoice',
-            'company_id': cls.company.id,
-        })
-        cls.env['ir.config_parameter'].sudo().set_param(
-            'account_invoice_digitize_ai.ai_api_key', 'test-key-123',
+        cls.move = cls.env['account.move'].create(
+            {
+                'move_type': 'in_invoice',
+                'company_id': cls.company.id,
+            }
         )
         cls.env['ir.config_parameter'].sudo().set_param(
-            'account_invoice_digitize_ai.ai_provider', 'anthropic',
+            'account_invoice_digitize_ai.ai_api_key',
+            'test-key-123',
+        )
+        cls.env['ir.config_parameter'].sudo().set_param(
+            'account_invoice_digitize_ai.ai_provider',
+            'anthropic',
         )
 
     def _make_doc_info(self, is_vision=False, mimetype='application/pdf'):
@@ -76,8 +80,12 @@ class TestVisionRetryEdgeCases(TransactionCase):
             patch.object(type(self.move), '_ai_create_log'),
         ):
             result = self.move._ai_call_and_validate(
-                'test-key', _CFG, 'system', [{'type': 'text', 'text': 'hi'}],
-                'user prompt', doc_info,
+                'test-key',
+                _CFG,
+                'system',
+                [{'type': 'text', 'text': 'hi'}],
+                'user prompt',
+                doc_info,
             )
         self.assertIsNotNone(result)
         mock_retry.assert_not_called()
@@ -94,8 +102,12 @@ class TestVisionRetryEdgeCases(TransactionCase):
             patch.object(type(self.move), '_ai_create_log'),
         ):
             result = self.move._ai_call_and_validate(
-                'test-key', _CFG, 'system', [{'type': 'text', 'text': 'hi'}],
-                'user prompt', doc_info,
+                'test-key',
+                _CFG,
+                'system',
+                [{'type': 'text', 'text': 'hi'}],
+                'user prompt',
+                doc_info,
             )
         self.assertIsNotNone(result)
         mock_retry.assert_not_called()
@@ -112,9 +124,12 @@ class TestVisionRetryEdgeCases(TransactionCase):
             patch.object(type(self.move), '_ai_create_log'),
         ):
             result = self.move._ai_call_and_validate(
-                'test-key', _CFG, 'system',
+                'test-key',
+                _CFG,
+                'system',
                 [{'type': 'image', 'source': {'data': 'abc'}}],
-                'user prompt', doc_info,
+                'user prompt',
+                doc_info,
             )
         self.assertIsNotNone(result)
         mock_retry.assert_not_called()
@@ -131,8 +146,12 @@ class TestVisionRetryEdgeCases(TransactionCase):
             patch.object(type(self.move), '_ai_create_log'),
         ):
             self.move._ai_call_and_validate(
-                'test-key', _CFG, 'system', [{'type': 'text', 'text': 'hi'}],
-                'user prompt', doc_info,
+                'test-key',
+                _CFG,
+                'system',
+                [{'type': 'text', 'text': 'hi'}],
+                'user prompt',
+                doc_info,
             )
         mock_retry.assert_called_once()
 
@@ -153,8 +172,12 @@ class TestVisionRetryEdgeCases(TransactionCase):
             patch.object(type(self.move), '_ai_create_log'),
         ):
             result = self.move._ai_call_and_validate(
-                'test-key', _CFG, 'system', [{'type': 'text', 'text': 'hi'}],
-                'user prompt', doc_info,
+                'test-key',
+                _CFG,
+                'system',
+                [{'type': 'text', 'text': 'hi'}],
+                'user prompt',
+                doc_info,
             )
         self.assertEqual(result['vendor']['name'], 'Better')
 
@@ -170,7 +193,11 @@ class TestVisionRetryEdgeCases(TransactionCase):
             patch.object(type(self.move), '_ai_create_log'),
         ):
             result = self.move._ai_call_and_validate(
-                'test-key', _CFG, 'system', [{'type': 'text', 'text': 'hi'}],
-                'user prompt', doc_info,
+                'test-key',
+                _CFG,
+                'system',
+                [{'type': 'text', 'text': 'hi'}],
+                'user prompt',
+                doc_info,
             )
         self.assertEqual(result['vendor']['name'], 'Test')

@@ -487,11 +487,13 @@ class TestQrPdfExtraction(TransactionCase):
         mock_qr.type = 'QRCODE'
         mock_qr.data = b'SPC\n0200\n1\nCH9300762011623852957'
 
-        with patch.object(ai_qr_decoder, 'PYZBAR_AVAILABLE', True), \
-                patch.object(ai_qr_decoder, 'PILLOW_AVAILABLE', True), \
-                patch.object(ai_qr_decoder, '_PdfReader', return_value=mock_reader), \
-                patch.object(ai_qr_decoder, '_extract_images_from_page', return_value=[mock_img]), \
-                patch.object(ai_qr_decoder, '_pyzbar_decode', return_value=[mock_qr]):
+        with (
+            patch.object(ai_qr_decoder, 'PYZBAR_AVAILABLE', True),
+            patch.object(ai_qr_decoder, 'PILLOW_AVAILABLE', True),
+            patch.object(ai_qr_decoder, '_PdfReader', return_value=mock_reader),
+            patch.object(ai_qr_decoder, '_extract_images_from_page', return_value=[mock_img]),
+            patch.object(ai_qr_decoder, '_pyzbar_decode', return_value=[mock_qr]),
+        ):
             result = ai_qr_decoder.extract_qr_from_pdf(b'%PDF fake')
             self.assertEqual(len(result), 1)
             self.assertIn('SPC', result[0])
@@ -507,11 +509,13 @@ class TestQrPdfExtraction(TransactionCase):
         mock_qr.type = 'QRCODE'
         mock_qr.data = b'same-payload'
 
-        with patch.object(ai_qr_decoder, 'PYZBAR_AVAILABLE', True), \
-                patch.object(ai_qr_decoder, 'PILLOW_AVAILABLE', True), \
-                patch.object(ai_qr_decoder, '_PdfReader', return_value=mock_reader), \
-                patch.object(ai_qr_decoder, '_extract_images_from_page', return_value=[mock_img]), \
-                patch.object(ai_qr_decoder, '_pyzbar_decode', return_value=[mock_qr]):
+        with (
+            patch.object(ai_qr_decoder, 'PYZBAR_AVAILABLE', True),
+            patch.object(ai_qr_decoder, 'PILLOW_AVAILABLE', True),
+            patch.object(ai_qr_decoder, '_PdfReader', return_value=mock_reader),
+            patch.object(ai_qr_decoder, '_extract_images_from_page', return_value=[mock_img]),
+            patch.object(ai_qr_decoder, '_pyzbar_decode', return_value=[mock_qr]),
+        ):
             result = ai_qr_decoder.extract_qr_from_pdf(b'%PDF fake')
             self.assertEqual(len(result), 1)
             self.assertEqual(result[0], 'same-payload')
@@ -528,10 +532,12 @@ class TestQrPdfExtraction(TransactionCase):
             extract_calls.append(page)
             return []
 
-        with patch.object(ai_qr_decoder, 'PYZBAR_AVAILABLE', True), \
-                patch.object(ai_qr_decoder, 'PILLOW_AVAILABLE', True), \
-                patch.object(ai_qr_decoder, '_PdfReader', return_value=mock_reader), \
-                patch.object(ai_qr_decoder, '_extract_images_from_page', side_effect=mock_extract):
+        with (
+            patch.object(ai_qr_decoder, 'PYZBAR_AVAILABLE', True),
+            patch.object(ai_qr_decoder, 'PILLOW_AVAILABLE', True),
+            patch.object(ai_qr_decoder, '_PdfReader', return_value=mock_reader),
+            patch.object(ai_qr_decoder, '_extract_images_from_page', side_effect=mock_extract),
+        ):
             ai_qr_decoder.extract_qr_from_pdf(b'%PDF fake', max_pages=3)
             self.assertEqual(len(extract_calls), 3)
 
@@ -539,8 +545,10 @@ class TestQrPdfExtraction(TransactionCase):
         """extract_qr_from_pdf should return [] on any exception."""
         from odoo.addons.account_invoice_digitize_ai.models import ai_qr_decoder
 
-        with patch.object(ai_qr_decoder, 'PYZBAR_AVAILABLE', True), \
-                patch.object(ai_qr_decoder, 'PILLOW_AVAILABLE', True), \
-                patch.object(ai_qr_decoder, '_PdfReader', side_effect=Exception('corrupted PDF')):
+        with (
+            patch.object(ai_qr_decoder, 'PYZBAR_AVAILABLE', True),
+            patch.object(ai_qr_decoder, 'PILLOW_AVAILABLE', True),
+            patch.object(ai_qr_decoder, '_PdfReader', side_effect=Exception('corrupted PDF')),
+        ):
             result = ai_qr_decoder.extract_qr_from_pdf(b'corrupted')
             self.assertEqual(result, [])

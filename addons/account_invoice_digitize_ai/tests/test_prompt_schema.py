@@ -32,8 +32,15 @@ class TestPromptSchema(TransactionCase):
         schema = self._get_schema()
         props = schema.get('properties', {})
         expected = {
-            'document_type', 'is_marked_paid', 'vendor', 'buyer',
-            'invoice', 'totals', 'tax_lines', 'table_analysis', 'lines',
+            'document_type',
+            'is_marked_paid',
+            'vendor',
+            'buyer',
+            'invoice',
+            'totals',
+            'tax_lines',
+            'table_analysis',
+            'lines',
         }
         for key in expected:
             self.assertIn(key, props, 'Missing top-level property: %s' % key)

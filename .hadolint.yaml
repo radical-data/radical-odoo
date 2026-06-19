@@ -1,0 +1,9 @@
+failure-threshold: warning
+ignored:
+  # Odoo's official image uses system Python; this deployment intentionally
+  # installs Odoo-compatible packages into that environment.
+  - DL3013
+  - DL3042
+  # Pinning apt packages inside the official Odoo image is usually more brittle
+  # than useful for this small deployment.
+  - DL3008

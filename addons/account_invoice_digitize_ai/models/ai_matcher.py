@@ -181,7 +181,8 @@ def match_payment_term(env, payment_terms_text, company, partner=None):
         return vendor_term
 
     all_terms = env['account.payment.term'].search(
-        [('company_id', 'in', [company.id, False])], limit=200,
+        [('company_id', 'in', [company.id, False])],
+        limit=200,
     )
     if not all_terms:
         return None

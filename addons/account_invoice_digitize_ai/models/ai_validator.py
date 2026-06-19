@@ -346,6 +346,7 @@ def _line_sum_tolerance(reference_amount=0.0):
     """Proportional tolerance: 0.10 minimum, 0.1 %% of reference, capped at 5.00."""
     return min(_LINE_SUM_TOLERANCE_CAP, max(_LINE_SUM_TOLERANCE_BASE, abs(reference_amount) * 0.001))
 
+
 _IBAN_FORMAT_RE = re.compile(r'^[A-Z]{2}\d{2}[A-Z0-9]{4,30}$')
 
 

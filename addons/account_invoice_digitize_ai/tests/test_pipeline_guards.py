@@ -72,7 +72,9 @@ class TestVisionRetryLogOrder(TransactionCase):
         }
         with patch(f'{_MODULE}.models.ai_provider.get_provider', return_value=mock_provider):
             result = self.move._ai_retry_vision(
-                'test-key-123', cfg, b'fake-pdf',
+                'test-key-123',
+                cfg,
+                b'fake-pdf',
             )
 
         self.assertIsNone(result)
@@ -105,7 +107,9 @@ class TestVisionRetryLogOrder(TransactionCase):
             patch.object(type(self.move), '_ai_create_log') as mock_log,
         ):
             result = self.move._ai_retry_vision(
-                'test-key-123', cfg, b'fake-pdf',
+                'test-key-123',
+                cfg,
+                b'fake-pdf',
             )
 
         self.assertIsNotNone(result)

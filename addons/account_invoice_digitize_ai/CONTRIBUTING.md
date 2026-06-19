@@ -13,6 +13,7 @@ Thank you for your interest in contributing to AI Invoice Digitization for Odoo.
 ### Getting Started
 
 1. Clone the repository into your Odoo addons path:
+
    ```bash
    git clone <repository-url> account_invoice_digitize_ai
    ```
@@ -59,6 +60,7 @@ ruff check --select E,W,F,C901,PLR0911,PLR0915,PLR0912 --ignore E501 .
 ## Pull Request Process
 
 1. Create a feature branch from the target Odoo branch (`19.0` or `18.0`):
+
    ```bash
    git checkout -b feature/your-feature-name 19.0
    ```

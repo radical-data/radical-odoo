@@ -60,8 +60,13 @@ class AiMemoryImportWizard(models.TransientModel):
     result_message = fields.Text(string='Result', readonly=True)
 
     _VALID_IMPORT_FIELDS = {
-        'partner_id', 'ref', 'invoice_date', 'invoice_date_due',
-        'account_id', 'tax_ids', 'line_description',
+        'partner_id',
+        'ref',
+        'invoice_date',
+        'invoice_date_due',
+        'account_id',
+        'tax_ids',
+        'line_description',
     }
 
     def _import_match_partner(self, entry):
@@ -69,11 +74,13 @@ class AiMemoryImportWizard(models.TransientModel):
         partner = None
         if entry.get('partner_vat'):
             partner = self.env['res.partner'].search(
-                [('vat', '=', entry['partner_vat'])], limit=1,
+                [('vat', '=', entry['partner_vat'])],
+                limit=1,
             )
         if not partner and entry.get('partner_name'):
             partner = self.env['res.partner'].search(
-                [('name', '=ilike', entry['partner_name'])], limit=1,
+                [('name', '=ilike', entry['partner_name'])],
+                limit=1,
             )
         return partner
 
@@ -130,23 +137,27 @@ class AiMemoryImportWizard(models.TransientModel):
                 )
                 updated += 1
             else:
-                create_buffer.append({
-                    'partner_id': partner.id,
-                    'company_id': company.id,
-                    'field_name': field_name,
-                    'ai_value': entry.get('ai_value', ''),
-                    'user_value': user_value,
-                    'correction_count': entry.get('correction_count', 1),
-                    'auto_apply': entry.get('auto_apply', False),
-                })
+                create_buffer.append(
+                    {
+                        'partner_id': partner.id,
+                        'company_id': company.id,
+                        'field_name': field_name,
+                        'ai_value': entry.get('ai_value', ''),
+                        'user_value': user_value,
+                        'correction_count': entry.get('correction_count', 1),
+                        'auto_apply': entry.get('auto_apply', False),
+                    }
+                )
                 created += 1
 
         if create_buffer:
             Memory.create(create_buffer)
 
-        self.result_message = self.env._(
-            'Import complete: %d created, %d updated, %d skipped (vendor not found)'
-        ) % (created, updated, skipped)
+        self.result_message = self.env._('Import complete: %d created, %d updated, %d skipped (vendor not found)') % (
+            created,
+            updated,
+            skipped,
+        )
 
         return {
             'type': 'ir.actions.act_window',

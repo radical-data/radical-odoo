@@ -191,11 +191,20 @@ class AWSTextract(DocumentPreprocessor):
         last_exc = None
         for attempt in range(3):
             signed_headers = _sign_request(
-                'POST', endpoint, headers, body, region, access_key, secret_key,
+                'POST',
+                endpoint,
+                headers,
+                body,
+                region,
+                access_key,
+                secret_key,
             )
             try:
                 resp = requests.post(
-                    endpoint, data=body, headers=signed_headers, timeout=_REQUEST_TIMEOUT,
+                    endpoint,
+                    data=body,
+                    headers=signed_headers,
+                    timeout=_REQUEST_TIMEOUT,
                 )
             except (requests.Timeout, requests.ConnectionError) as exc:
                 last_exc = exc

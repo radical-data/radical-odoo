@@ -66,8 +66,7 @@ class AnthropicProvider(AIProvider):
         return self._validate_with_request(
             self.API_ENDPOINT,
             self._headers(api_key),
-            {'model': 'claude-haiku-4-5-20251001', 'max_tokens': 10,
-             'messages': [{'role': 'user', 'content': 'Hi'}]},
+            {'model': 'claude-haiku-4-5-20251001', 'max_tokens': 10, 'messages': [{'role': 'user', 'content': 'Hi'}]},
         )
 
     def extract(self, api_key, system_prompt, user_content, model):

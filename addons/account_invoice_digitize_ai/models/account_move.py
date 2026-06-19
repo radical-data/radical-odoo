@@ -105,8 +105,13 @@ class AccountMove(models.Model):
 
     def _ai_get_bool_param(self, key, default='False'):
         """Read a boolean ICP parameter consistently."""
-        val = self.env['ir.config_parameter'].sudo().get_param(
-            'account_invoice_digitize_ai.' + key, default,
+        val = (
+            self.env['ir.config_parameter']
+            .sudo()
+            .get_param(
+                'account_invoice_digitize_ai.' + key,
+                default,
+            )
         )
         return val not in ('False', '0', '', False)
 
@@ -279,8 +284,12 @@ class AccountMove(models.Model):
         """Auto-extract invoice data if enabled and attachment found."""
         if not self._ai_get_bool_param('ai_email_auto_extract'):
             return
-        api_key = self.env['ir.config_parameter'].sudo().get_param(
-            'account_invoice_digitize_ai.ai_api_key',
+        api_key = (
+            self.env['ir.config_parameter']
+            .sudo()
+            .get_param(
+                'account_invoice_digitize_ai.ai_api_key',
+            )
         )
         if not api_key:
             return
@@ -390,9 +399,7 @@ class AccountMove(models.Model):
             self.ai_extraction_queued_at = fields.Datetime.now()
             return self._ai_notify(
                 self.env._('Extraction Queued'),
-                self.env._(
-                    'Extraction will be processed in the background. Refresh the page in a few seconds.'
-                ),
+                self.env._('Extraction will be processed in the background. Refresh the page in a few seconds.'),
                 notif_type='info',
             )
 
@@ -439,15 +446,17 @@ class AccountMove(models.Model):
     def _ai_open_preview_wizard(self, data):
         """Open the extraction preview wizard with the given data."""
         line_commands = [
-            fields.Command.create({
-                'sequence': (i + 1) * 10,
-                'description': line.get('description', ''),
-                'product_code': line.get('product_code') or '',
-                'quantity': line.get('quantity') or 0,
-                'unit_price': line.get('unit_price') or 0,
-                'tax_rate': line.get('tax_rate') or 0,
-                'subtotal': line.get('subtotal_untaxed') or 0,
-            })
+            fields.Command.create(
+                {
+                    'sequence': (i + 1) * 10,
+                    'description': line.get('description', ''),
+                    'product_code': line.get('product_code') or '',
+                    'quantity': line.get('quantity') or 0,
+                    'unit_price': line.get('unit_price') or 0,
+                    'tax_rate': line.get('tax_rate') or 0,
+                    'subtotal': line.get('subtotal_untaxed') or 0,
+                }
+            )
             for i, line in enumerate(data.get('lines', []))
             if line.get('description')
         ]
@@ -484,4 +493,3 @@ class AccountMove(models.Model):
         except (json.JSONDecodeError, TypeError):
             return False
         return self._ai_open_preview_wizard(data)
-

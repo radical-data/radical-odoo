@@ -70,11 +70,12 @@ class AccountMove(models.Model):
                 self.id,
             )
             from markupsafe import escape
+
             self._ai_post_rounding_note(
                 self.env._(
-                    'AI Digitization applied a rounding correction of %+.2f on line "%s" '
-                    'to match the extracted total.'
-                ) % (gap, escape(target.name)),
+                    'AI Digitization applied a rounding correction of %+.2f on line "%s" to match the extracted total.'
+                )
+                % (gap, escape(target.name)),
             )
 
     def _ai_fix_rounding_add_line(self, gap, expected_total, ICP, _p):
@@ -108,10 +109,8 @@ class AccountMove(models.Model):
                 self.id,
             )
             self._ai_post_rounding_note(
-                self.env._(
-                    'AI Digitization added a rounding compensation line (%+.2f) '
-                    'to match the extracted total.'
-                ) % gap,
+                self.env._('AI Digitization added a rounding compensation line (%+.2f) to match the extracted total.')
+                % gap,
             )
 
     def _ai_post_rounding_note(self, body):

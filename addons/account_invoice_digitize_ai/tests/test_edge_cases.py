@@ -168,10 +168,12 @@ class TestLargeInvoice(TransactionCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.company = cls.env.company
-        cls.move = cls.env['account.move'].create({
-            'move_type': 'in_invoice',
-            'company_id': cls.company.id,
-        })
+        cls.move = cls.env['account.move'].create(
+            {
+                'move_type': 'in_invoice',
+                'company_id': cls.company.id,
+            }
+        )
 
     def test_cross_validate_100_lines(self):
         """Cross-validation should handle 100+ lines without crash."""
@@ -179,14 +181,16 @@ class TestLargeInvoice(TransactionCase):
 
         lines = []
         for i in range(120):
-            lines.append({
-                'description': 'Item %d' % i,
-                'quantity': 1,
-                'unit_price': 10.0,
-                'subtotal_untaxed': 10.0,
-                'tax_rate': 20.0,
-                'confidence': 0.9,
-            })
+            lines.append(
+                {
+                    'description': 'Item %d' % i,
+                    'quantity': 1,
+                    'unit_price': 10.0,
+                    'subtotal_untaxed': 10.0,
+                    'tax_rate': 20.0,
+                    'confidence': 0.9,
+                }
+            )
         data = {
             'invoice': {'currency': 'EUR'},
             'totals': {
@@ -221,13 +225,15 @@ class TestLargeInvoice(TransactionCase):
 
         lines = []
         for i in range(150):
-            lines.append({
-                'description': 'Item %d' % i,
-                'quantity': '1',
-                'unit_price': '10.50',
-                'subtotal_untaxed': '10.50',
-                'confidence': 0.9,
-            })
+            lines.append(
+                {
+                    'description': 'Item %d' % i,
+                    'quantity': '1',
+                    'unit_price': '10.50',
+                    'subtotal_untaxed': '10.50',
+                    'confidence': 0.9,
+                }
+            )
         data = {'totals': {'untaxed_amount': '1575.00'}, 'lines': lines}
         _coerce_amounts(data)
         self.assertEqual(data['totals']['untaxed_amount'], 1575.0)
@@ -358,19 +364,23 @@ class TestMalformedResponses(TransactionCase):
 
     def test_build_line_missing_description(self):
         """Line with empty description should be skipped (not crash)."""
-        move = self.env['account.move'].create({
-            'move_type': 'in_invoice',
-            'company_id': self.env.company.id,
-        })
+        move = self.env['account.move'].create(
+            {
+                'move_type': 'in_invoice',
+                'company_id': self.env.company.id,
+            }
+        )
         result = move._ai_build_line_vals({'quantity': 1, 'unit_price': 10.0}, self.env.company, None)
         self.assertIsNone(result)
 
     def test_build_line_empty_string_description(self):
         """Line with empty string description should be skipped."""
-        move = self.env['account.move'].create({
-            'move_type': 'in_invoice',
-            'company_id': self.env.company.id,
-        })
+        move = self.env['account.move'].create(
+            {
+                'move_type': 'in_invoice',
+                'company_id': self.env.company.id,
+            }
+        )
         result = move._ai_build_line_vals(
             {'description': '', 'quantity': 1, 'unit_price': 10.0},
             self.env.company,
@@ -442,16 +452,20 @@ class TestVendorCreditNote(TransactionCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.company = cls.env.company
-        cls.partner = cls.env['res.partner'].create({
-            'name': 'Credit Note Vendor',
-            'is_company': True,
-            'vat': 'FR55555555555',
-        })
-        cls.env['ir.config_parameter'].sudo().set_param(
-            'account_invoice_digitize_ai.ai_api_key', 'test-key',
+        cls.partner = cls.env['res.partner'].create(
+            {
+                'name': 'Credit Note Vendor',
+                'is_company': True,
+                'vat': 'FR55555555555',
+            }
         )
         cls.env['ir.config_parameter'].sudo().set_param(
-            'account_invoice_digitize_ai.ai_extract_lines', 'True',
+            'account_invoice_digitize_ai.ai_api_key',
+            'test-key',
+        )
+        cls.env['ir.config_parameter'].sudo().set_param(
+            'account_invoice_digitize_ai.ai_extract_lines',
+            'True',
         )
 
     def _make_credit_note_response(self):
@@ -465,66 +479,70 @@ class TestVendorCreditNote(TransactionCase):
             'content': [
                 {
                     'type': 'text',
-                    'text': json.dumps({
-                        'document_type': 'credit_note',
-                        'is_marked_paid': False,
-                        'vendor': {
-                            'name': 'Credit Note Vendor',
-                            'vat': 'FR55555555555',
-                            'confidence': 0.95,
-                        },
-                        'buyer': {'name': None, 'confidence': 0.0},
-                        'invoice': {
-                            'reference': 'AV-2025-001',
-                            'invoice_date': '2025-01-20',
-                            'due_date': '2025-02-20',
-                            'currency': 'EUR',
-                            'is_credit_note': True,
-                            'is_reverse_charge': False,
-                            'original_invoice_ref': 'FAC-2024-050',
-                            'confidence': 0.9,
-                        },
-                        'totals': {
-                            'untaxed_amount': 500.0,
-                            'tax_amount': 100.0,
-                            'total_amount': 600.0,
-                            'confidence': 0.95,
-                        },
-                        'tax_lines': [
-                            {
-                                'tax_rate': 20.0,
-                                'base_amount': 500.0,
+                    'text': json.dumps(
+                        {
+                            'document_type': 'credit_note',
+                            'is_marked_paid': False,
+                            'vendor': {
+                                'name': 'Credit Note Vendor',
+                                'vat': 'FR55555555555',
+                                'confidence': 0.95,
+                            },
+                            'buyer': {'name': None, 'confidence': 0.0},
+                            'invoice': {
+                                'reference': 'AV-2025-001',
+                                'invoice_date': '2025-01-20',
+                                'due_date': '2025-02-20',
+                                'currency': 'EUR',
+                                'is_credit_note': True,
+                                'is_reverse_charge': False,
+                                'original_invoice_ref': 'FAC-2024-050',
+                                'confidence': 0.9,
+                            },
+                            'totals': {
+                                'untaxed_amount': 500.0,
                                 'tax_amount': 100.0,
-                                'confidence': 0.9,
+                                'total_amount': 600.0,
+                                'confidence': 0.95,
                             },
-                        ],
-                        'table_analysis': {
-                            'pricing_mode': 'ht_to_ttc',
-                            'line_count': 1,
-                        },
-                        'lines': [
-                            {
-                                'description': 'Returned merchandise',
-                                'quantity': 5,
-                                'unit_price': 100.0,
-                                'subtotal_untaxed': 500.0,
-                                'tax_rate': 20.0,
-                                'is_shipping_line': False,
-                                'suggested_account_category': 'merchandise',
-                                'confidence': 0.9,
+                            'tax_lines': [
+                                {
+                                    'tax_rate': 20.0,
+                                    'base_amount': 500.0,
+                                    'tax_amount': 100.0,
+                                    'confidence': 0.9,
+                                },
+                            ],
+                            'table_analysis': {
+                                'pricing_mode': 'ht_to_ttc',
+                                'line_count': 1,
                             },
-                        ],
-                    }),
+                            'lines': [
+                                {
+                                    'description': 'Returned merchandise',
+                                    'quantity': 5,
+                                    'unit_price': 100.0,
+                                    'subtotal_untaxed': 500.0,
+                                    'tax_rate': 20.0,
+                                    'is_shipping_line': False,
+                                    'suggested_account_category': 'merchandise',
+                                    'confidence': 0.9,
+                                },
+                            ],
+                        }
+                    ),
                 },
             ],
         }
 
     def test_credit_note_out_invoice_to_out_refund(self):
         """_ai_detect_credit_note should convert out_invoice to out_refund."""
-        move = self.env['account.move'].create({
-            'move_type': 'out_invoice',
-            'company_id': self.company.id,
-        })
+        move = self.env['account.move'].create(
+            {
+                'move_type': 'out_invoice',
+                'company_id': self.company.id,
+            }
+        )
         vals = {}
         data = {'document_type': 'credit_note'}
         inv = {'is_credit_note': True}
@@ -533,10 +551,12 @@ class TestVendorCreditNote(TransactionCase):
 
     def test_credit_note_detection(self):
         """_ai_detect_credit_note should convert in_invoice to in_refund."""
-        move = self.env['account.move'].create({
-            'move_type': 'in_invoice',
-            'company_id': self.company.id,
-        })
+        move = self.env['account.move'].create(
+            {
+                'move_type': 'in_invoice',
+                'company_id': self.company.id,
+            }
+        )
         vals = {}
         data = {'document_type': 'credit_note'}
         inv = {'is_credit_note': True}
@@ -545,10 +565,12 @@ class TestVendorCreditNote(TransactionCase):
 
     def test_credit_note_no_change_for_refund(self):
         """If already in_refund, no change needed."""
-        move = self.env['account.move'].create({
-            'move_type': 'in_refund',
-            'company_id': self.company.id,
-        })
+        move = self.env['account.move'].create(
+            {
+                'move_type': 'in_refund',
+                'company_id': self.company.id,
+            }
+        )
         vals = {}
         data = {'document_type': 'credit_note'}
         inv = {'is_credit_note': True}
@@ -561,25 +583,37 @@ class TestVendorCreditNote(TransactionCase):
         import base64
 
         mock_resp = self._make_credit_note_response()
-        mock_post.return_value = type('Response', (), {
-            'status_code': 200,
-            'json': lambda self: mock_resp,
-        })()
+        mock_post.return_value = type(
+            'Response',
+            (),
+            {
+                'status_code': 200,
+                'json': lambda self: mock_resp,
+            },
+        )()
 
-        move = self.env['account.move'].create({
-            'move_type': 'in_invoice',
-            'company_id': self.company.id,
-        })
-        self.env['ir.attachment'].create({
-            'name': 'credit_note.pdf',
-            'datas': base64.b64encode(b'%PDF-1.4 fake CN'),
-            'mimetype': 'application/pdf',
-            'res_model': 'account.move',
-            'res_id': move.id,
-        })
+        move = self.env['account.move'].create(
+            {
+                'move_type': 'in_invoice',
+                'company_id': self.company.id,
+            }
+        )
+        self.env['ir.attachment'].create(
+            {
+                'name': 'credit_note.pdf',
+                'datas': base64.b64encode(b'%PDF-1.4 fake CN'),
+                'mimetype': 'application/pdf',
+                'res_model': 'account.move',
+                'res_id': move.id,
+            }
+        )
 
-        api_key = self.env['ir.config_parameter'].sudo().get_param(
-            'account_invoice_digitize_ai.ai_api_key',
+        api_key = (
+            self.env['ir.config_parameter']
+            .sudo()
+            .get_param(
+                'account_invoice_digitize_ai.ai_api_key',
+            )
         )
         attachment = move._ai_get_invoice_attachment()
         move._ai_trigger_extraction(api_key, attachment)
@@ -606,10 +640,12 @@ class TestVendorCreditNote(TransactionCase):
 
     def test_credit_note_line_building(self):
         """Line building should work for credit notes (in_refund)."""
-        move = self.env['account.move'].create({
-            'move_type': 'in_refund',
-            'company_id': self.company.id,
-        })
+        move = self.env['account.move'].create(
+            {
+                'move_type': 'in_refund',
+                'company_id': self.company.id,
+            }
+        )
         line_data = {
             'description': 'Returned item',
             'quantity': 2,
@@ -759,10 +795,12 @@ class TestReverseChargeWarning(TransactionCase):
 
     def test_reverse_charge_warning_generated(self):
         """is_reverse_charge=True should generate a warning."""
-        move = self.env['account.move'].create({
-            'move_type': 'in_invoice',
-            'company_id': self.company.id,
-        })
+        move = self.env['account.move'].create(
+            {
+                'move_type': 'in_invoice',
+                'company_id': self.company.id,
+            }
+        )
         data = {
             'document_type': 'invoice',
             'invoice': {
@@ -777,10 +815,12 @@ class TestReverseChargeWarning(TransactionCase):
 
     def test_reverse_charge_warning_without_text(self):
         """Reverse charge without text should still generate a warning."""
-        move = self.env['account.move'].create({
-            'move_type': 'in_invoice',
-            'company_id': self.company.id,
-        })
+        move = self.env['account.move'].create(
+            {
+                'move_type': 'in_invoice',
+                'company_id': self.company.id,
+            }
+        )
         data = {
             'document_type': 'invoice',
             'invoice': {'is_reverse_charge': True},
@@ -792,10 +832,12 @@ class TestReverseChargeWarning(TransactionCase):
 
     def test_no_reverse_charge_no_warning(self):
         """Normal invoice should not generate reverse charge warning."""
-        move = self.env['account.move'].create({
-            'move_type': 'in_invoice',
-            'company_id': self.company.id,
-        })
+        move = self.env['account.move'].create(
+            {
+                'move_type': 'in_invoice',
+                'company_id': self.company.id,
+            }
+        )
         data = {
             'document_type': 'invoice',
             'invoice': {'is_reverse_charge': False},
