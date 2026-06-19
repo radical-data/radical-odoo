@@ -1,0 +1,25 @@
+--index-url https://wheelhouse.odoo-community.org/oca-simple-and-pypi
+
+# Build tooling used to install this deployment project package.
+hatchling==1.30.1
+hatch-odoo==1.0.2
+manifestoo-core==1.15.2
+packaging==26.2
+pathspec==1.1.1
+pluggy==1.6.0
+trove-classifiers==2026.6.1.19
+
+# Runtime Python dependencies used by account_invoice_digitize_ai.
+factur-x==4.3
+pdfminer.six==20260107
+pdfplumber==0.11.10
+pillow==12.2.0
+pypdf==6.13.2
+pypdfium2==5.10.1
+pyzbar==0.1.9
+saxonche==13.0.0
+
+# OCA addons installed as Python packages.
+odoo-addon-account-financial-report==19.0.0.0.14
+odoo-addon-date-range==19.0.1.0.0.2
+odoo-addon-report-xlsx==19.0.1.0.2

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="ai_test_wizard_view_form" model="ir.ui.view">
+        <field name="name">ai.test.wizard.form</field>
+        <field name="model">ai.test.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Test AI Extraction">
+                <!-- Mode selector (visible only before running) -->
+                <group invisible="result_status != 'pending'">
+                    <field name="test_mode" widget="radio"/>
+                </group>
+
+                <!-- Mode descriptions -->
+                <group invisible="result_status != 'pending'">
+                    <div class="text-muted"
+                         invisible="test_mode != 'full_pipeline'">
+                        <p>Sends a sample or uploaded invoice through the full
+                        AI extraction pipeline and validates the results.</p>
+                        <p><strong>Tokens will be consumed.</strong></p>
+                    </div>
+                    <div class="text-muted"
+                         invisible="test_mode != 'text_extraction'">
+                        <p>Extracts text from an uploaded PDF using PyPDF2:
+                        text content, metadata, number format detection,
+                        document qualification, and structured tables.</p>
+                        <p><strong>No API call. No tokens consumed.</strong></p>
+                    </div>
+                    <div class="text-muted"
+                         invisible="test_mode != 'preprocessing'">
+                        <p>Sends an uploaded document to the configured
+                        recognition service (Azure Document Intelligence or
+                        AWS Textract).</p>
+                        <p><strong>Recognition service charges may apply.
+                        No AI tokens consumed.</strong></p>
+                    </div>
+                    <div class="text-muted"
+                         invisible="test_mode != 'prompt_preview'">
+                        <p>Builds the full extraction prompt from a sample or
+                        uploaded document. Shows the prompt text, fiscal context,
+                        and estimated token count.</p>
+                        <p><strong>No API call. No tokens consumed.</strong></p>
+                    </div>
+                </group>
+
+                <!-- Document upload section -->
+                <group invisible="result_status != 'pending'">
+                    <field name="use_sample"
+                           invisible="test_mode not in ('full_pipeline', 'prompt_preview')"/>
+                    <field name="test_document" filename="test_document_name"
+                           invisible="test_mode in ('full_pipeline', 'prompt_preview') and use_sample"/>
+                    <field name="test_document_name" invisible="1"/>
+                </group>
+
+                <!-- Results -->
+                <group invisible="result_status == 'pending'">
+                    <div class="alert alert-success" role="alert"
+                         invisible="result_status != 'success'">
+                        <field name="result_message" readonly="1" nolabel="1"/>
+                    </div>
+                    <div class="alert alert-danger" role="alert"
+                         invisible="result_status != 'failed'">
+                        <field name="result_message" readonly="1" nolabel="1"/>
+                    </div>
+                    <field name="result_details" readonly="1"
+                           invisible="not result_details"
+                           widget="text"/>
+                </group>
+                <field name="result_status" invisible="1"/>
+                <footer>
+                    <button name="action_run_test" type="object"
+                            string="Run Test"
+                            class="btn-primary"
+                            icon="fa-flask"
+                            invisible="result_status != 'pending'"/>
+                    <button name="action_run_test" type="object"
+                            string="Run Again"
+                            class="btn-secondary"
+                            icon="fa-refresh"
+                            invisible="result_status == 'pending'"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="ai_test_wizard_action" model="ir.actions.act_window">
+        <field name="name">Test AI Extraction</field>
+        <field name="res_model">ai.test.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

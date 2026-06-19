@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="ai_vendor_score_view_tree" model="ir.ui.view">
+        <field name="name">ai.vendor.score.tree</field>
+        <field name="model">ai.vendor.score</field>
+        <field name="arch" type="xml">
+            <list decoration-success="reliability_rate &gt;= 80"
+                  decoration-warning="reliability_rate &gt;= 50 and reliability_rate &lt; 80"
+                  decoration-danger="reliability_rate &lt; 50">
+                <field name="partner_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="total_extractions"/>
+                <field name="correct_extractions"/>
+                <field name="reliability_rate" widget="progressbar"/>
+                <field name="last_computed_date"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="ai_vendor_score_view_form" model="ir.ui.view">
+        <field name="name">ai.vendor.score.form</field>
+        <field name="model">ai.vendor.score</field>
+        <field name="arch" type="xml">
+            <form string="Vendor Extraction Score">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="reliability_rate" widget="progressbar"/>
+                        </group>
+                        <group>
+                            <field name="total_extractions"/>
+                            <field name="correct_extractions"/>
+                            <field name="last_reliability_rate"/>
+                            <field name="last_computed_date"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ai_vendor_score_view_search" model="ir.ui.view">
+        <field name="name">ai.vendor.score.search</field>
+        <field name="model">ai.vendor.score</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id"/>
+                <filter name="degrading" string="Degrading"
+                        domain="[('reliability_rate', '&lt;', 'last_reliability_rate')]"/>
+                <filter name="low_reliability" string="Low Reliability"
+                        domain="[('reliability_rate', '&lt;', 50)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="ai_vendor_score_action" model="ir.actions.act_window">
+        <field name="name">Vendor Extraction Scores</field>
+        <field name="res_model">ai.vendor.score</field>
+        <field name="view_mode">list,graph,form</field>
+    </record>
+
+    <menuitem id="ai_vendor_score_menu"
+              name="Vendor Scores"
+              parent="ai_digitize_root_menu"
+              action="ai_vendor_score_action"
+              sequence="60"
+              groups="account_invoice_digitize_ai.group_ai_digitize_manager"/>
+
+</odoo>

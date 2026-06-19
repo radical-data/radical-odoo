@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="account_invoice_digitize_ai.AiConfidenceWidget">
+        <span t-if="hasScore"
+              t-attf-class="badge {{ badgeClass }}"
+              t-att-title="titleText">
+            <i t-attf-class="fa {{ iconClass }}"/>
+            <t t-out="scorePercent"/>%
+        </span>
+    </t>
+
+</templates>

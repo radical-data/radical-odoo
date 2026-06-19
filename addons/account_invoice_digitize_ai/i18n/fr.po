@@ -1,0 +1,3515 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_invoice_digitize_ai
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-24 00:00+0000\n"
+"PO-Revision-Date: 2026-02-24 00:00+0000\n"
+"Last-Translator: Paul ARGOUD\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+# ===================================================================
+# Security groups
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:res.groups,name:account_invoice_digitize_ai.group_ai_digitize_user
+msgid "AI Digitization User"
+msgstr "Utilisateur Extraction IA"
+
+#. module: account_invoice_digitize_ai
+#: model:res.groups,name:account_invoice_digitize_ai.group_ai_digitize_manager
+msgid "AI Digitization Manager"
+msgstr "Responsable Extraction IA"
+
+# ===================================================================
+# Record rules
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.rule,name:account_invoice_digitize_ai.ai_extraction_log_comp_rule
+msgid "AI Extraction Log: multi-company"
+msgstr "Journal d'extraction IA : multi-sociétés"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.rule,name:account_invoice_digitize_ai.ai_vendor_memory_comp_rule
+msgid "AI Vendor Memory: multi-company"
+msgstr "Mémoire fournisseur IA : multi-sociétés"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.rule,name:account_invoice_digitize_ai.ai_vendor_score_comp_rule
+msgid "AI Vendor Score: multi-company"
+msgstr "Score fournisseur IA : multi-sociétés"
+
+# ===================================================================
+# Model names
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model,name:account_invoice_digitize_ai.model_ai_extraction_log
+msgid "AI Extraction Log"
+msgstr "Journal d'extraction IA"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model,name:account_invoice_digitize_ai.model_ai_vendor_memory
+msgid "AI Vendor Memory"
+msgstr "Mémoire fournisseur IA"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model,name:account_invoice_digitize_ai.model_ai_vendor_score
+msgid "AI Vendor Extraction Score"
+msgstr "Score d'extraction IA fournisseur"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model,name:account_invoice_digitize_ai.model_ai_preview_wizard
+msgid "AI Extraction Preview"
+msgstr "Aperçu d'extraction IA"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model,name:account_invoice_digitize_ai.model_ai_batch_extract_wizard
+msgid "Batch AI Extraction"
+msgstr "Extraction IA par lot"
+
+# ===================================================================
+# Access rights
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.access,name:account_invoice_digitize_ai.access_ai_extraction_log_user
+msgid "ai.extraction.log.user"
+msgstr "ai.extraction.log.utilisateur"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.access,name:account_invoice_digitize_ai.access_ai_extraction_log_manager
+msgid "ai.extraction.log.manager"
+msgstr "ai.extraction.log.responsable"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.access,name:account_invoice_digitize_ai.access_ai_vendor_memory_user
+msgid "ai.vendor.memory.user"
+msgstr "ai.vendor.memory.utilisateur"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.access,name:account_invoice_digitize_ai.access_ai_vendor_memory_manager
+msgid "ai.vendor.memory.manager"
+msgstr "ai.vendor.memory.responsable"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.access,name:account_invoice_digitize_ai.access_ai_vendor_score_user
+msgid "ai.vendor.score.user"
+msgstr "ai.vendor.score.utilisateur"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.access,name:account_invoice_digitize_ai.access_ai_vendor_score_manager
+msgid "ai.vendor.score.manager"
+msgstr "ai.vendor.score.responsable"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.access,name:account_invoice_digitize_ai.access_ai_preview_wizard
+msgid "ai.preview.wizard.user"
+msgstr "ai.preview.wizard.utilisateur"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.access,name:account_invoice_digitize_ai.access_ai_preview_line
+msgid "ai.preview.line"
+msgstr "ai.preview.line"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model,name:account_invoice_digitize_ai.model_ai_preview_line
+msgid "AI Extraction Preview Line"
+msgstr "Ligne d'aperçu d'extraction IA"
+
+# ===================================================================
+# Settings view — block titles
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "AI Invoice Digitization"
+msgstr "Extraction IA factures"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Document Recognition"
+msgstr "Reconnaissance des documents"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Invoice Analysis"
+msgstr "Analyse des factures"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "AI Service"
+msgstr "Service IA"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Estimated Cost per Invoice"
+msgstr "Coût estimé par facture"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Post-processing"
+msgstr "Post-traitement"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Email"
+msgstr "E-mail"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Advanced Options"
+msgstr "Options avancées"
+
+# ===================================================================
+# Settings view — Document Recognition block
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Document Recognition Service"
+msgstr "Service IA"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Useful for non-electronic invoices (including scanned), in PDF or image format"
+msgstr "Utilisé pour les factures non électroniques (y compris scannées), au format pdf ou image"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Recognition Mode"
+msgstr "Mode de reconnaissance"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "How the recognition service works with the AI"
+msgstr "Comment le service de reconnaissance interagit avec l'IA"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Minimum Reliability Score"
+msgstr "Score de fiabilité minimum"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "In Full recognition mode, when the recognition service returns a confidence score below this threshold (0.0-1.0), its result is discarded and the document is sent to the AI service instead."
+msgstr "En mode Reconnaissance complète, lorsque le service de reconnaissance retourne un score de confiance inférieur à ce seuil (0.0-1.0), son résultat est ignoré et le document est envoyé au service IA."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Test Recognition Service"
+msgstr "Tester le service de reconnaissance"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Verify credentials and connectivity"
+msgstr "Vérifier les identifiants et la connectivité"
+
+# ===================================================================
+# Settings view — Azure/AWS credentials blocks
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Azure Endpoint"
+msgstr "Point de terminaison Azure"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Azure Document Intelligence endpoint URL"
+msgstr "URL du point de terminaison Azure Document Intelligence"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Azure API Key"
+msgstr "Microsoft Azure : Clé API"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Azure API key"
+msgstr "Microsoft Azure : Clé API"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "AWS Access Key ID"
+msgstr "ID de clé d'accès AWS"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "AWS Secret Access Key"
+msgstr "Clé secrète d'accès AWS"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "AWS Region"
+msgstr "Région AWS"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "AWS Region for Textract service"
+msgstr "Région AWS pour le service Textract"
+
+# ===================================================================
+# Settings view — AI Service block
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "AI service used to analyze your invoices and extract data"
+msgstr "Utilisé pour analyser vos factures et extraire les données"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "An AI service is required for invoice extraction. Select a provider and enter your API key to get started."
+msgstr "Un service IA est nécessaire pour l'extraction de factures. Sélectionnez un fournisseur et saisissez votre clé API pour commencer."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "API Key"
+msgstr "Clé API"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "API key for the selected AI service"
+msgstr "Clé API du service IA sélectionné"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Test Connection"
+msgstr "Tester la connexion"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Test Extraction"
+msgstr "Test d'extraction"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "AI Model"
+msgstr "Modèle IA"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "AI model to use. Faster models cost less, advanced models are more accurate."
+msgstr "Les modèles rapides coûtent moins cher, les modèles avancés sont plus précis."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Estimated Cost per Invoice"
+msgstr "Coût estimé par facture"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Actual cost may vary depending on the document."
+msgstr "Le coût réel peut varier en fonction du document."
+
+# ===================================================================
+# Settings view — Advanced Options block (short setting help texts)
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Extract Invoice Lines"
+msgstr "Extraire les lignes de facturation"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Extracts each line (description, qty, price, ...) for multi-account allocation"
+msgstr "Désactivé : une seule ligne avec le montant total, le comptable ventile manuellement. Activé : une ligne par poste (désignation, qté, prix, taxe) pour une ventilation multi-comptes."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "The Accounting module is not installed: line extraction provides detail (description, qty, price, tax) but multi-account allocation is not available."
+msgstr "Le module Comptabilité n'est pas installé : l'extraction fournit le détail (désignation, qté, prix, TVA), mais la ventilation par comptes n'est pas disponible."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "The Accounting module is installed: line extraction enables multi-account allocation, and guided mode sends the chart of accounts to the AI."
+msgstr "Le module Comptabilité est installé : l'extraction permet la ventilation multi-comptes, et le mode guidé envoie le plan comptable à l'IA."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Automatic Extraction"
+msgstr "Extraction automatique"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "From incoming emails (mail alias or incoming mail server)"
+msgstr "Depuis les e-mails entrants (alias de messagerie ou serveur de messagerie entrant)"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "QR Code Extraction"
+msgstr "Extraction de QR codes"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Extracts payment data from Swiss QR-bill and EPC QR codes in PDF invoices"
+msgstr "Extrait les données de paiement des QR-factures suisses et des QR codes EPC dans les factures PDF"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_extract_qr_codes
+msgid "QR Code Extraction"
+msgstr "Extraction de QR codes"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_extract_qr_codes
+msgid "Extract payment data from Swiss QR-bill and EPC QR codes in PDF invoices. Verifies and enhances AI accuracy for IBAN, amount, and payment reference. Requires pyzbar Python library."
+msgstr "Extrait les données de paiement des QR-factures suisses et des QR codes EPC dans les factures PDF. Vérifie et améliore la précision de l'IA pour l'IBAN, le montant et la référence de paiement. Nécessite la bibliothèque Python pyzbar."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_rounding_correction
+msgid "Rounding Correction"
+msgstr "Correction d'arrondi"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_rounding_correction
+msgid "When the total including tax computed by Odoo differs slightly from the extracted total (due to HT rounding on each line), compensate the difference using the selected strategy."
+msgstr "Lorsque le total TTC calculé par Odoo diffère légèrement du total extrait (à cause de l'arrondi HT sur chaque ligne), compense la différence selon la stratégie sélectionnée."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_rounding_tolerance
+msgid "Maximum Rounding Tolerance"
+msgstr "Tolérance maximale d'arrondi"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_rounding_tolerance
+msgid "Maximum TTC difference (in invoice currency) that can be corrected. Default: 0.05."
+msgstr "Écart TTC maximum (dans la devise de la facture) pouvant être corrigé. Défaut : 0.05."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Rounding Correction"
+msgstr "Correction d'arrondi"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Compensates rounding differences between extracted total and Odoo-computed total"
+msgstr "Compense les différences d'arrondi entre le total extrait et le total calculé par Odoo"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Strategy"
+msgstr "Stratégie"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Max tolerance"
+msgstr "Tolérance max"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Line label"
+msgstr "Libellé de la ligne"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Confidence Indicators"
+msgstr "Indicateurs de confiance"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Colored indicators on extracted fields showing AI certainty"
+msgstr "Positionnés sur les champs extraits, ils reflètent la fiabilité/certitude de l'IA"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Learning from Corrections"
+msgstr "Apprentissage automatique"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Affected data: vendor, invoice reference, invoice date, due date, account assigned to a line."
+msgstr "Données concernées : fournisseur, référence facture, date facture, date d'échéance, compte comptable affecté à une ligne."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "From"
+msgstr "À partir de"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "repeated corrections per vendor"
+msgstr "corrections répétées par fournisseur"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Detailed Logging"
+msgstr "Journalisation détaillée"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Records prompts, responses and costs for each extraction"
+msgstr "Enregistre les prompts, réponses et coûts de chaque extraction"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Enable for Customer Invoices"
+msgstr "Activer pour les factures clients"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Enable AI extraction on customer invoices and credit notes (free mode only)."
+msgstr "Activer l'extraction IA sur les factures clients et avoirs (mode libre uniquement)."
+
+# ===================================================================
+# Invoice form view
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "Digitize with AI"
+msgstr "Digitaliser avec l'IA"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "Possible duplicate:"
+msgstr "Doublon possible :"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "Amount anomaly:"
+msgstr "Anomalie de montant :"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "Pro-forma / Quote:"
+msgstr "Pro-forma / Devis :"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "Already paid:"
+msgstr "Déjà payé :"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "Buyer mismatch:"
+msgstr "Discordance acheteur :"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "AI Extraction:"
+msgstr "Extraction IA :"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "Extraction failed."
+msgstr "Extraction échouée."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "Please try again or upload a better quality document."
+msgstr "Veuillez réessayer ou télécharger un document de meilleure qualité."
+
+# ===================================================================
+# Extraction log views
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_extraction_log_view_form
+msgid "AI Extraction Log"
+msgstr "Journal d'extraction IA"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_extraction_log_view_form
+msgid "Prompt"
+msgstr "Prompt"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_extraction_log_view_form
+msgid "Response"
+msgstr "Réponse"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_extraction_log_view_search
+msgid "Success"
+msgstr "Succès"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_extraction_log_view_search
+msgid "Failed"
+msgstr "Échoué"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_extraction_log_view_search
+msgid "Last 7 Days"
+msgstr "7 derniers jours"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_extraction_log_view_search
+msgid "Last 30 Days"
+msgstr "30 derniers jours"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_extraction_log_view_search
+msgid "This Month"
+msgstr "Ce mois"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_extraction_log_view_search
+msgid "Model"
+msgstr "Modèle"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_extraction_log_view_search
+msgid "Month"
+msgstr "Mois"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_extraction_log_view_search
+msgid "Group By"
+msgstr "Regrouper par"
+
+# ===================================================================
+# Vendor memory / score views
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_vendor_memory_view_form
+msgid "Vendor Memory"
+msgstr "Mémoire fournisseur"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_vendor_score_view_form
+msgid "Vendor Extraction Score"
+msgstr "Score d'extraction fournisseur"
+
+# ===================================================================
+# Preview wizard view
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "AI Extraction Preview"
+msgstr "Aperçu d'extraction IA"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Extraction Preview"
+msgstr "Aperçu de l'extraction"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Review the extracted data before applying it to the invoice."
+msgstr "Vérifiez les données extraites avant de les appliquer à la facture."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Vendor"
+msgstr "Fournisseur"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Name"
+msgstr "Nom"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Invoice"
+msgstr "Facture"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Reference"
+msgstr "Référence"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Date"
+msgstr "Date"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Amounts"
+msgstr "Montants"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Total"
+msgstr "Total"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Currency"
+msgstr "Devise"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Taxes"
+msgstr "Taxes"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Summary"
+msgstr "Résumé"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Line items"
+msgstr "Lignes de facture"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Extracted Lines"
+msgstr "Lignes extraites"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Description"
+msgstr "Description"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Code"
+msgstr "Code"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Qty"
+msgstr "Qté"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Unit Price"
+msgstr "Prix unitaire"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Tax %"
+msgstr "TVA %"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Subtotal"
+msgstr "Sous-total"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Apply to Invoice"
+msgstr "Appliquer à la facture"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Discard"
+msgstr "Annuler"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Vendor not found:"
+msgstr "Fournisseur non trouvé :"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid ""
+"The extracted vendor was not matched to any existing partner.\n"
+"                        Please select an existing vendor or create a new one."
+msgstr ""
+"Le fournisseur extrait n'a pas été trouvé dans la base.\n"
+"                        Veuillez sélectionner un fournisseur existant ou en créer un nouveau."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Vendor Resolution"
+msgstr "Résolution fournisseur"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Select Existing Vendor"
+msgstr "Sélectionner un fournisseur existant"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_preview_wizard_form
+msgid "Purchase Order"
+msgstr "Bon de commande"
+
+# ===================================================================
+# Batch extract wizard view
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_batch_extract_wizard_form
+msgid "Batch AI Extraction"
+msgstr "Extraction IA par lot"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_batch_extract_wizard_form
+msgid "Total invoices"
+msgstr "Total factures"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_batch_extract_wizard_form
+msgid "Ready for extraction"
+msgstr "Prêtes pour l'extraction"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_batch_extract_wizard_form
+msgid "Will be skipped"
+msgstr "Seront ignorées"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_batch_extract_wizard_form
+msgid "Estimated time"
+msgstr "Temps estimé"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_batch_extract_wizard_form
+msgid "Large batches may take several minutes. Each invoice is saved individually, so you can safely close this window and check results later."
+msgstr "Les lots volumineux peuvent prendre plusieurs minutes. Chaque facture est enregistrée individuellement, vous pouvez fermer cette fenêtre et vérifier les résultats ultérieurement."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_batch_extract_wizard_form
+msgid "Extract All"
+msgstr "Tout extraire"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_batch_extract_wizard_form
+msgid "Close"
+msgstr "Fermer"
+
+# ===================================================================
+# Dashboard views
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_extraction_log_view_graph_cost
+msgid "Extraction Cost"
+msgstr "Coût d'extraction"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_extraction_log_view_graph_volume
+msgid "Extraction Volume"
+msgstr "Volume d'extraction"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_extraction_log_view_graph_tokens
+msgid "Token Usage by Model"
+msgstr "Consommation de tokens par modèle"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_extraction_log_view_pivot
+msgid "Extraction Analysis"
+msgstr "Analyse des extractions"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_vendor_score_view_graph
+msgid "Vendor Extraction Accuracy"
+msgstr "Précision d'extraction par fournisseur"
+
+# ===================================================================
+# Dashboard actions & menus
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.actions.act_window,name:account_invoice_digitize_ai.ai_extraction_log_action
+msgid "AI Extraction Logs"
+msgstr "Journaux d'extraction IA"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.actions.act_window,name:account_invoice_digitize_ai.ai_vendor_memory_action
+msgid "Vendor Memory"
+msgstr "Mémoire fournisseur"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.actions.act_window,name:account_invoice_digitize_ai.ai_vendor_score_action
+msgid "Vendor Extraction Scores"
+msgstr "Scores d'extraction fournisseur"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.actions.act_window,name:account_invoice_digitize_ai.action_ai_batch_extract
+msgid "Batch AI Extraction"
+msgstr "Extraction IA par lot"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.ui.menu,name:account_invoice_digitize_ai.ai_digitize_root_menu
+msgid "AI Digitization"
+msgstr "Numérisation IA"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.ui.menu,name:account_invoice_digitize_ai.ai_extraction_log_menu
+msgid "Extraction Logs"
+msgstr "Journaux d'extraction"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.ui.menu,name:account_invoice_digitize_ai.ai_vendor_memory_menu
+msgid "Vendor Memory"
+msgstr "Mémoire fournisseur"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.ui.menu,name:account_invoice_digitize_ai.ai_vendor_score_menu
+msgid "Vendor Scores"
+msgstr "Scores fournisseur"
+
+
+# ===================================================================
+# Settings field descriptions
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_provider
+msgid "AI Service"
+msgstr "Service IA"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_api_key
+msgid "API Key"
+msgstr "Clé API"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_model_selection
+msgid "AI Model"
+msgstr "Modèle IA"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_extract_lines
+msgid "Extract Invoice Lines"
+msgstr "Extraire les lignes de facturation"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_show_confidence
+msgid "Confidence Indicators"
+msgstr "Indicateurs de confiance"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_show_confidence
+msgid "Each extracted field receives a reliability score (0.0 to 1.0) reflecting how confident the AI is about the value. Green = high confidence (>= 0.8), yellow = medium (>= 0.5), red = low (< 0.5). Useful to quickly spot fields that may need review."
+msgstr "Chaque champ extrait reçoit un score de fiabilité (0.0 à 1.0) reflétant la certitude de l'IA sur la valeur. Vert = confiance élevée (>= 0.8), jaune = moyenne (>= 0.5), rouge = faible (< 0.5). Utile pour repérer rapidement les champs à vérifier."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_debug_mode
+msgid "Detailed Logging"
+msgstr "Journalisation détaillée"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_learning_enabled
+msgid "Learning from Corrections"
+msgstr "Apprentissage automatique"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_learning_enabled
+msgid "When enabled, user corrections are recorded per vendor. After repeated identical corrections, the system applies them automatically on future invoices."
+msgstr "Lorsqu'activé, les corrections utilisateur sont enregistrées par fournisseur. Après des corrections identiques répétées, le système les applique automatiquement sur les futures factures."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_auto_apply_threshold
+msgid "Learning Threshold"
+msgstr "Seuil d'apprentissage"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_auto_apply_threshold
+msgid "Number of identical corrections needed before the system applies the correction automatically on future invoices."
+msgstr "Nombre de corrections identiques nécessaires avant que le système applique automatiquement la correction sur les futures factures."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_cost_estimate
+msgid "Estimated Cost per Invoice"
+msgstr "Coût estimé par facture"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_cost_estimate
+msgid "Actual cost may vary depending on the document."
+msgstr "Le coût réel peut varier en fonction du document."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_extract_lines
+msgid "Without line extraction: one total line per invoice — the accountant allocates manually. Suited for simple invoices, uniform batches, or cost optimization.\nWith line extraction: description, quantity, price and tax per line. Suited for mixed-VAT invoices, multi-account allocation, and audit trail."
+msgstr "Sans extraction de lignes : une seule ligne avec le total par facture — le comptable ventile manuellement. Adapté aux factures simples, lots uniformes, ou optimisation des coûts.\nAvec extraction de lignes : désignation, quantité, prix et taxe par ligne. Adapté aux factures multi-TVA, ventilation multi-comptes et audit trail."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_debug_mode
+msgid "Creates an extraction log for each invoice processed, containing the full prompt sent to the AI, the raw response, token counts and estimated cost. Logs are accessible from the invoice form and from Invoicing > AI Dashboard > Extraction Logs."
+msgstr "Crée un journal d'extraction pour chaque facture traitée, contenant le prompt complet envoyé à l'IA, la réponse brute, le nombre de tokens et le coût estimé. Les journaux sont accessibles depuis le formulaire facture et depuis Facturation > Tableau de bord IA > Journaux d'extraction."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_auto_apply_threshold
+msgid "When a user corrects an AI-extracted field, the correction is recorded per vendor. After this many identical corrections for the same field and vendor, the system applies the correction automatically on future invoices. Set to 0 to disable learning."
+msgstr "Lorsqu'un utilisateur corrige un champ extrait par l'IA, la correction est enregistrée par fournisseur. Après ce nombre de corrections identiques pour le même champ et fournisseur, le système applique la correction automatiquement sur les futures factures. Mettre à 0 pour désactiver l'apprentissage."
+
+# ===================================================================
+# Settings field selections
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_provider__none
+msgid "None (not configured)"
+msgstr "Aucun (non configuré)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_provider__anthropic
+msgid "Anthropic (Claude)"
+msgstr "Anthropic (Claude)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_provider__openai
+msgid "OpenAI (GPT)"
+msgstr "OpenAI (GPT)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_provider__google
+msgid "Google (Gemini)"
+msgstr "Google (Gemini)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_provider__xai
+msgid "xAI (Grok)"
+msgstr "xAI (Grok)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_provider__deepseek
+msgid "DeepSeek"
+msgstr "DeepSeek"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_provider__mistral
+msgid "Mistral AI"
+msgstr "Mistral AI"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_provider__local
+msgid "Local / Self-hosted (Ollama, vLLM, LM Studio) — Coming soon"
+msgstr "Local / Auto-hébergé (Ollama, vLLM, LM Studio) — Bientôt disponible"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_local_api_url
+msgid "Local API Base URL"
+msgstr "URL de base de l'API locale"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_local_model_name
+msgid "Model Name"
+msgstr "Nom du modèle"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_local_api_key
+msgid "Local API Key"
+msgstr "Clé API locale"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_local_supports_vision
+msgid "Supports Vision/Images"
+msgstr "Supporte la vision / images"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_rag_provider
+msgid "Knowledge Base"
+msgstr "Base de connaissances"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_rag_provider__chromadb
+msgid "ChromaDB — Coming soon"
+msgstr "ChromaDB — Bientôt disponible"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_rag_provider__pinecone
+msgid "Pinecone — Coming soon"
+msgstr "Pinecone — Bientôt disponible"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_rag_provider__custom
+msgid "Custom endpoint — Coming soon"
+msgstr "Endpoint personnalisé — Bientôt disponible"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_rag_endpoint
+msgid "Service URL"
+msgstr "URL du service"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_rag_api_key
+msgid "Service API Key"
+msgstr "Clé API du service"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_rag_collection
+msgid "Collection / Index"
+msgstr "Collection / Index"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_model_selection
+#. Dynamic selection — labels come from ai_provider_anthropic.ANTHROPIC_MODELS
+msgid "Claude Haiku 4.5 (fast, affordable)"
+msgstr "Claude Haiku 4.5 (rapide, économique)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_model_selection
+msgid "Claude Sonnet 4.5 (balanced)"
+msgstr "Claude Sonnet 4.5 (équilibré)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_model_selection
+msgid "Claude Sonnet 4.6 (balanced, latest)"
+msgstr "Claude Sonnet 4.6 (équilibré, dernier)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_model_selection
+msgid "Claude Opus 4.6 (maximum accuracy)"
+msgstr "Claude Opus 4.6 (précision maximale)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_model_selection
+msgid "GPT-4o (recommended)"
+msgstr "GPT-4o (recommandé)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_model_selection
+msgid "GPT-4o Mini (fast, affordable)"
+msgstr "GPT-4o Mini (rapide, économique)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_model_selection
+msgid "Gemini 2.0 Flash (fast, very affordable)"
+msgstr "Gemini 2.0 Flash (rapide, très économique)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_model_selection
+msgid "Gemini 2.5 Flash (balanced)"
+msgstr "Gemini 2.5 Flash (équilibré)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_model_selection
+msgid "Gemini 2.5 Pro (best quality)"
+msgstr "Gemini 2.5 Pro (meilleure qualité)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_model_selection
+msgid "Grok 3 (advanced reasoning)"
+msgstr "Grok 3 (raisonnement avancé)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_model_selection
+msgid "Grok 3 Mini (fast, affordable)"
+msgstr "Grok 3 Mini (rapide, économique)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_model_selection
+msgid "Grok 2 (vision, balanced)"
+msgstr "Grok 2 (vision, équilibré)"
+
+# ===================================================================
+# account.move field descriptions
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_account_move__ai_extraction_status
+msgid "AI Extraction Status"
+msgstr "Statut d'extraction IA"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_account_move__ai_confidence
+msgid "AI Confidence Scores"
+msgstr "Scores de confiance IA"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_account_move__ai_extraction_log_id
+msgid "Extraction Log"
+msgstr "Journal d'extraction"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_account_move__ai_extracted_values
+msgid "AI Extracted Values"
+msgstr "Valeurs extraites par l'IA"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_account_move__ai_duplicate_warning
+msgid "Duplicate Warning"
+msgstr "Alerte doublon"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_account_move__ai_anomaly_warning
+msgid "Anomaly Warning"
+msgstr "Alerte anomalie"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_account_move__ai_proforma_warning
+msgid "Pro-forma Warning"
+msgstr "Alerte pro-forma"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_account_move__ai_paid_warning
+msgid "Paid Warning"
+msgstr "Alerte déjà payé"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_account_move__ai_buyer_warning
+msgid "Buyer Warning"
+msgstr "Alerte acheteur"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_account_move__ai_extraction_summary
+msgid "Extraction Summary"
+msgstr "Résumé de l'extraction"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_account_move__ai_confidence
+msgid "JSON object with per-field confidence scores (0.0-1.0)."
+msgstr "Objet JSON avec les scores de confiance par champ (0.0-1.0)."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_account_move__ai_extracted_values
+msgid "JSON snapshot of AI-filled values, used to detect user corrections."
+msgstr "Instantané JSON des valeurs remplies par l'IA, utilisé pour détecter les corrections utilisateur."
+
+# ===================================================================
+# account.move status selections
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__account_move__ai_extraction_status__pending
+msgid "Pending"
+msgstr "En attente"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__account_move__ai_extraction_status__processing
+msgid "Processing"
+msgstr "En cours"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__account_move__ai_extraction_status__done
+msgid "Done"
+msgstr "Terminé"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__account_move__ai_extraction_status__failed
+msgid "Failed"
+msgstr "Échoué"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__account_move__ai_extraction_status__no_api
+msgid "No API Key"
+msgstr "Pas de clé API"
+
+# ===================================================================
+# ai.extraction.log field descriptions
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__move_id
+msgid "Invoice"
+msgstr "Facture"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__prompt_sent
+msgid "Prompt Sent"
+msgstr "Prompt envoyé"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__response_received
+msgid "Response Received"
+msgstr "Réponse reçue"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__model_used
+msgid "Model Used"
+msgstr "Modèle utilisé"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__input_tokens
+msgid "Input Tokens"
+msgstr "Tokens en entrée"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__output_tokens
+msgid "Output Tokens"
+msgstr "Tokens en sortie"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__cost_estimated
+msgid "Estimated Cost"
+msgstr "Coût estimé"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__extraction_date
+msgid "Extraction Date"
+msgstr "Date d'extraction"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__success
+msgid "Success"
+msgstr "Succès"
+
+# ===================================================================
+# ai.vendor.memory field descriptions
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_memory__partner_id
+msgid "Vendor"
+msgstr "Fournisseur"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_memory__field_name
+msgid "Field"
+msgstr "Champ"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_memory__ai_value
+msgid "AI Value"
+msgstr "Valeur IA"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_memory__user_value
+msgid "User Value"
+msgstr "Valeur utilisateur"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_memory__correction_count
+msgid "Corrections"
+msgstr "Corrections"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_memory__auto_apply
+msgid "Auto-apply"
+msgstr "Application automatique"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_memory__last_correction_date
+msgid "Last Correction"
+msgstr "Dernière correction"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_ai_vendor_memory__field_name
+msgid "Odoo field name that was corrected (e.g. account_id, tax_ids)."
+msgstr "Nom du champ Odoo corrigé (ex. account_id, tax_ids)."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_ai_vendor_memory__ai_value
+msgid "The value originally extracted by AI."
+msgstr "La valeur initialement extraite par l'IA."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_ai_vendor_memory__user_value
+msgid "The value the user corrected it to."
+msgstr "La valeur corrigée par l'utilisateur."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_ai_vendor_memory__auto_apply
+msgid "When enabled, this correction is automatically applied to future invoices from this vendor."
+msgstr "Lorsqu'activé, cette correction est automatiquement appliquée aux futures factures de ce fournisseur."
+
+# ===================================================================
+# ai.vendor.score field descriptions
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_score__partner_id
+msgid "Vendor"
+msgstr "Fournisseur"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_score__total_extractions
+msgid "Total Extractions"
+msgstr "Total extractions"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_score__correct_extractions
+msgid "Correct Extractions"
+msgstr "Extractions correctes"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_score__reliability_rate
+msgid "Reliability Rate"
+msgstr "Taux de fiabilité"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_score__last_reliability_rate
+msgid "Previous Rate"
+msgstr "Taux précédent"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_score__last_computed_date
+msgid "Last Updated"
+msgstr "Dernière mise à jour"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_ai_vendor_score__correct_extractions
+msgid "Extractions where no user correction was needed."
+msgstr "Extractions n'ayant nécessité aucune correction utilisateur."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_ai_vendor_score__reliability_rate
+msgid "Percentage of correct extractions (0-100)."
+msgstr "Pourcentage d'extractions correctes (0-100)."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_ai_vendor_score__last_reliability_rate
+msgid "Reliability rate before the last update, used for degradation detection."
+msgstr "Taux de fiabilité avant la dernière mise à jour, utilisé pour la détection de dégradation."
+
+# ===================================================================
+# Python code strings — account_move.py
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "No API Key"
+msgstr "Pas de clé API"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "Please configure your AI API key in Invoicing > Configuration > Settings."
+msgstr "Veuillez configurer votre clé API IA dans Facturation > Configuration > Paramètres."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "No Attachment"
+msgstr "Pas de pièce jointe"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "Please attach a PDF or image to this invoice."
+msgstr "Veuillez joindre un PDF ou une image à cette facture."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "Extraction Failed"
+msgstr "Extraction échouée"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "An unexpected error occurred. Please try again or contact support."
+msgstr "Une erreur inattendue s'est produite. Veuillez réessayer ou contacter le support."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "Extraction Complete"
+msgstr "Extraction terminée"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "Invoice fields have been filled. Please review the results."
+msgstr "Les champs de la facture ont été remplis. Veuillez vérifier les résultats."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "Extraction Preview"
+msgstr "Aperçu de l'extraction"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "Extraction failed. Please try again or use a different document."
+msgstr "Extraction échouée. Veuillez réessayer ou utiliser un autre document."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "Extracted: %s (%d fields)"
+msgstr "Extraits : %s (%d champs)"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "Missing: %s"
+msgstr "Manquants : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "lines"
+msgstr "lignes"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+msgid "This document appears to be a pro-forma/quote, not a real invoice."
+msgstr "Ce document semble être un pro-forma/devis, pas une facture réelle."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+msgid "This document appears to be a pro-forma/quote and should NOT be recorded as an accounting entry."
+msgstr "Ce document semble être un pro-forma/devis et ne devrait PAS être enregistré comme écriture comptable."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+msgid "This document appears to be marked as already paid. Creating a payment may result in double payment."
+msgstr "Ce document semble être marqué comme déjà payé. Créer un paiement pourrait entraîner un double paiement."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+msgid "Buyer VAT (%s) does not match company %s. This invoice may be addressed to a different entity."
+msgstr "Le TVA acheteur (%s) ne correspond pas à la société %s. Cette facture est peut-être adressée à une autre entité."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+msgid "Buyer name \"%s\" does not match company \"%s\". Please verify this invoice is addressed to the correct entity."
+msgstr "Le nom acheteur \"%s\" ne correspond pas à la société \"%s\". Veuillez vérifier que cette facture est adressée à la bonne entité."
+
+# ===================================================================
+# Python code strings — res_config_settings.py
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/res_config_settings.py:0
+#, python-format
+msgid "~$%.4f per invoice (recognition only)"
+msgstr "~%.4f $ par facture (reconnaissance seule)"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/res_config_settings.py:0
+#, python-format
+msgid "~$%.4f per invoice (recognition + AI)"
+msgstr "~%.4f $ par facture (reconnaissance + IA)"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/res_config_settings.py:0
+#, python-format
+msgid "~$%.4f per invoice"
+msgstr "~%.4f $ par facture"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/res_config_settings.py:0
+#, python-format
+msgid "The %s provider is not yet available. Please select Anthropic."
+msgstr "Le fournisseur %s n'est pas encore disponible. Veuillez sélectionner Anthropic."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/res_config_settings.py:0
+#, python-format
+msgid "Please enter an API key before testing the connection."
+msgstr "Veuillez saisir une clé API avant de tester la connexion."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/res_config_settings.py:0
+#, python-format
+msgid "Connection Successful"
+msgstr "Connexion réussie"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/res_config_settings.py:0
+#, python-format
+msgid "Connection failed: %s"
+msgstr "Échec de la connexion : %s"
+
+# ===================================================================
+# res_config_settings — document recognition fields
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_preprocess_provider
+msgid "Document Recognition Service"
+msgstr "Service de reconnaissance de documents"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_preprocess_provider__none
+msgid "None (built-in)"
+msgstr "Aucun (intégré)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_preprocess_provider__azure_di
+msgid "Azure Document Intelligence (recommended)"
+msgstr "Azure Document Intelligence (recommandé)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_preprocess_provider__aws_textract
+msgid "AWS Textract"
+msgstr "AWS Textract"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_preprocess_provider__google_docai
+msgid "Google Document AI — Coming soon"
+msgstr "Google Document AI — Bientôt disponible"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_preprocess_mode
+msgid "Recognition Mode"
+msgstr "Mode de reconnaissance"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_preprocess_mode__ocr_replacement
+msgid "Full recognition (AI as backup)"
+msgstr "Reconnaissance complète (IA en secours)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_preprocess_mode__claude_enrichment
+msgid "Combined (recognition + AI cross-check)"
+msgstr "Combiné (reconnaissance + vérification IA)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_preprocess_mode__ocr_only
+msgid "Text extraction only (AI analyzes the result)"
+msgstr "Extraction texte uniquement (l'IA analyse le résultat)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_preprocess_confidence_threshold
+msgid "Minimum Reliability Score"
+msgstr "Score de fiabilité minimum"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_preprocess_confidence_threshold
+msgid "In Full recognition mode, when the recognition service returns a confidence score below this threshold (0.0-1.0), its result is discarded and the document is sent to the AI service instead."
+msgstr "En mode Reconnaissance complète, lorsque le service de reconnaissance retourne un score de confiance inférieur à ce seuil (0.0-1.0), son résultat est ignoré et le document est envoyé au service IA."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_azure_endpoint
+msgid "Azure Endpoint"
+msgstr "Point de terminaison Azure"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_azure_api_key
+msgid "Azure API Key"
+msgstr "Microsoft Azure : Clé API"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_aws_access_key_id
+msgid "AWS Access Key ID"
+msgstr "ID de clé d'accès AWS"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_aws_secret_access_key
+msgid "AWS Secret Access Key"
+msgstr "Clé secrète d'accès AWS"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_aws_region
+msgid "AWS Region"
+msgstr "Région AWS"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/res_config_settings.py:0
+#, python-format
+msgid "Please select a recognition service before testing."
+msgstr "Veuillez sélectionner un service de reconnaissance avant de tester."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/res_config_settings.py:0
+#, python-format
+msgid "Please fill in the credentials before testing the connection."
+msgstr "Veuillez renseigner les identifiants avant de tester la connexion."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/res_config_settings.py:0
+#, python-format
+msgid "Recognition Service Connection Successful"
+msgstr "Connexion au service de reconnaissance réussie"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/res_config_settings.py:0
+#, python-format
+msgid "Recognition service connection failed: %s"
+msgstr "Échec de la connexion au service de reconnaissance : %s"
+
+# ===================================================================
+# Python code strings — ai_duplicate_detector.py
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/ai_duplicate_detector.py:0
+msgid "Possible duplicate: %d invoice(s) found with same vendor, reference, date and amount"
+msgstr "Doublon possible : %d facture(s) trouvée(s) avec même fournisseur, référence, date et montant"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/ai_duplicate_detector.py:0
+msgid "Invoice reference '%s' already exists for this vendor (%d invoice(s))"
+msgstr "La référence facture '%s' existe déjà pour ce fournisseur (%d facture(s))"
+
+# ===================================================================
+# Python code strings — ai_anomaly_detector.py
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/ai_anomaly_detector.py:0
+msgid "Amount %.2f is %.1f× higher than vendor average (%.2f)"
+msgstr "Le montant %.2f est %.1f× supérieur à la moyenne fournisseur (%.2f)"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/ai_anomaly_detector.py:0
+msgid "Amount %.2f is unusually low compared to vendor average (%.2f)"
+msgstr "Le montant %.2f est anormalement bas par rapport à la moyenne fournisseur (%.2f)"
+
+# ===================================================================
+# Python code strings — ai_preview_wizard.py
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_preview_wizard.py:0
+#, python-format
+msgid "Extraction Applied"
+msgstr "Extraction appliquée"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_preview_wizard.py:0
+#, python-format
+msgid "This document appears to be a pro-forma invoice."
+msgstr "Ce document semble être une facture pro-forma."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_preview_wizard.py:0
+#, python-format
+msgid "This document is a credit note."
+msgstr "Ce document est un avoir."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_preview_wizard.py:0
+#, python-format
+msgid "This document appears to be marked as already paid."
+msgstr "Ce document semble être marqué comme déjà payé."
+
+# ===================================================================
+# Python code strings — ai_batch_extract_wizard.py
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_batch_extract_wizard.py:0
+#, python-format
+msgid "~%d minute(s)"
+msgstr "~%d minute(s)"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_batch_extract_wizard.py:0
+#, python-format
+msgid "No API key configured. Please go to Settings > AI Digitization."
+msgstr "Pas de clé API configurée. Allez dans Paramètres > Extraction IA factures."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_batch_extract_wizard.py:0
+#, python-format
+msgid "%d extracted, %d failed, %d skipped."
+msgstr "%d extraites, %d échouées, %d ignorées."
+
+# ===================================================================
+# Preview wizard field descriptions
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__move_id
+msgid "Invoice"
+msgstr "Facture"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__preview_data
+msgid "Extraction Data (JSON)"
+msgstr "Données d'extraction (JSON)"
+
+# ===================================================================
+# Batch wizard field descriptions
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_batch_extract_wizard__move_ids
+msgid "Invoices"
+msgstr "Factures"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_batch_extract_wizard__estimated_time
+msgid "Estimated time"
+msgstr "Temps estimé"
+
+# ===================================================================
+# Test wizard — ai_test_wizard.py (v0.0.12)
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model,name:account_invoice_digitize_ai.model_ai_test_wizard
+msgid "Test AI Extraction Pipeline"
+msgstr "Tester le pipeline d'extraction IA"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "No API key configured."
+msgstr "Pas de clé API configurée."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "API call failed: %s"
+msgstr "Appel API échoué : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "API returned no parseable data."
+msgstr "L'API n'a retourné aucune donnée exploitable."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Unsupported file type: %s"
+msgstr "Type de fichier non pris en charge : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Pages: %s"
+msgstr "Pages : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Characters extracted: %s"
+msgstr "Caractères extraits : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Yes (scanned/image)"
+msgstr "Oui (scan/image)"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "No (text-based)"
+msgstr "Non (texte natif)"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Vision mode: %s"
+msgstr "Mode vision : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Number format: %s"
+msgstr "Format numérique : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "not detected"
+msgstr "non détecté"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "PDF Metadata"
+msgstr "Métadonnées PDF"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Qualification"
+msgstr "Qualification"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Yes"
+msgstr "Oui"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "No"
+msgstr "Non"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Pro-forma detected: %s"
+msgstr "Pro-forma détecté : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "none"
+msgstr "aucun"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "VAT numbers found: %s"
+msgstr "Numéros de TVA trouvés : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "available"
+msgstr "disponible"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "not installed"
+msgstr "non installé"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Table Extraction"
+msgstr "Extraction de tableaux"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "No tables extracted."
+msgstr "Aucun tableau extrait."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Extracted Text (first 3000 chars)"
+msgstr "Texte extrait (3000 premiers caractères)"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "(empty — vision mode)"
+msgstr "(vide — mode vision)"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Document partially scanned: %s characters extracted, vision mode enabled."
+msgstr "Document partiellement scanné : %s caractères extraits, mode vision activé."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Document is a scan/image. No text extracted — vision mode will be used."
+msgstr "Le document est un scan/image. Aucun texte extrait — le mode vision sera utilisé."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Text extraction completed: %s characters extracted."
+msgstr "Extraction de texte terminée : %s caractères extraits."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "No recognition service configured. Go to Settings > AI Invoice Digitization > Document Recognition to configure Azure Document Intelligence or AWS Textract."
+msgstr "Aucun service de reconnaissance configuré. Allez dans Paramètres > Extraction IA factures > Reconnaissance des documents pour configurer Azure Document Intelligence ou AWS Textract."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "No credentials configured for %s. Check your settings."
+msgstr "Aucun identifiant configuré pour %s. Vérifiez vos paramètres."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Recognition failed: %s"
+msgstr "Reconnaissance échouée : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Recognition successful: %.0f%% confidence, %s page(s), $%.4f cost."
+msgstr "Reconnaissance réussie : %.0f%% de confiance, %s page(s), %.4f $ de coût."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Provider: %s"
+msgstr "Fournisseur : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Confidence: %.1f%%"
+msgstr "Confiance : %.1f%%"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Cost: $%.4f"
+msgstr "Coût : %.4f $"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "(no text)"
+msgstr "(pas de texte)"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Structured Data"
+msgstr "Données structurées"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "sample invoice"
+msgstr "facture exemple"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "uploaded document"
+msgstr "document téléchargé"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Source: %s"
+msgstr "Source : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Extract lines: %s"
+msgstr "Extraction des lignes : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Pre-identified vendor: %s"
+msgstr "Fournisseur pré-identifié : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Estimated input tokens: ~%s"
+msgstr "Tokens d'entrée estimés : ~%s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Estimated cost: $%.4f (with ~800 output tokens)"
+msgstr "Coût estimé : %.4f $ (avec ~800 tokens de sortie)"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "SYSTEM PROMPT"
+msgstr "PROMPT SYSTÈME"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "USER PROMPT"
+msgstr "PROMPT UTILISATEUR"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "%s chars"
+msgstr "%s car."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "truncated, %s chars total"
+msgstr "tronqué, %s car. au total"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Prompt built: ~%s estimated input tokens ($%.4f)."
+msgstr "Prompt construit : ~%s tokens d'entrée estimés (%.4f $)."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "Please upload a document for this test mode."
+msgstr "Veuillez télécharger un document pour ce mode de test."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "vendor section present"
+msgstr "section fournisseur présente"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "invoice section present"
+msgstr "section facture présente"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "totals section present"
+msgstr "section totaux présente"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "vendor name extracted: %s"
+msgstr "nom fournisseur extrait : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "invoice reference extracted: %s"
+msgstr "référence facture extraite : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "invoice date extracted: %s"
+msgstr "date facture extraite : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "total amount correct: %s"
+msgstr "montant total correct : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "total amount extracted: %s"
+msgstr "montant total extrait : %s"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "token usage reported: %s tokens"
+msgstr "utilisation tokens rapportée : %s tokens"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "All %s checks passed! Your configuration is working correctly."
+msgstr "Les %s vérifications ont réussi ! Votre configuration fonctionne correctement."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "%s of %s checks passed."
+msgstr "%s vérifications sur %s réussies."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "PASS"
+msgstr "OK"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/wizards/ai_test_wizard.py:0
+#, python-format
+msgid "FAIL"
+msgstr "ÉCHEC"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/res_config_settings.py:0
+#, python-format
+msgid "Your API key is valid and the connection is working."
+msgstr "Votre clé API est valide et la connexion fonctionne."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/res_config_settings.py:0
+#, python-format
+msgid "Your credentials are valid and the service is reachable."
+msgstr "Vos identifiants sont valides et le service est accessible."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_test_wizard_form
+msgid "Test AI Extraction"
+msgstr "Tester l'extraction IA"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Test Extraction"
+msgstr "Tester l'extraction"
+
+# ===================================================================
+# Test wizard — mode labels and descriptions
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__ai_test_wizard__test_mode__full_pipeline
+msgid "Full Pipeline"
+msgstr "Pipeline complète"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__ai_test_wizard__test_mode__text_extraction
+msgid "Text Extraction"
+msgstr "Extraction de texte"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__ai_test_wizard__test_mode__preprocessing
+msgid "Document Recognition"
+msgstr "Reconnaissance des documents"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__ai_test_wizard__test_mode__prompt_preview
+msgid "Prompt Preview"
+msgstr "Aperçu du prompt"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_test_wizard__test_mode
+msgid "Test Mode"
+msgstr "Mode de test"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_test_wizard__test_document
+msgid "Test Document"
+msgstr "Document de test"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_test_wizard__test_document_name
+msgid "Document Filename"
+msgstr "Nom du fichier"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_test_wizard__use_sample
+msgid "Use sample invoice"
+msgstr "Utiliser la facture exemple"
+
+# ===================================================================
+# Purchase order matching (v0.0.13)
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_account_move__ai_po_warning
+msgid "PO Warning"
+msgstr "Alerte bon de commande"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_account_move__ai_tax_warning
+msgid "Tax Warning"
+msgstr "Alerte TVA"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/ai_field_mapper.py:0
+#, python-format
+msgid ""
+"Tax rates %s were extracted but no matching purchase tax "
+"exists in Odoo. Please create the missing taxes in "
+"Accounting > Configuration > Taxes."
+msgstr ""
+"Les taux de TVA %s ont été extraits mais aucune taxe d'achat "
+"correspondante n'existe dans Odoo. Veuillez créer les taxes manquantes "
+"dans Comptabilité > Configuration > Taxes."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/views/account_move_views.xml:0
+msgid "Purchase Order:"
+msgstr "Bon de commande :"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/views/ai_preview_wizard_views.xml:0
+msgid "Purchase Order"
+msgstr "Bon de commande"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__purchase_order_ref
+msgid "Purchase Order Ref"
+msgstr "Réf. bon de commande"
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "<strong>AI Extraction:</strong>"
+msgstr "<strong>Extraction IA :</strong>"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "<strong>Already paid:</strong>"
+msgstr "<strong>Déjà payé :</strong>"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "<strong>Amount anomaly:</strong>"
+msgstr "<strong>Anomalie de montant :</strong>"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "<strong>Buyer mismatch:</strong>"
+msgstr "<strong>Discordance acheteur :</strong>"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid ""
+"<strong>Extraction failed.</strong>\n"
+"                    Please try again or upload a better quality document."
+msgstr ""
+"<strong>Extraction échouée.</strong>\n"
+"                    Veuillez réessayer ou télécharger un document de meilleure qualité."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_test_wizard_view_form
+msgid "<strong>No API call. No tokens consumed.</strong>"
+msgstr "<strong>Pas d'appel API. Aucun token consommé.</strong>"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "<strong>Possible duplicate:</strong>"
+msgstr "<strong>Doublon possible :</strong>"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_test_wizard_view_form
+msgid ""
+"<strong>Recognition service charges may apply.\n"
+"                        No AI tokens consumed.</strong>"
+msgstr ""
+"<strong>Des frais du service de reconnaissance peuvent s'appliquer.\n"
+"                        Aucun token IA consommé.</strong>"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "<strong>Pro-forma / Quote:</strong>"
+msgstr "<strong>Pro-forma / Devis :</strong>"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "<strong>Purchase Order:</strong>"
+msgstr "<strong>Bon de commande :</strong>"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "<strong>Tax mismatch:</strong>"
+msgstr "<strong>TVA non trouvée :</strong>"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_test_wizard_view_form
+msgid "<strong>Tokens will be consumed.</strong>"
+msgstr "<strong>Des tokens seront consommés.</strong>"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "API key for the knowledge base service"
+msgstr "Clé API du service de base de connaissances"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_rag_api_key
+msgid "API key for the knowledge base service."
+msgstr "Clé API du service de base de connaissances."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "AWS Region for Textract service"
+msgstr "Région AWS pour le service Textract"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+msgid "An extraction is already running for this invoice."
+msgstr "Une extraction est déjà en cours pour cette facture."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Automatic Extraction"
+msgstr "Extraction automatique"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_email_auto_extract
+msgid "Auto-extract on Email Arrival"
+msgstr "Auto-extraction à la réception d'e-mail"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Automatically extract invoice data when a vendor bill arrives by email (via Odoo mail alias or incoming mail server)."
+msgstr "Extraire automatiquement les données lorsqu'une facture fournisseur arrive par e-mail (via alias Odoo ou serveur de messagerie entrant)."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_email_auto_extract
+msgid ""
+"Automatically trigger AI extraction when a vendor bill is created from an "
+"incoming email."
+msgstr ""
+"Déclencher automatiquement l'extraction IA lorsqu'une facture fournisseur "
+"est créée à partir d'un e-mail entrant."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Azure API key"
+msgstr "Microsoft Azure : Clé API"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Azure Document Intelligence endpoint URL"
+msgstr "URL du endpoint Azure Document Intelligence"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_azure_endpoint
+msgid ""
+"Azure Document Intelligence endpoint URL (e.g. "
+"https://myresource.cognitiveservices.azure.com)"
+msgstr ""
+"URL du endpoint Azure Document Intelligence (ex. "
+"https://myresource.cognitiveservices.azure.com)"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_test_wizard_view_form
+msgid ""
+"Builds the full extraction prompt from a sample or\n"
+"                        uploaded document. Shows the prompt text, fiscal context,\n"
+"                        and estimated token count."
+msgstr ""
+"Construit le prompt d'extraction complet à partir d'un exemple ou\n"
+"                        d'un document téléchargé. Affiche le texte du prompt, le contexte fiscal\n"
+"                        et l'estimation du nombre de tokens."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Collection or index name to query"
+msgstr "Nom de la collection ou de l'index à interroger"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_memory__company_id
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_score__company_id
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_vendor_memory_view_search
+msgid "Company"
+msgstr "Société"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model,name:account_invoice_digitize_ai.model_res_config_settings
+msgid "Config Settings"
+msgstr "Paramètres de configuration"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_batch_extract_wizard__create_uid
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__create_uid
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_export_wizard__create_uid
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_import_wizard__create_uid
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__create_uid
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_test_wizard__create_uid
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_memory__create_uid
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_score__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_batch_extract_wizard__create_date
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__create_date
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_export_wizard__create_date
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_import_wizard__create_date
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__create_date
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_test_wizard__create_date
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_memory__create_date
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_score__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_vendor_score_view_search
+msgid "Degrading"
+msgstr "En dégradation"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_account_move__display_name
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_batch_extract_wizard__display_name
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__display_name
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_export_wizard__display_name
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_import_wizard__display_name
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__display_name
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_test_wizard__display_name
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_memory__display_name
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_score__display_name
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Document Recognition"
+msgstr "Reconnaissance des documents"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_export_wizard__export_data
+msgid "Download"
+msgstr "Télécharger"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Email"
+msgstr "E-mail"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_local_supports_vision
+msgid "Enable if your local model can process images (e.g. LLaVA, BakLLaVA)."
+msgstr "Activer si votre modèle local peut traiter les images (ex. LLaVA, BakLLaVA)."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Enable if your model supports image input (e.g. LLaVA)"
+msgstr "Activer si votre modèle supporte les images en entrée (ex. LLaVA)"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_memory_export_wizard_view_form
+msgid "Export"
+msgstr "Exporter"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_export_wizard__export_all
+msgid "Export All Vendors"
+msgstr "Exporter tous les fournisseurs"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_export_wizard__export_filename
+msgid "Export Filename"
+msgstr "Nom du fichier d'export"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.ui.menu,name:account_invoice_digitize_ai.ai_memory_export_menu
+msgid "Export Memory"
+msgstr "Exporter la mémoire"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.actions.act_window,name:account_invoice_digitize_ai.ai_memory_export_action
+#: model:ir.model,name:account_invoice_digitize_ai.model_ai_memory_export_wizard
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_memory_export_wizard_view_form
+msgid "Export Vendor Memory"
+msgstr "Exporter la mémoire fournisseur"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Useful for non-electronic invoices (including scanned), in PDF or image format"
+msgstr "Utilisé pour les factures non électroniques (y compris scannées), au format pdf ou image"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_preprocess_provider
+msgid "Useful for non-electronic invoices (including scanned), in PDF or image format."
+msgstr "Utilisé pour les factures non électroniques (y compris scannées), au format pdf ou image."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Advanced Options"
+msgstr "Options avancées"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+msgid "Extraction in Progress"
+msgstr "Extraction en cours"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_test_wizard_view_form
+msgid ""
+"Extracts text from an uploaded PDF using PyPDF2:\n"
+"                        text content, metadata, number format detection,\n"
+"                        document qualification, and structured tables."
+msgstr ""
+"Extrait le texte d'un PDF téléchargé avec PyPDF2 :\n"
+"                        contenu textuel, métadonnées, détection du format numérique,\n"
+"                        qualification du document et tableaux structurés."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "How the recognition service works with the AI"
+msgstr "Comment le service de reconnaissance interagit avec l'IA"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_preprocess_mode
+msgid "How the recognition service works with the AI."
+msgstr "Comment le service de reconnaissance interagit avec l'IA."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_account_move__id
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_batch_extract_wizard__id
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__id
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_export_wizard__id
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_import_wizard__id
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__id
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_test_wizard__id
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_memory__id
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_score__id
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__id
+msgid "ID"
+msgstr "ID"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_memory_import_wizard_view_form
+msgid "Import"
+msgstr "Importer"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_import_wizard__import_filename
+msgid "Import Filename"
+msgstr "Nom du fichier d'import"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.ui.menu,name:account_invoice_digitize_ai.ai_memory_import_menu
+msgid "Import Memory"
+msgstr "Importer la mémoire"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.actions.act_window,name:account_invoice_digitize_ai.ai_memory_import_action
+#: model:ir.model,name:account_invoice_digitize_ai.model_ai_memory_import_wizard
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_memory_import_wizard_view_form
+msgid "Import Vendor Memory"
+msgstr "Importer la mémoire fournisseur"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__invoice_date
+msgid "Invoice Date"
+msgstr "Date de facture"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__invoice_ref
+msgid "Invoice Ref"
+msgstr "Réf. facture"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_import_wizard__import_file
+msgid "JSON File"
+msgstr "Fichier JSON"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model,name:account_invoice_digitize_ai.model_account_move
+msgid "Journal Entry"
+msgstr "Pièce comptable"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_batch_extract_wizard_form
+msgid ""
+"Large batches may take several minutes. Each invoice is saved\n"
+"                    individually, so you can safely close this window and check\n"
+"                    results later."
+msgstr ""
+"Les lots volumineux peuvent prendre plusieurs minutes. Chaque facture est\n"
+"                    enregistrée individuellement, vous pouvez fermer cette fenêtre\n"
+"                    et vérifier les résultats ultérieurement."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_batch_extract_wizard__write_uid
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__write_uid
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_export_wizard__write_uid
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_import_wizard__write_uid
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__write_uid
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_test_wizard__write_uid
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_memory__write_uid
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_score__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_batch_extract_wizard__write_date
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__write_date
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_export_wizard__write_date
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_import_wizard__write_date
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__write_date
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_test_wizard__write_date
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_memory__write_date
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_score__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__line_count
+msgid "Line Count"
+msgstr "Nombre de lignes"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Local / Self-hosted AI"
+msgstr "IA locale / auto-hébergée"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_vendor_score_view_search
+msgid "Low Reliability"
+msgstr "Fiabilité faible"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid ""
+"In Full recognition mode, when the recognition service returns a confidence "
+"score below this threshold (0.0-1.0), its result is discarded and the "
+"document is sent to the AI service instead."
+msgstr ""
+"En mode Reconnaissance complète, lorsque le service de reconnaissance "
+"retourne un score de confiance inférieur à ce seuil (0.0-1.0), son résultat "
+"est ignoré et le document est envoyé au service IA."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Model identifier (e.g. mistral, llama3, deepseek-r1)"
+msgstr "Identifiant du modèle (ex. mistral, llama3, deepseek-r1)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_local_model_name
+msgid "Model identifier (e.g. mistral, llama3, deepseek-r1)."
+msgstr "Identifiant du modèle (ex. mistral, llama3, deepseek-r1)."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_batch_extract_wizard__move_count
+msgid "Move Count"
+msgstr "Nombre de pièces"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_rag_collection
+msgid "Name of the document collection to search."
+msgstr "Nom de la collection de documents à interroger."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_rag_provider__none
+msgid "None"
+msgstr "Aucun"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "OpenAI-compatible endpoint URL"
+msgstr "URL du endpoint compatible OpenAI"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_local_api_url
+msgid ""
+"OpenAI-compatible endpoint URL (e.g. http://localhost:11434/v1 for Ollama)."
+msgstr ""
+"URL du endpoint compatible OpenAI (ex. http://localhost:11434/v1 pour Ollama)."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Optional API key if your deployment requires authentication"
+msgstr "Clé API optionnelle si votre déploiement nécessite une authentification"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_local_api_key
+msgid "Optional API key if your local deployment requires authentication."
+msgstr "Clé API optionnelle si votre déploiement local nécessite une authentification."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_rag_provider
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid ""
+"Optional vector database for retrieval-augmented generation. Enriches AI "
+"prompts with company-specific accounting context."
+msgstr ""
+"Base de données vectorielle optionnelle pour la génération augmentée par récupération (RAG). "
+"Enrichit les prompts IA avec le contexte comptable spécifique à la société."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+msgid "Please wait — %d extractions are already running."
+msgstr "Veuillez patienter — %d extractions sont déjà en cours."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Test Recognition Service"
+msgstr "Tester le service de reconnaissance"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_batch_extract_wizard__ready_count
+msgid "Ready Count"
+msgstr "Nombre prêts"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_import_wizard__result_message
+msgid "Result"
+msgstr "Résultat"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_test_wizard__result_details
+msgid "Result Details"
+msgstr "Détails du résultat"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_batch_extract_wizard__result_message
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_test_wizard__result_message
+msgid "Result Message"
+msgstr "Message du résultat"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_test_wizard__result_status
+msgid "Result Status"
+msgstr "Statut du résultat"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_test_wizard_view_form
+msgid "Run Again"
+msgstr "Relancer"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_test_wizard_view_form
+msgid "Run Test"
+msgstr "Lancer le test"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_test_wizard_view_form
+msgid ""
+"Sends a sample or uploaded invoice through the full\n"
+"                        AI extraction pipeline and validates the results."
+msgstr ""
+"Envoie une facture exemple ou téléchargée à travers le pipeline\n"
+"                        d'extraction IA complet et valide les résultats."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_test_wizard_view_form
+msgid ""
+"Sends an uploaded document to the configured\n"
+"                        recognition service (Azure Document Intelligence or\n"
+"                        AWS Textract)."
+msgstr ""
+"Envoie un document téléchargé au service de reconnaissance\n"
+"                        configuré (Azure Document Intelligence ou\n"
+"                        AWS Textract)."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_batch_extract_wizard__skip_count
+msgid "Skip Count"
+msgstr "Nombre ignorés"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_ai_extraction_log__total_tokens
+msgid "Sum of input and output tokens."
+msgstr "Somme des tokens en entrée et en sortie."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__tax_summary
+msgid "Tax Summary"
+msgstr "Résumé des taxes"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Test Recognition Service"
+msgstr "Tester le service de reconnaissance"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+msgid "Too Many Extractions"
+msgstr "Trop d'extractions"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__total_amount
+msgid "Total Amount"
+msgstr "Montant total"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__total_tokens
+msgid "Total Tokens"
+msgstr "Total tokens"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "URL of the knowledge base service"
+msgstr "URL du service de base de connaissances"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_rag_endpoint
+msgid "URL of the knowledge base service."
+msgstr "URL du service de base de connaissances."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__create_new_vendor
+msgid "Create New Vendor"
+msgstr "Créer un nouveau fournisseur"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__new_vendor_name
+msgid "Vendor Name"
+msgstr "Nom du fournisseur"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__new_vendor_vat
+msgid "VAT Number"
+msgstr "Numéro de TVA"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__selected_partner_id
+msgid "Select Existing Vendor"
+msgstr "Sélectionner un fournisseur existant"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__vendor_name
+msgid "Vendor Name"
+msgstr "Nom du fournisseur"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_memory_export_wizard__partner_ids
+msgid "Vendors"
+msgstr "Fournisseurs"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Verify credentials and connectivity"
+msgstr "Vérifier les identifiants et la connectivité"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_preview_wizard__warnings
+msgid "Warnings"
+msgstr "Avertissements"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "eu-west-1"
+msgstr "eu-west-1"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "http://localhost:11434/v1"
+msgstr "http://localhost:11434/v1"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "http://localhost:8000"
+msgstr "http://localhost:8000"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "https://myresource.cognitiveservices.azure.com"
+msgstr "https://myresource.cognitiveservices.azure.com"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "invoices"
+msgstr "factures"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "mistral"
+msgstr "mistral"
+
+# ===================================================================
+# res_config_settings — extraction mode field
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_extraction_mode
+msgid "Extraction Mode"
+msgstr "Mode d'extraction"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_extraction_mode
+msgid "Guided: AI receives chart of accounts, taxes, and vendor history for precise account suggestions.\nSimplified: AI receives tax rates only — accountant allocates accounts manually.\nFree: AI extracts raw data with no Odoo context — no automatic matching."
+msgstr "Guidé : l'IA reçoit le plan comptable, les taxes et l'historique fournisseur pour des suggestions précises.\nSimplifié : l'IA reçoit uniquement les taux de TVA. Le comptable ventile les comptes manuellement.\nLibre : l'IA extrait les données sans aucun contexte Odoo. Aucun matching automatique."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_extraction_mode__guided
+msgid "Guided (full context)"
+msgstr "Guidé (contexte complet)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_extraction_mode__simplified
+msgid "Simplified (taxes only)"
+msgstr "Simplifié (taxes uniquement)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_extraction_mode__free
+msgid "Free (raw extraction)"
+msgstr "Libre (extraction brute)"
+
+# --- arch_db entries for extraction mode in settings view ---
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Extraction Mode"
+msgstr "Mode d'extraction"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Controls how much accounting context the AI receives"
+msgstr "Contrôle la quantité de contexte comptable envoyée à l'IA"
+
+# --- Customer invoices feature ---
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_extract_customer_invoices
+msgid "Enable for Customer Invoices"
+msgstr "Activer pour les factures clients"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_extract_customer_invoices
+msgid ""
+"Enable AI extraction on customer invoices and credit notes. Uses free "
+"extraction mode (raw data, no account matching)."
+msgstr ""
+"Active l'extraction IA sur les factures clients et avoirs clients. Utilise "
+"le mode d'extraction libre (données brutes, sans correspondance de comptes)."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Enable AI extraction on customer invoices and credit notes (free mode only)."
+msgstr "Active l'extraction IA sur les factures clients et avoirs clients (mode libre uniquement)."
+
+# ===================================================================
+# Warning messages — account_move.py
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "Buyer VAT (%s) does not match company %s. This invoice may be addressed to a different entity."
+msgstr "TVA acheteur (%s) ne correspond pas à la société %s. Cette facture est peut-être adressée à une autre entité."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid ""
+"Buyer name \"%s\" does not match company \"%s\". "
+"Please verify this invoice is addressed to the "
+"correct entity."
+msgstr ""
+"Le nom de l'acheteur « %s » ne correspond pas à la société « %s ». "
+"Veuillez vérifier que cette facture est bien adressée à la "
+"bonne entité."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "This document appears to be a pro-forma/quote and should NOT be recorded as an accounting entry."
+msgstr "Ce document semble être un pro-forma/devis et ne devrait PAS être enregistré comme écriture comptable."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid ""
+"This document appears to be marked as already paid. "
+"Creating a payment may result in double payment."
+msgstr ""
+"Ce document semble être marqué comme déjà payé. "
+"Créer un paiement pourrait entraîner un double paiement."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "PO reference \"%s\" found but no matching purchase order in Odoo."
+msgstr "Référence BC « %s » trouvée mais aucun bon de commande correspondant dans Odoo."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid ""
+"PO matched by amount/date only (no ref on invoice). "
+"Matched: %s. Please verify."
+msgstr ""
+"BC trouvé par montant/date uniquement (pas de référence sur la facture). "
+"Correspondance : %s. Veuillez vérifier."
+
+# ===================================================================
+# Warning messages — ai_duplicate_detector.py
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/ai_duplicate_detector.py:0
+#, python-format
+msgid "Possible duplicate: %d invoice(s) found with same vendor, reference, date and amount"
+msgstr "Doublon possible : %d facture(s) trouvée(s) avec le même fournisseur, la même référence, date et montant"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/ai_duplicate_detector.py:0
+#, python-format
+msgid "Invoice reference '%s' already exists for this vendor (%d invoice(s))"
+msgstr "La référence de facture « %s » existe déjà pour ce fournisseur (%d facture(s))"
+
+# ===================================================================
+# Warning messages — ai_anomaly_detector.py
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/ai_anomaly_detector.py:0
+#, python-format
+msgid "Amount %.2f is %.1f× higher than vendor average (%.2f)"
+msgstr "Le montant %.2f est %.1f× supérieur à la moyenne fournisseur (%.2f)"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/ai_anomaly_detector.py:0
+#, python-format
+msgid "Amount %.2f is unusually low compared to vendor average (%.2f)"
+msgstr "Le montant %.2f est anormalement bas par rapport à la moyenne fournisseur (%.2f)"
+
+# ===================================================================
+# v0.0.17 — account.move cache & async fields
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_account_move__ai_last_extraction_data
+msgid "Cached Extraction Data"
+msgstr "Données d'extraction en cache"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_account_move__ai_last_extraction_data
+msgid "JSON cache of last AI extraction result. Invalidated on attachment change."
+msgstr "Cache JSON du dernier résultat d'extraction IA. Invalidé lors du changement de pièce jointe."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_account_move__ai_last_extraction_attachment_id
+msgid "Cached Attachment"
+msgstr "Pièce jointe en cache"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_account_move__ai_last_extraction_attachment_id
+msgid "Attachment used for the cached extraction."
+msgstr "Pièce jointe utilisée pour l'extraction en cache."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_account_move__ai_extraction_queued_at
+msgid "Queued At"
+msgstr "Mis en file d'attente à"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_account_move__ai_extraction_queued_at
+msgid "Timestamp when extraction was queued for background processing."
+msgstr "Horodatage de la mise en file d'attente pour le traitement en arrière-plan."
+
+# ===================================================================
+# v0.0.17 — account.move notification messages
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "Extraction Queued"
+msgstr "Extraction en file d'attente"
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "Extraction will be processed in the background. Refresh the page in a few seconds."
+msgstr "L'extraction sera traitée en arrière-plan. Rafraîchissez la page dans quelques secondes."
+
+# ===================================================================
+# v0.0.17 — res.config.settings (Background Extraction)
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_async_extraction
+msgid "Background Extraction"
+msgstr "Extraction en arrière-plan"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_async_extraction
+msgid "When enabled, clicking Digitize queues the invoice and returns immediately. A built-in scheduled action processes the queue every 30 seconds. The page refreshes automatically when extraction is complete."
+msgstr "Lorsque cette option est activée, le bouton « Numériser » met la facture en file d'attente et rend la main immédiatement. Une action planifiée intégrée traite la file toutes les 30 secondes. La page se rafraîchit automatiquement lorsque l'extraction est terminée."
+
+# ===================================================================
+# v0.0.17 — ai.extraction.log new fields
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__vendor_name
+msgid "Vendor Name"
+msgstr "Nom du fournisseur"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__overall_confidence
+msgid "Overall Confidence"
+msgstr "Confiance globale"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__duration_seconds
+msgid "Duration (s)"
+msgstr "Durée (s)"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__provider_name
+msgid "Provider"
+msgstr "Fournisseur IA"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__extraction_mode
+msgid "Mode"
+msgstr "Mode"
+
+# ===================================================================
+# v0.0.17 — View buttons (account.move form)
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "Re-extract"
+msgstr "Ré-extraire"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "View Results"
+msgstr "Voir les résultats"
+
+# ===================================================================
+# v0.0.17 — Settings view labels
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Background Extraction"
+msgstr "Extraction en arrière-plan"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "When enabled, clicking Digitize queues the invoice and returns immediately. A built-in scheduled action processes the queue every 30 seconds. The page refreshes automatically when extraction is complete."
+msgstr "Lorsque cette option est activée, le bouton « Numériser » met la facture en file d'attente et rend la main immédiatement. Une action planifiée intégrée traite la file toutes les 30 secondes. La page se rafraîchit automatiquement lorsque l'extraction est terminée."
+
+# ===================================================================
+# v0.0.17 — Cron (data.xml)
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.cron,name:account_invoice_digitize_ai.ir_cron_ai_extraction_queue
+msgid "AI Invoice Extraction Queue"
+msgstr "File d'attente d'extraction IA des factures"
+
+# ===================================================================
+# v0.0.18 — Auto-apply high confidence (res.config.settings)
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_auto_apply_enabled
+msgid "Auto-apply High Confidence"
+msgstr "Application auto haute confiance"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_auto_apply_enabled
+msgid ""
+"Skip preview wizard when all confidence scores are high and the vendor is "
+"reliable. The invoice is filled automatically."
+msgstr ""
+"Ignorer l'assistant de prévisualisation quand tous les scores de confiance "
+"sont élevés et que le fournisseur est fiable. La facture est remplie "
+"automatiquement."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_auto_apply_min_confidence
+msgid "Minimum Confidence for Auto-apply"
+msgstr "Confiance minimale pour application auto"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_auto_apply_min_confidence
+msgid "Minimum confidence score (0.0-1.0) for all fields to enable auto-apply."
+msgstr "Score de confiance minimum (0.0-1.0) pour tous les champs pour activer l'application auto."
+
+# ===================================================================
+# v0.0.18 — Auto-apply high confidence (settings view)
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Auto-apply High Confidence"
+msgstr "Application auto haute confiance"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Skip preview when all confidence scores are high and the vendor is reliable"
+msgstr "Ignorer la prévisualisation quand les scores sont élevés et le fournisseur fiable"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Minimum Confidence for Auto-apply"
+msgstr "Confiance minimale pour application auto"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Minimum confidence score (0.0-1.0) for auto-apply"
+msgstr "Score de confiance minimum (0.0-1.0) pour l'application auto"
+
+# ===================================================================
+# v0.0.18 — Auto-apply notification (account.move)
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "Auto-applied"
+msgstr "Application auto"
+
+#. module: account_invoice_digitize_ai
+#: code:addons/account_invoice_digitize_ai/models/account_move.py:0
+#, python-format
+msgid "High-confidence extraction applied automatically. Please review."
+msgstr "Extraction haute confiance appliquée automatiquement. Veuillez vérifier."
+
+# ===================================================================
+# v0.0.18 — Vendor memory line description (ai.vendor.memory)
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_vendor_memory__line_description
+msgid "Line Description"
+msgstr "Description de ligne"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_ai_vendor_memory__line_description
+msgid "Invoice line description for account-level learning."
+msgstr "Description de ligne de facture pour l'apprentissage au niveau des comptes."
+
+# ===================================================================
+# v0.0.19+ — Missing i18n entries
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__ai_extraction_log__extraction_mode__text
+msgid "Text"
+msgstr "Texte"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__ai_extraction_log__extraction_mode__vision
+msgid "Vision"
+msgstr "Vision"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__ai_extraction_log__extraction_mode__facturx
+msgid "Factur-X"
+msgstr "Factur-X"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__ai_extraction_log__extraction_mode__preprocess
+msgid "Pre-processor"
+msgstr "Pré-processeur"
+
+#. module: account_invoice_digitize_ai
+#: code:addons/account_invoice_digitize_ai/models/ai_field_mapper.py:0
+#, python-format
+msgid ""
+"This invoice mentions reverse charge / autoliquidation. Tax should be "
+"self-assessed by the buyer — verify that no input VAT is recorded."
+msgstr ""
+"Cette facture mentionne l'autoliquidation / reverse charge. La TVA doit "
+"être auto-évaluée par l'acheteur — vérifiez qu'aucune TVA déductible "
+"n'est enregistrée."
+
+#. module: account_invoice_digitize_ai
+#: code:addons/account_invoice_digitize_ai/static/src/xml/extraction_status_widget.xml:0
+msgid "Extraction in progress..."
+msgstr "Extraction en cours..."
+
+# ===================================================================
+# Rounding strategy fields
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_rounding_strategy
+msgid "Rounding Strategy"
+msgstr "Stratégie d'arrondi"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_rounding_strategy
+msgid "How to compensate for rounding differences: adjust the unit price of the highest-value line, or add a separate compensation line."
+msgstr "Comment compenser les différences d'arrondi : ajuster le prix unitaire de la ligne la plus élevée, ou ajouter une ligne de compensation séparée."
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_rounding_strategy__adjust
+msgid "Adjust existing line"
+msgstr "Ajuster une ligne existante"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields.selection,name:account_invoice_digitize_ai.selection__res_config_settings__ai_rounding_strategy__line
+msgid "Add a rounding line"
+msgstr "Ajouter une ligne d'arrondi"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_res_config_settings__ai_rounding_line_label
+msgid "Rounding Line Label"
+msgstr "Libellé de la ligne d'arrondi"
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,help:account_invoice_digitize_ai.field_res_config_settings__ai_rounding_line_label
+msgid "Label for the rounding compensation invoice line."
+msgstr "Libellé de la ligne de facture de compensation d'arrondi."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/ai_line_builder.py:0
+#, python-format
+msgid ""
+"AI Digitization applied a rounding correction of %+.2f on line \"%s\" "
+"to match the extracted total."
+msgstr ""
+"L'extraction IA a appliqué une correction d'arrondi de %+.2f sur la ligne "
+"\"%s\" pour correspondre au total extrait."
+
+#. module: account_invoice_digitize_ai
+#. odoo-python
+#: code:addons/account_invoice_digitize_ai/models/ai_line_builder.py:0
+#, python-format
+msgid ""
+"AI Digitization added a rounding compensation line (%+.2f) "
+"to match the extracted total."
+msgstr ""
+"L'extraction IA a ajouté une ligne de compensation d'arrondi (%+.2f) "
+"pour correspondre au total extrait."
+
+#. module: account_invoice_digitize_ai
+#: code:addons/account_invoice_digitize_ai/models/ai_line_builder.py:0
+msgid "Rounding compensation"
+msgstr "Compensation de l'arrondi"
+
+# ===================================================================
+# Security & validation (v0.2.1+)
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: code:addons/account_invoice_digitize_ai/wizards/ai_memory_wizard.py:0
+#, python-format
+msgid "Import file is too large (max 5 MB)."
+msgstr "Le fichier d'import est trop volumineux (max 5 Mo)."
+
+#. module: account_invoice_digitize_ai
+#: code:addons/account_invoice_digitize_ai/wizards/ai_memory_wizard.py:0
+msgid "Invalid JSON file."
+msgstr "Fichier JSON invalide."
+
+#. module: account_invoice_digitize_ai
+#: code:addons/account_invoice_digitize_ai/models/res_config_settings.py:0
+msgid "Unable to estimate (check configuration)"
+msgstr "Estimation impossible (vérifier la configuration)"
+
+#. module: account_invoice_digitize_ai
+#: code:addons/account_invoice_digitize_ai/models/res_config_settings.py:0
+#, python-format
+msgid "\"%s\" must be between 0.0 and 1.0."
+msgstr "« %s » doit être entre 0,0 et 1,0."
+
+#. module: account_invoice_digitize_ai
+#: code:addons/account_invoice_digitize_ai/models/res_config_settings.py:0
+msgid "Rounding tolerance cannot be negative."
+msgstr "La tolérance d'arrondi ne peut pas être négative."
+
+#. module: account_invoice_digitize_ai
+#: code:addons/account_invoice_digitize_ai/models/res_config_settings.py:0
+msgid "Learning threshold must be at least 1."
+msgstr "Le seuil d'apprentissage doit être au minimum 1."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.view_move_form_ai_digitize
+msgid "This will re-run the extraction and may overwrite manual changes. Continue?"
+msgstr "Ceci relancera l'extraction et pourrait écraser les modifications manuelles. Continuer ?"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.ai_batch_extract_wizard_form
+msgid "This will extract all selected invoices. API costs will apply. Continue?"
+msgstr "Ceci extraira toutes les factures sélectionnées. Des frais API s'appliqueront. Continuer ?"
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Value between 0.0 and 1.0. Higher = stricter (more fallback to AI)."
+msgstr "Valeur entre 0,0 et 1,0. Plus élevé = plus strict (plus de recours à l'IA)."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Value between 0.0 and 1.0. All fields must reach this score to skip preview."
+msgstr "Valeur entre 0,0 et 1,0. Tous les champs doivent atteindre ce score pour passer la prévisualisation."
+
+#. module: account_invoice_digitize_ai
+#: model_terms:ir.ui.view,arch_db:account_invoice_digitize_ai.res_config_settings_view_form_ai_digitize
+msgid "Maximum allowed difference in invoice currency. Set to 0 to disable."
+msgstr "Écart maximum autorisé dans la devise de la facture. Mettre à 0 pour désactiver."
+
+# ===================================================================
+# New translations — audit round 2
+# ===================================================================
+
+#. module: account_invoice_digitize_ai
+#: model:ir.model.fields,field_description:account_invoice_digitize_ai.field_ai_extraction_log__error_message
+msgid "Error Message"
+msgstr "Message d'erreur"
+
+#. module: account_invoice_digitize_ai
+#: code:addons/account_invoice_digitize_ai/wizards/ai_memory_wizard.py:0
+#, python-format
+msgid "Import complete: %d created, %d updated, %d skipped (vendor not found)"
+msgstr "Import terminé : %d créé(s), %d mis à jour, %d ignoré(s) (fournisseur non trouvé)"
+
+#. module: account_invoice_digitize_ai
+#: code:addons/account_invoice_digitize_ai/static/src/js/confidence_widget.js:0
+msgid "%s%% extraction confidence"
+msgstr "%s%% confiance d'extraction"

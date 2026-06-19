@@ -1,0 +1,15 @@
+target-version = "py310"
+line-length = 120
+
+[format]
+quote-style = "single"
+
+[lint]
+select = ["E", "F", "W"]
+# Line length is enforced by the formatter (line-length = 120); E501 is noise on
+# long translatable strings and help text that can't be wrapped cleanly.
+ignore = ["E501"]
+
+[lint.per-file-ignores]
+# Odoo __init__.py files use "from . import X" to register models — not unused
+"__init__.py" = ["F401"]

@@ -1,0 +1,53 @@
+services:
+  odoo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command:
+      - odoo
+      - --proxy-mode
+    environment:
+      - SERVICE_URL_ODOO_8069
+      - HOST=postgresql
+      - 'USER=${SERVICE_USER_POSTGRES}'
+      - 'PASSWORD=${SERVICE_PASSWORD_POSTGRES}'
+    ports:
+      - "${ODOO_PORT:-8069}:8069"
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+      - odoo-extra-addons:/mnt/extra-addons
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://127.0.0.1:8069
+      interval: 5s
+      timeout: 10s
+      retries: 30
+    depends_on:
+      postgresql:
+        condition: service_healthy
+    restart: unless-stopped
+
+  postgresql:
+    image: postgres:16-alpine
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+    environment:
+      - 'POSTGRES_USER=${SERVICE_USER_POSTGRES}'
+      - 'POSTGRES_PASSWORD=${SERVICE_PASSWORD_POSTGRES}'
+      - POSTGRES_DB=postgres
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U "$${POSTGRES_USER}" -d postgres
+      interval: 5s
+      timeout: 20s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  odoo-web-data:
+  odoo-extra-addons:
+  postgresql-data:

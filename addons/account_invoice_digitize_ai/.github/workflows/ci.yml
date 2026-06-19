@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: ["19.0", "18.0", "main"]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Ruff lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install ruff
+        run: pip install ruff
+      - name: ruff check
+        run: ruff check .
+
+  test:
+    name: Odoo 19 tests
+    runs-on: ubuntu-latest
+    container:
+      image: odoo:19
+      # The odoo image runs as the non-root 'odoo' user, which can't write to
+      # the runner's work dir (/__w) — actions/checkout then fails with EACCES.
+      # Run as root so checkout and the test run can write freely.
+      options: --user root
+    services:
+      db:
+        image: postgres:16
+        env:
+          POSTGRES_USER: odoo
+          POSTGRES_PASSWORD: odoo
+          POSTGRES_DB: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      # The module directory must be named with underscores for Odoo to load it.
+      - uses: actions/checkout@v4
+        with:
+          path: account_invoice_digitize_ai
+      - name: Stage module into the addons path
+        run: cp -r account_invoice_digitize_ai /mnt/extra-addons/
+      - name: Run module tests
+        run: |
+          odoo \
+            --db_host=db --db_user=odoo --db_password=odoo \
+            -d test_account_invoice_digitize_ai \
+            -i account_invoice_digitize_ai \
+            --test-enable \
+            --test-tags=/account_invoice_digitize_ai \
+            --stop-after-init \
+            --log-level=test \
+            --max-cron-threads=0

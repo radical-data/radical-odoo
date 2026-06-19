@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+.DS_Store
+.vscode/
+.idea/
+*.sql
+*.sql.gz
+*.dump
+*.backup
+backups/
+filestore/
+__pycache__/
+*.py[cod]
+.venv/
+repomix-output.xml
+requirements.lock.tmp

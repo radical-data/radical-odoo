@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 1086" width="760"
+     font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+
+  <!-- ==================== Title ==================== -->
+  <text x="380" y="30" text-anchor="middle" fill="#333" font-size="20" font-weight="700">Extraction Pipeline</text>
+
+  <!-- ==================== Step 1: Upload ==================== -->
+  <rect x="160" y="52" width="280" height="54" rx="10" fill="#5B8DEF"/>
+  <text x="300" y="85" text-anchor="middle" fill="#FFF" font-size="16" font-weight="600">PDF / Image Upload</text>
+
+  <!-- Arrow down -->
+  <line x1="300" y1="106" x2="300" y2="128" stroke="#AAA" stroke-width="2"/>
+  <polygon points="300,136 295,126 305,126" fill="#AAA"/>
+
+  <!-- ==================== Decision: Factur-X? ==================== -->
+  <polygon points="300,138 400,174 300,210 200,174" fill="#F5F5F5" stroke="#CCC" stroke-width="1.5"/>
+  <text x="300" y="172" text-anchor="middle" fill="#333" font-size="13" font-weight="600">Factur-X?</text>
+  <text x="300" y="188" text-anchor="middle" fill="#888" font-size="10">(embedded XML)</text>
+
+  <!-- YES: arrow right -->
+  <line x1="400" y1="174" x2="482" y2="174" stroke="#27AE60" stroke-width="2"/>
+  <polygon points="490,174 480,169 480,179" fill="#27AE60"/>
+  <text x="440" y="165" text-anchor="middle" fill="#27AE60" font-size="11" font-weight="700">YES</text>
+
+  <!-- Factur-X box -->
+  <rect x="494" y="149" width="210" height="50" rx="10" fill="#27AE60"/>
+  <text x="599" y="172" text-anchor="middle" fill="#FFF" font-size="14" font-weight="600">Parse CII XML</text>
+  <text x="599" y="188" text-anchor="middle" fill="#FFF" font-size="11" opacity=".85">Zero AI cost</text>
+
+  <!-- Factur-X bypass: dashed green arrow down to Smart Matching -->
+  <line x1="599" y1="199" x2="599" y2="655" stroke="#27AE60" stroke-width="2" stroke-dasharray="6,4"/>
+  <line x1="599" y1="655" x2="448" y2="655" stroke="#27AE60" stroke-width="2" stroke-dasharray="6,4"/>
+  <polygon points="440,655 450,650 450,660" fill="#27AE60"/>
+
+  <!-- NO: arrow down -->
+  <line x1="300" y1="210" x2="300" y2="240" stroke="#AAA" stroke-width="2"/>
+  <polygon points="300,248 295,238 305,238" fill="#AAA"/>
+  <text x="285" y="234" text-anchor="end" fill="#E74C3C" font-size="11" font-weight="700">NO</text>
+
+  <!-- ==================== Step 2: External Pre-processing (optional) ==================== -->
+  <rect x="160" y="252" width="280" height="54" rx="10" fill="#00897B" stroke="#00695C" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="300" y="276" text-anchor="middle" fill="#FFF" font-size="15" font-weight="600">External Pre-processing</text>
+  <text x="300" y="294" text-anchor="middle" fill="#FFF" font-size="11" opacity=".85">Azure DI / AWS Textract (optional)</text>
+
+  <!-- Pre-processing bypass: OCR Replacement to Smart Matching -->
+  <line x1="440" y1="279" x2="670" y2="279" stroke="#00897B" stroke-width="2" stroke-dasharray="6,4"/>
+  <line x1="670" y1="279" x2="670" y2="670" stroke="#00897B" stroke-width="2" stroke-dasharray="6,4"/>
+  <line x1="670" y1="670" x2="448" y2="670" stroke="#00897B" stroke-width="2" stroke-dasharray="6,4"/>
+  <polygon points="440,670 450,665 450,675" fill="#00897B"/>
+  <text x="680" y="470" fill="#00897B" font-size="10" text-anchor="middle" transform="rotate(90, 680, 470)">OCR Replacement</text>
+
+  <!-- Arrow down -->
+  <line x1="300" y1="306" x2="300" y2="336" stroke="#AAA" stroke-width="2"/>
+  <polygon points="300,344 295,334 305,334" fill="#AAA"/>
+
+  <!-- ==================== Step 3: Document Analysis ==================== -->
+  <rect x="160" y="348" width="280" height="54" rx="10" fill="#5B8DEF"/>
+  <text x="300" y="372" text-anchor="middle" fill="#FFF" font-size="15" font-weight="600">Document Analysis</text>
+  <text x="300" y="390" text-anchor="middle" fill="#FFF" font-size="11" opacity=".85">Text / Vision / QR / Tables</text>
+
+  <!-- Arrow down -->
+  <line x1="300" y1="402" x2="300" y2="432" stroke="#AAA" stroke-width="2"/>
+  <polygon points="300,440 295,430 305,430" fill="#AAA"/>
+
+  <!-- ==================== Step 4: AI Extraction ==================== -->
+  <rect x="160" y="444" width="280" height="54" rx="10" fill="#7C5CFC"/>
+  <text x="300" y="468" text-anchor="middle" fill="#FFF" font-size="15" font-weight="600">AI Extraction</text>
+  <text x="300" y="486" text-anchor="middle" fill="#FFF" font-size="10" opacity=".85">Claude / GPT / Gemini / Grok / DeepSeek / Mistral</text>
+
+  <!-- Vision retry loop: small arrow on the left side -->
+  <path d="M160,483 L132,483 L132,465 L155,465" fill="none" stroke="#E67E22" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="160,465 152,461 152,469" fill="#E67E22"/>
+
+  <!-- Arrow down -->
+  <line x1="300" y1="498" x2="300" y2="528" stroke="#AAA" stroke-width="2"/>
+  <polygon points="300,536 295,526 305,526" fill="#AAA"/>
+
+  <!-- ==================== Step 5: Cross-Validation ==================== -->
+  <rect x="160" y="540" width="280" height="54" rx="10" fill="#E67E22"/>
+  <text x="300" y="564" text-anchor="middle" fill="#FFF" font-size="15" font-weight="600">Cross-Validation</text>
+  <text x="300" y="582" text-anchor="middle" fill="#FFF" font-size="11" opacity=".85">Math / IBAN / QR / Buyer / Duplicates</text>
+
+  <!-- Arrow down -->
+  <line x1="300" y1="594" x2="300" y2="624" stroke="#AAA" stroke-width="2"/>
+  <polygon points="300,632 295,622 305,622" fill="#AAA"/>
+
+  <!-- ==================== Step 6: Smart Matching ==================== -->
+  <rect x="160" y="636" width="280" height="54" rx="10" fill="#17A2B8"/>
+  <text x="300" y="660" text-anchor="middle" fill="#FFF" font-size="15" font-weight="600">Smart Matching</text>
+  <text x="300" y="678" text-anchor="middle" fill="#FFF" font-size="11" opacity=".85">Partner / Tax / Account / Product / PO</text>
+
+  <!-- Arrow down -->
+  <line x1="300" y1="690" x2="300" y2="720" stroke="#AAA" stroke-width="2"/>
+  <polygon points="300,728 295,718 305,718" fill="#AAA"/>
+
+  <!-- ==================== Step 7: Auto-fill ==================== -->
+  <rect x="160" y="732" width="280" height="54" rx="10" fill="#5CB85C"/>
+  <text x="300" y="756" text-anchor="middle" fill="#FFF" font-size="15" font-weight="600">Auto-fill + Confidence</text>
+  <text x="300" y="774" text-anchor="middle" fill="#FFF" font-size="11" opacity=".85">Green / Yellow / Red indicators</text>
+
+  <!-- Arrow down to auto-apply decision -->
+  <line x1="300" y1="786" x2="300" y2="810" stroke="#AAA" stroke-width="2"/>
+  <polygon points="300,818 295,808 305,808" fill="#AAA"/>
+
+  <!-- ==================== Decision: High confidence? ==================== -->
+  <polygon points="300,818 400,854 300,890 200,854" fill="#F5F5F5" stroke="#CCC" stroke-width="1.5"/>
+  <text x="300" y="850" text-anchor="middle" fill="#333" font-size="12" font-weight="600">High confidence?</text>
+  <text x="300" y="866" text-anchor="middle" fill="#888" font-size="10">(reliable vendor)</text>
+
+  <!-- YES: arrow right to Auto-applied -->
+  <line x1="400" y1="854" x2="482" y2="854" stroke="#5CB85C" stroke-width="2"/>
+  <polygon points="490,854 480,849 480,859" fill="#5CB85C"/>
+  <text x="440" y="845" text-anchor="middle" fill="#5CB85C" font-size="11" font-weight="700">YES</text>
+
+  <!-- Auto-applied box -->
+  <rect x="494" y="830" width="210" height="48" rx="10" fill="#5CB85C"/>
+  <text x="599" y="852" text-anchor="middle" fill="#FFF" font-size="14" font-weight="600">Auto-applied</text>
+  <text x="599" y="868" text-anchor="middle" fill="#FFF" font-size="11" opacity=".85">Skip preview</text>
+
+  <!-- Auto-applied: dashed arrow down to Vendor Memory -->
+  <line x1="599" y1="878" x2="599" y2="918" stroke="#5CB85C" stroke-width="2" stroke-dasharray="6,4"/>
+  <polygon points="599,922 594,914 604,914" fill="#5CB85C"/>
+
+  <!-- NO: arrow down to User Review -->
+  <line x1="300" y1="890" x2="300" y2="912" stroke="#AAA" stroke-width="2"/>
+  <polygon points="300,920 295,910 305,910" fill="#AAA"/>
+  <text x="285" y="906" text-anchor="end" fill="#E74C3C" font-size="11" font-weight="700">NO</text>
+
+  <!-- ==================== Step 8: User Review ==================== -->
+  <rect x="160" y="924" width="280" height="48" rx="10" fill="#F5F5F5" stroke="#CCC" stroke-width="1.5"/>
+  <text x="300" y="954" text-anchor="middle" fill="#333" font-size="15" font-weight="600">User Review &amp; Corrections</text>
+
+  <!-- Arrow right to Vendor Memory -->
+  <line x1="440" y1="948" x2="486" y2="948" stroke="#9B59B6" stroke-width="2"/>
+  <polygon points="494,948 484,943 484,953" fill="#9B59B6"/>
+
+  <!-- ==================== Step 9: Vendor Memory ==================== -->
+  <rect x="494" y="922" width="210" height="52" rx="10" fill="#9B59B6"/>
+  <text x="599" y="944" text-anchor="middle" fill="#FFF" font-size="14" font-weight="600">Vendor Memory</text>
+  <text x="599" y="962" text-anchor="middle" fill="#FFF" font-size="11" opacity=".85">Learns for next time</text>
+
+  <!-- Learning feedback: dashed purple arrow back to AI Extraction -->
+  <line x1="704" y1="948" x2="732" y2="948" stroke="#9B59B6" stroke-width="2" stroke-dasharray="6,4"/>
+  <line x1="732" y1="948" x2="732" y2="471" stroke="#9B59B6" stroke-width="2" stroke-dasharray="6,4"/>
+  <line x1="732" y1="471" x2="448" y2="471" stroke="#9B59B6" stroke-width="2" stroke-dasharray="6,4"/>
+  <polygon points="440,471 450,466 450,476" fill="#9B59B6"/>
+
+  <!-- ==================== Legend ==================== -->
+  <line x1="40" y1="1014" x2="720" y2="1014" stroke="#EEE" stroke-width="1"/>
+
+  <rect x="40" y="1034" width="14" height="14" rx="3" fill="#27AE60"/>
+  <text x="60" y="1046" fill="#666" font-size="12">Factur-X shortcut (zero cost)</text>
+
+  <rect x="400" y="1034" width="14" height="14" rx="3" fill="#00897B"/>
+  <text x="420" y="1046" fill="#666" font-size="12">OCR pre-processing bypass</text>
+
+  <rect x="40" y="1056" width="14" height="14" rx="3" fill="#9B59B6"/>
+  <text x="60" y="1068" fill="#666" font-size="12">Learning feedback loop</text>
+
+  <rect x="400" y="1056" width="14" height="14" rx="3" fill="#5CB85C"/>
+  <text x="420" y="1068" fill="#666" font-size="12">Auto-apply (high confidence)</text>
+
+</svg>

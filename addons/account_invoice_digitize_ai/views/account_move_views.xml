@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_move_form_ai_digitize" model="ir.ui.view">
+        <field name="name">account.move.form.ai.digitize</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <!-- "Digitize with AI" button -->
+            <xpath expr="//header" position="inside">
+                <field name="ai_show_extract_button" invisible="1"/>
+                <button name="action_ai_extract"
+                        type="object"
+                        string="Digitize with AI"
+                        class="btn-secondary"
+                        invisible="state != 'draft' or not ai_show_extract_button"
+                        groups="account_invoice_digitize_ai.group_ai_digitize_user"/>
+                <field name="ai_last_extraction_data" invisible="1"/>
+                <button name="action_ai_view_results"
+                        type="object"
+                        string="View Results"
+                        class="btn-primary"
+                        invisible="state != 'draft' or not ai_last_extraction_data or ai_extraction_status != 'done'"
+                        groups="account_invoice_digitize_ai.group_ai_digitize_user"/>
+                <button name="action_ai_re_extract"
+                        type="object"
+                        string="Re-extract"
+                        class="btn-link"
+                        confirm="This will re-run the extraction and may overwrite manual changes. Continue?"
+                        invisible="state != 'draft' or not ai_show_extract_button or not ai_last_extraction_data"
+                        groups="account_invoice_digitize_ai.group_ai_digitize_user"/>
+            </xpath>
+
+            <!-- Extraction status indicator (with polling for async mode) -->
+            <xpath expr="//header" position="inside">
+                <field name="ai_extraction_status" widget="ai_extraction_status"
+                       invisible="ai_extraction_status == False" nolabel="1"/>
+            </xpath>
+
+            <!-- AI confidence badge next to status -->
+            <xpath expr="//header" position="inside">
+                <field name="ai_show_confidence" invisible="1"/>
+                <field name="ai_confidence" widget="ai_confidence"
+                       invisible="ai_confidence == False or not ai_show_confidence" nolabel="1"/>
+            </xpath>
+
+            <!-- Duplicate warning banner -->
+            <xpath expr="//sheet" position="before">
+                <field name="ai_duplicate_warning" invisible="1"/>
+                <div class="alert alert-warning" role="alert"
+                     invisible="not ai_duplicate_warning">
+                    <strong>Possible duplicate:</strong>
+                    <field name="ai_duplicate_warning" nolabel="1"/>
+                </div>
+            </xpath>
+
+            <!-- Anomaly warning banner -->
+            <xpath expr="//sheet" position="before">
+                <field name="ai_anomaly_warning" invisible="1"/>
+                <div class="alert alert-warning" role="alert"
+                     invisible="not ai_anomaly_warning">
+                    <strong>Amount anomaly:</strong>
+                    <field name="ai_anomaly_warning" nolabel="1"/>
+                </div>
+            </xpath>
+
+            <!-- Pro-forma warning banner (red — serious) -->
+            <xpath expr="//sheet" position="before">
+                <field name="ai_proforma_warning" invisible="1"/>
+                <div class="alert alert-danger" role="alert"
+                     invisible="not ai_proforma_warning">
+                    <strong>Pro-forma / Quote:</strong>
+                    <field name="ai_proforma_warning" nolabel="1"/>
+                </div>
+            </xpath>
+
+            <!-- Paid stamp warning banner (orange — informational) -->
+            <xpath expr="//sheet" position="before">
+                <field name="ai_paid_warning" invisible="1"/>
+                <div class="alert alert-warning" role="alert"
+                     invisible="not ai_paid_warning">
+                    <strong>Already paid:</strong>
+                    <field name="ai_paid_warning" nolabel="1"/>
+                </div>
+            </xpath>
+
+            <!-- Buyer mismatch warning banner (blue — informational) -->
+            <xpath expr="//sheet" position="before">
+                <field name="ai_buyer_warning" invisible="1"/>
+                <div class="alert alert-info" role="alert"
+                     invisible="not ai_buyer_warning">
+                    <strong>Buyer mismatch:</strong>
+                    <field name="ai_buyer_warning" nolabel="1"/>
+                </div>
+            </xpath>
+
+            <!-- Purchase order warning banner (blue — informational) -->
+            <xpath expr="//sheet" position="before">
+                <field name="ai_po_warning" invisible="1"/>
+                <div class="alert alert-info" role="alert"
+                     invisible="not ai_po_warning">
+                    <strong>Purchase Order:</strong>
+                    <field name="ai_po_warning" nolabel="1"/>
+                </div>
+            </xpath>
+
+            <!-- Tax rate mismatch warning banner (orange — action needed) -->
+            <xpath expr="//sheet" position="before">
+                <field name="ai_tax_warning" invisible="1"/>
+                <div class="alert alert-warning" role="alert"
+                     invisible="not ai_tax_warning">
+                    <strong>Tax mismatch:</strong>
+                    <field name="ai_tax_warning" nolabel="1"/>
+                </div>
+            </xpath>
+
+            <!-- Reverse charge warning banner (orange — action needed) -->
+            <xpath expr="//sheet" position="before">
+                <field name="ai_reverse_charge_warning" invisible="1"/>
+                <div class="alert alert-warning" role="alert"
+                     invisible="not ai_reverse_charge_warning">
+                    <div><strong>Reverse charge:</strong></div>
+                    <div><field name="ai_reverse_charge_warning" nolabel="1"/></div>
+                </div>
+            </xpath>
+
+            <!-- Relax invoice_date required constraint for draft bills so the
+                 "Digitize with AI" button can save the form before extraction
+                 fills the date. Posting validation still catches missing dates. -->
+            <xpath expr="//field[@name='invoice_date'][@required]" position="attributes">
+                <attribute name="required">0</attribute>
+            </xpath>
+
+            <!-- Extraction summary banner -->
+            <xpath expr="//sheet" position="before">
+                <field name="ai_extraction_summary" invisible="1"/>
+                <div class="alert alert-info" role="alert"
+                     invisible="not ai_extraction_summary or ai_extraction_status != 'done'">
+                    <strong>AI Extraction:</strong>
+                    <field name="ai_extraction_summary" nolabel="1"/>
+                </div>
+                <div class="alert alert-danger" role="alert"
+                     invisible="ai_extraction_status != 'failed'">
+                    <strong>Extraction failed.</strong>
+                    Please try again or upload a better quality document.
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ai_extraction_log_user,ai.extraction.log.user,model_ai_extraction_log,account_invoice_digitize_ai.group_ai_digitize_user,1,0,0,0
+access_ai_extraction_log_manager,ai.extraction.log.manager,model_ai_extraction_log,account_invoice_digitize_ai.group_ai_digitize_manager,1,1,1,1
+access_ai_vendor_memory_user,ai.vendor.memory.user,model_ai_vendor_memory,account_invoice_digitize_ai.group_ai_digitize_user,1,0,0,0
+access_ai_vendor_memory_manager,ai.vendor.memory.manager,model_ai_vendor_memory,account_invoice_digitize_ai.group_ai_digitize_manager,1,1,1,1
+access_ai_vendor_score_user,ai.vendor.score.user,model_ai_vendor_score,account_invoice_digitize_ai.group_ai_digitize_user,1,0,0,0
+access_ai_vendor_score_manager,ai.vendor.score.manager,model_ai_vendor_score,account_invoice_digitize_ai.group_ai_digitize_manager,1,1,1,1
+access_ai_memory_export_wizard,ai.memory.export.wizard,model_ai_memory_export_wizard,account_invoice_digitize_ai.group_ai_digitize_manager,1,1,1,1
+access_ai_memory_import_wizard,ai.memory.import.wizard,model_ai_memory_import_wizard,account_invoice_digitize_ai.group_ai_digitize_manager,1,1,1,1
+access_ai_batch_extract_wizard,ai.batch.extract.wizard,model_ai_batch_extract_wizard,account_invoice_digitize_ai.group_ai_digitize_user,1,1,1,1
+access_ai_preview_wizard,ai.preview.wizard,model_ai_preview_wizard,account_invoice_digitize_ai.group_ai_digitize_user,1,1,1,1
+access_ai_preview_line,ai.preview.line,model_ai_preview_line,account_invoice_digitize_ai.group_ai_digitize_user,1,1,1,1
+access_ai_test_wizard,ai.test.wizard,model_ai_test_wizard,account_invoice_digitize_ai.group_ai_digitize_manager,1,1,1,1

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="ai_extraction_log_view_tree" model="ir.ui.view">
+        <field name="name">ai.extraction.log.tree</field>
+        <field name="model">ai.extraction.log</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="extraction_date"/>
+                <field name="move_id"/>
+                <field name="vendor_name"/>
+                <field name="extraction_mode"/>
+                <field name="provider_name"/>
+                <field name="model_used" optional="hide"/>
+                <field name="overall_confidence"/>
+                <field name="duration_seconds"/>
+                <field name="total_tokens" optional="hide"/>
+                <field name="cost_estimated"/>
+                <field name="success"/>
+                <field name="error_message" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="ai_extraction_log_view_form" model="ir.ui.view">
+        <field name="name">ai.extraction.log.form</field>
+        <field name="model">ai.extraction.log</field>
+        <field name="arch" type="xml">
+            <form string="AI Extraction Log">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="move_id"/>
+                            <field name="vendor_name"/>
+                            <field name="extraction_mode"/>
+                            <field name="extraction_date"/>
+                            <field name="success"/>
+                            <field name="error_message" invisible="success"/>
+                        </group>
+                        <group>
+                            <field name="provider_name"/>
+                            <field name="model_used"/>
+                            <field name="overall_confidence"/>
+                            <field name="duration_seconds"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="input_tokens"/>
+                            <field name="output_tokens"/>
+                            <field name="cost_estimated"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Prompt">
+                            <field name="prompt_sent"/>
+                        </page>
+                        <page string="Response">
+                            <field name="response_received"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ai_extraction_log_view_search" model="ir.ui.view">
+        <field name="name">ai.extraction.log.search</field>
+        <field name="model">ai.extraction.log</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="model_used"/>
+                <field name="move_id"/>
+                <field name="vendor_name"/>
+                <filter name="success" string="Success" domain="[('success', '=', True)]"/>
+                <filter name="failed" string="Failed" domain="[('success', '=', False)]"/>
+                <separator/>
+                <filter name="mode_text" string="Text" domain="[('extraction_mode', '=', 'text')]"/>
+                <filter name="mode_vision" string="Vision" domain="[('extraction_mode', '=', 'vision')]"/>
+                <filter name="mode_facturx" string="Factur-X" domain="[('extraction_mode', '=', 'facturx')]"/>
+                <separator/>
+                <filter name="last_7_days" string="Last 7 Days"
+                        domain="[('extraction_date', '&gt;=', (context_today() - datetime.timedelta(days=7)).strftime('%%Y-%%m-%%d'))]"/>
+                <filter name="last_30_days" string="Last 30 Days"
+                        domain="[('extraction_date', '&gt;=', (context_today() - datetime.timedelta(days=30)).strftime('%%Y-%%m-%%d'))]"/>
+                <filter name="this_month" string="This Month"
+                        domain="[('extraction_date', '&gt;=', time.strftime('%%Y-%%m-01'))]"/>
+                <group>
+                    <filter name="group_model" string="Model" context="{'group_by': 'model_used'}"/>
+                    <filter name="group_provider" string="Provider" context="{'group_by': 'provider_name'}"/>
+                    <filter name="group_mode" string="Mode" context="{'group_by': 'extraction_mode'}"/>
+                    <filter name="group_success" string="Success" context="{'group_by': 'success'}"/>
+                    <filter name="group_month" string="Month" context="{'group_by': 'extraction_date:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="ai_extraction_log_action" model="ir.actions.act_window">
+        <field name="name">AI Extraction Logs</field>
+        <field name="res_model">ai.extraction.log</field>
+        <field name="view_mode">list,graph,pivot,form</field>
+    </record>
+
+    <!-- Single parent menu for all AI Digitization entries -->
+    <menuitem id="ai_digitize_root_menu"
+              name="AI Digitization"
+              parent="account.menu_finance_configuration"
+              sequence="89"
+              groups="account_invoice_digitize_ai.group_ai_digitize_manager"/>
+
+    <menuitem id="ai_extraction_log_menu"
+              name="Extraction Logs"
+              parent="ai_digitize_root_menu"
+              action="ai_extraction_log_action"
+              sequence="40"
+              groups="account_invoice_digitize_ai.group_ai_digitize_manager"/>
+
+</odoo>

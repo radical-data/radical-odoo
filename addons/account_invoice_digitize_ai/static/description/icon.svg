@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <!-- Background circle -->
+  <rect width="256" height="256" rx="48" fill="#7C5CFC"/>
+
+  <!-- Document shape -->
+  <rect x="72" y="44" width="112" height="148" rx="8" fill="#FFF" opacity="0.95"/>
+
+  <!-- Document fold -->
+  <path d="M144 44 L184 84 L144 84 Z" fill="#E0D6FF"/>
+
+  <!-- AI sparkle lines on document -->
+  <line x1="92" y1="104" x2="148" y2="104" stroke="#7C5CFC" stroke-width="6" stroke-linecap="round"/>
+  <line x1="92" y1="124" x2="164" y2="124" stroke="#7C5CFC" stroke-width="6" stroke-linecap="round"/>
+  <line x1="92" y1="144" x2="140" y2="144" stroke="#7C5CFC" stroke-width="6" stroke-linecap="round"/>
+  <line x1="92" y1="164" x2="156" y2="164" stroke="#7C5CFC" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- AI sparkle star (bottom right) -->
+  <g transform="translate(192, 180)">
+    <path d="M0 -20 L5 -5 L20 0 L5 5 L0 20 L-5 5 L-20 0 L-5 -5 Z"
+          fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
+  </g>
+
+  <!-- Small sparkle (top left) -->
+  <g transform="translate(56, 56) scale(0.5)">
+    <path d="M0 -20 L5 -5 L20 0 L5 5 L0 20 L-5 5 L-20 0 L-5 -5 Z"
+          fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
+  </g>
+</svg>

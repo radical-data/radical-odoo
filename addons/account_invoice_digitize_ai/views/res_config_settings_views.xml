@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form_ai_digitize" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.ai.digitize</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="priority">60</field>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="AI Invoice Digitization" string="AI Invoice Digitization" name="account_invoice_digitize_ai">
+
+                    <!-- ===== 1. Document Recognition ===== -->
+                    <block title="Document Recognition" name="ai_recognition_block">
+                        <setting string="Document Recognition Service"
+                                 help="Useful for non-electronic invoices (including scanned), in PDF or image format">
+                            <field name="ai_preprocess_provider"/>
+                        </setting>
+                        <setting string="Recognition Mode"
+                                 help="How the recognition service works with the AI"
+                                 invisible="ai_preprocess_provider == 'none'">
+                            <field name="ai_preprocess_mode"/>
+                        </setting>
+                        <setting string="Minimum Reliability Score"
+                                 help="In Full recognition mode, when the recognition service returns a confidence score below this threshold (0.0-1.0), its result is discarded and the document is sent to the AI service instead."
+                                 invisible="ai_preprocess_provider == 'none' or ai_preprocess_mode != 'ocr_replacement'">
+                            <field name="ai_preprocess_confidence_threshold"
+                                   help="Value between 0.0 and 1.0. Higher = stricter (more fallback to AI)."/>
+                        </setting>
+                        <!-- Azure credentials -->
+                        <setting string="Azure Endpoint" help="Azure Document Intelligence endpoint URL"
+                                 invisible="ai_preprocess_provider != 'azure_di'">
+                            <field name="ai_azure_endpoint"
+                                   placeholder="https://myresource.cognitiveservices.azure.com"/>
+                        </setting>
+                        <setting string="Azure API Key" help="Azure API key"
+                                 invisible="ai_preprocess_provider != 'azure_di'">
+                            <field name="ai_azure_api_key" password="True"/>
+                        </setting>
+                        <!-- AWS credentials -->
+                        <setting string="AWS Access Key ID" help="AWS Access Key ID"
+                                 invisible="ai_preprocess_provider != 'aws_textract'">
+                            <field name="ai_aws_access_key_id"/>
+                        </setting>
+                        <setting string="AWS Secret Access Key" help="AWS Secret Access Key"
+                                 invisible="ai_preprocess_provider != 'aws_textract'">
+                            <field name="ai_aws_secret_access_key" password="True"/>
+                        </setting>
+                        <setting string="AWS Region" help="AWS Region for Textract service"
+                                 invisible="ai_preprocess_provider != 'aws_textract'">
+                            <field name="ai_aws_region" placeholder="eu-west-1"/>
+                        </setting>
+                        <!-- Test button -->
+                        <setting string="Test Recognition Service"
+                                 help="Verify credentials and connectivity"
+                                 invisible="ai_preprocess_provider == 'none'">
+                            <button name="action_ai_test_preprocess_connection"
+                                    type="object"
+                                    string="Test Recognition Service"
+                                    class="btn-secondary"
+                                    icon="fa-plug"/>
+                        </setting>
+                    </block>
+
+                    <!-- ===== 2. Invoice Analysis ===== -->
+                    <block title="Invoice Analysis" name="ai_service_block">
+                        <setting string="AI Service" help="AI service used to analyze your invoices and extract data">
+                            <field name="ai_provider"/>
+                            <div class="alert alert-warning mt8" role="alert"
+                                 invisible="ai_provider != 'none'">An AI service is required for invoice extraction. Select a provider and enter your API key to get started.</div>
+                        </setting>
+                        <setting string="API Key" help="API key for the selected AI service"
+                                 invisible="ai_provider == 'none'">
+                            <field name="ai_api_key" password="True"/>
+                            <div class="mt8">
+                                <button name="action_ai_test_connection"
+                                        type="object"
+                                        string="Test Connection"
+                                        class="btn-secondary"
+                                        icon="fa-plug"/>
+                                <button name="action_ai_test_extraction"
+                                        type="object"
+                                        string="Test Extraction"
+                                        class="btn-secondary ms-2"
+                                        icon="fa-flask"/>
+                            </div>
+                        </setting>
+                        <setting string="AI Model" help="AI model to use. Faster models cost less, advanced models are more accurate."
+                                 invisible="ai_provider == 'none'">
+                            <field name="ai_model_selection"/>
+                        </setting>
+                        <setting string="Extraction Mode"
+                                 help="Controls how much accounting context the AI receives"
+                                 invisible="ai_provider == 'none'">
+                            <field name="ai_extraction_mode"/>
+                        </setting>
+                        <setting string="Extract Invoice Lines"
+                                 help="Extracts each line (description, qty, price, ...) for multi-account allocation"
+                                 invisible="ai_provider == 'none'">
+                            <field name="ai_extract_lines"/>
+                            <div invisible="ai_has_accounting" class="text-muted mt-2">The Accounting module is not installed: line extraction provides detail (description, qty, price, tax) but multi-account allocation is not available.</div>
+                            <div invisible="not ai_has_accounting" class="text-muted mt-2">The Accounting module is installed: line extraction enables multi-account allocation, and guided mode sends the chart of accounts to the AI.</div>
+                        </setting>
+                        <setting string="Enable for Customer Invoices"
+                                 help="Enable AI extraction on customer invoices and credit notes (free mode only)."
+                                 invisible="ai_provider == 'none'">
+                            <field name="ai_extract_customer_invoices"/>
+                        </setting>
+                        <setting string="Background Extraction"
+                                 help="When enabled, clicking Digitize queues the invoice and returns immediately. A built-in scheduled action processes the queue every 30 seconds. The page refreshes automatically when extraction is complete."
+                                 invisible="ai_provider == 'none'">
+                            <field name="ai_async_extraction"/>
+                        </setting>
+                        <setting string="Automatic Extraction"
+                                 help="From incoming emails (mail alias or incoming mail server)">
+                            <field name="ai_email_auto_extract"/>
+                        </setting>
+                        <setting string="QR Code Extraction"
+                                 help="Extracts payment data from Swiss QR-bill and EPC QR codes in PDF invoices">
+                            <field name="ai_extract_qr_codes"/>
+                            <field name="ai_pyzbar_available" invisible="1"/>
+                            <div invisible="ai_pyzbar_available" class="text-warning mt-2">
+                                <div>pyzbar is not installed. QR code extraction will be disabled.</div>
+                                <div class="text-muted">Install with: pip install pyzbar</div>
+                            </div>
+                        </setting>
+                        <setting string="Optional Libraries">
+                            <field name="ai_pdfplumber_available" invisible="1"/>
+                            <field name="ai_facturx_available" invisible="1"/>
+                            <div class="d-flex flex-column gap-2">
+                                <div invisible="ai_facturx_available" class="text-warning">
+                                    <div>facturx is not installed. Zero-cost Factur-X/ZUGFeRD extraction is disabled.</div>
+                                    <div class="text-muted">Install with: pip install facturx</div>
+                                </div>
+                                <div invisible="not ai_facturx_available" class="text-success">
+                                    <div>facturx is installed. Factur-X/ZUGFeRD invoices are processed at zero AI cost.</div>
+                                </div>
+                                <div invisible="ai_pdfplumber_available" class="text-warning">
+                                    <div>pdfplumber is not installed. Table structure extraction is disabled.</div>
+                                    <div class="text-muted">Install with: pip install pdfplumber</div>
+                                </div>
+                                <div invisible="not ai_pdfplumber_available" class="text-success">
+                                    <div>pdfplumber is installed. Table structure is extracted for improved accuracy.</div>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+
+                    <!-- ===== 3. Estimated Cost ===== -->
+                    <block title="Estimated Cost per Invoice" name="ai_cost_block"
+                           invisible="ai_provider == 'none' and ai_preprocess_provider == 'none'">
+                        <setting string="Actual cost may vary depending on the document.">
+                            <field name="ai_cost_estimate" readonly="1"/>
+                        </setting>
+                    </block>
+
+                    <!-- ===== 4. Post-processing ===== -->
+                    <block title="Post-processing" name="ai_postprocess_block">
+                        <setting string="Auto-apply High Confidence"
+                                 help="Skip preview when all confidence scores are high and the vendor is reliable"
+                                 invisible="ai_provider == 'none'">
+                            <field name="ai_auto_apply_enabled"/>
+                        </setting>
+                        <setting string="Minimum Confidence for Auto-apply"
+                                 help="Minimum confidence score (0.0-1.0) for auto-apply"
+                                 invisible="ai_provider == 'none' or not ai_auto_apply_enabled">
+                            <field name="ai_auto_apply_min_confidence"
+                                   help="Value between 0.0 and 1.0. All fields must reach this score to skip preview."/>
+                        </setting>
+                        <setting string="Rounding Correction"
+                                 help="Compensates rounding differences between extracted total and Odoo-computed total">
+                            <field name="ai_rounding_correction"/>
+                            <div invisible="not ai_rounding_correction">
+                                <label for="ai_rounding_strategy" string="Strategy"/>
+                                <field name="ai_rounding_strategy" class="o_light_label w-50"/>
+                                <div class="mt-2">
+                                    <label for="ai_rounding_tolerance" string="Max tolerance"/>
+                                    <field name="ai_rounding_tolerance" class="o_light_label w-25"
+                                           help="Maximum allowed difference in invoice currency. Set to 0 to disable."/>
+                                    <field name="ai_currency_symbol" class="o_light_label"/>
+                                </div>
+                                <div invisible="ai_rounding_strategy != 'line'" class="mt-2">
+                                    <label for="ai_rounding_line_label" string="Line label"/>
+                                    <field name="ai_rounding_line_label" class="o_light_label w-50"/>
+                                </div>
+                            </div>
+                        </setting>
+                        <setting string="Confidence Indicators"
+                                 help="Colored indicators on extracted fields showing AI certainty">
+                            <field name="ai_show_confidence"/>
+                        </setting>
+                        <setting string="Learning from Corrections"
+                                 help="Affected data: vendor, invoice reference, invoice date, due date, account assigned to a line.">
+                            <field name="ai_learning_enabled"/>
+                            <div invisible="not ai_learning_enabled" class="mt-2">
+                                <label for="ai_auto_apply_threshold" string="From"/>
+                                <field name="ai_auto_apply_threshold" class="o_light_label w-25"/>
+                                <div class="d-inline">repeated corrections per vendor</div>
+                            </div>
+                        </setting>
+                    </block>
+
+                    <!-- ===== 5. Advanced Options ===== -->
+                    <block title="Advanced Options" name="ai_advanced_block">
+                        <setting string="Detailed Logging"
+                                 help="Records prompts, responses and costs for each extraction">
+                            <field name="ai_debug_mode"/>
+                        </setting>
+                    </block>
+
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

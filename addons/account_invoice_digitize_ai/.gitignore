@@ -1,0 +1,55 @@
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.code-workspace
+
+# Linter / Formatter cache (dev-only)
+.pylintrc
+.ruff_cache/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+._*
+.smbdelete*
+
+# Environment / Secrets
+.env
+.env.*
+*.local
+
+# Logs
+*.log
+
+# Testing / Coverage
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+.nox/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Docker (dev-only)
+docker-compose.override.yml
+
+# Backup files
+*.bak
+*.orig

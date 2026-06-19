@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="group_ai_digitize_user" model="res.groups">
+        <field name="name">AI Digitization User</field>
+        <field name="privilege_id" ref="account.res_groups_privilege_accounting"/>
+        <field name="implied_ids" eval="[(4, ref('account.group_account_invoice'))]"/>
+    </record>
+
+    <record id="group_ai_digitize_manager" model="res.groups">
+        <field name="name">AI Digitization Manager</field>
+        <field name="privilege_id" ref="account.res_groups_privilege_accounting"/>
+        <field name="implied_ids" eval="[(4, ref('account_invoice_digitize_ai.group_ai_digitize_user'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <record id="ai_extraction_log_comp_rule" model="ir.rule">
+        <field name="name">AI Extraction Log: multi-company</field>
+        <field name="model_id" ref="model_ai_extraction_log"/>
+        <field name="domain_force">['|', ('move_id.company_id', '=', False), ('move_id.company_id', 'in', company_ids)]</field>
+    </record>
+
+    <record id="ai_vendor_memory_comp_rule" model="ir.rule">
+        <field name="name">AI Vendor Memory: multi-company</field>
+        <field name="model_id" ref="model_ai_vendor_memory"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+
+    <record id="ai_vendor_score_comp_rule" model="ir.rule">
+        <field name="name">AI Vendor Score: multi-company</field>
+        <field name="model_id" ref="model_ai_vendor_score"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+
+</odoo>

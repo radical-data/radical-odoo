@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Batch extract wizard form -->
+    <record id="ai_batch_extract_wizard_form" model="ir.ui.view">
+        <field name="name">ai.batch.extract.wizard.form</field>
+        <field name="model">ai.batch.extract.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Batch AI Extraction">
+                <group>
+                    <group>
+                        <field name="move_count" string="Total invoices"/>
+                        <field name="ready_count" string="Ready for extraction"/>
+                        <field name="skip_count" string="Will be skipped"/>
+                        <field name="estimated_time" string="Estimated time"
+                               invisible="result_message"/>
+                    </group>
+                </group>
+                <div class="alert alert-info" role="alert"
+                     invisible="ready_count &lt;= 20 or result_message">
+                    Large batches may take several minutes. Each invoice is saved
+                    individually, so you can safely close this window and check
+                    results later.
+                </div>
+                <group invisible="not result_message">
+                    <field name="result_message" nolabel="1" colspan="2"/>
+                </group>
+                <footer>
+                    <button name="action_extract" string="Extract All" type="object"
+                            class="btn-primary" invisible="result_message"
+                            confirm="This will extract all selected invoices. API costs will apply. Continue?"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+                <field name="move_ids" invisible="1"/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Server action bound to account.move list view -->
+    <record id="action_ai_batch_extract" model="ir.actions.act_window">
+        <field name="name">Batch AI Extraction</field>
+        <field name="res_model">ai.batch.extract.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_view_types">list</field>
+        <field name="context">{'default_move_ids': active_ids}</field>
+        <field name="group_ids" eval="[(4, ref('account_invoice_digitize_ai.group_ai_digitize_user'))]"/>
+    </record>
+
+</odoo>

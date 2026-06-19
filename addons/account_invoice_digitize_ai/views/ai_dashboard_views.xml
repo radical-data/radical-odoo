@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================================
+         Graph views for ai.extraction.log
+         (used as default graph/pivot when switching view mode in Extraction Logs)
+         ================================================================ -->
+
+    <record id="ai_extraction_log_view_graph_cost" model="ir.ui.view">
+        <field name="name">ai.extraction.log.graph.cost</field>
+        <field name="model">ai.extraction.log</field>
+        <field name="arch" type="xml">
+            <graph string="Extraction Cost" type="bar" stacked="True">
+                <field name="extraction_date" interval="month"/>
+                <field name="model_used"/>
+                <field name="cost_estimated" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="ai_extraction_log_view_graph_volume" model="ir.ui.view">
+        <field name="name">ai.extraction.log.graph.volume</field>
+        <field name="model">ai.extraction.log</field>
+        <field name="arch" type="xml">
+            <graph string="Extraction Volume" type="line">
+                <field name="extraction_date" interval="week"/>
+                <field name="success"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="ai_extraction_log_view_graph_tokens" model="ir.ui.view">
+        <field name="name">ai.extraction.log.graph.tokens</field>
+        <field name="model">ai.extraction.log</field>
+        <field name="arch" type="xml">
+            <graph string="Token Usage by Model" type="bar">
+                <field name="model_used"/>
+                <field name="input_tokens" type="measure"/>
+                <field name="output_tokens" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ================================================================
+         Pivot view for ai.extraction.log
+         ================================================================ -->
+
+    <record id="ai_extraction_log_view_pivot" model="ir.ui.view">
+        <field name="name">ai.extraction.log.pivot</field>
+        <field name="model">ai.extraction.log</field>
+        <field name="arch" type="xml">
+            <pivot string="Extraction Analysis">
+                <field name="extraction_date" interval="month" type="row"/>
+                <field name="model_used" type="col"/>
+                <field name="cost_estimated" type="measure"/>
+                <field name="total_tokens" type="measure"/>
+                <field name="input_tokens" type="measure"/>
+                <field name="output_tokens" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- ================================================================
+         Graph view for ai.vendor.score
+         (used as default graph when switching view mode in Vendor Scores)
+         ================================================================ -->
+
+    <record id="ai_vendor_score_view_graph" model="ir.ui.view">
+        <field name="name">ai.vendor.score.graph</field>
+        <field name="model">ai.vendor.score</field>
+        <field name="arch" type="xml">
+            <graph string="Vendor Extraction Accuracy" type="bar">
+                <field name="partner_id"/>
+                <field name="reliability_rate" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,24 @@
+--index-url https://wheelhouse.odoo-community.org/oca-simple-and-pypi
+
+# Build tooling used to install this deployment project package.
+hatchling
+hatch-odoo
+
+# Runtime Python dependencies used by account_invoice_digitize_ai.
+pdfplumber
+factur-x
+pyzbar
+
+# OCA addons installed as Python packages.
+odoo-addon-account-financial-report
+odoo-addon-date-range
+
+# Dutch localisation:
+# - Odoo's built-in l10n_nl module comes from the odoo:19 base image.
+# - It is the canonical Dutch tax reporting path for this deployment.
+# - Do not add OCA Dutch localisation packages here until matching 19.0 wheels
+#   exist and have been tested in staging.
+# - Candidate packages to revisit only when available for 19.0:
+#   odoo-addon-l10n-nl-tax-statement
+#   odoo-addon-l10n-nl-tax-statement-icp
+#   odoo-addon-l10n-nl-xaf-auditfile-export

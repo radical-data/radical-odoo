@@ -1,0 +1,14 @@
+.git
+.env
+.env.*
+backups
+filestore
+*.sql
+*.sql.gz
+*.dump
+*.backup
+.DS_Store
+.vscode
+.idea
+repomix-output.xml
+requirements.lock.tmp

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="account_invoice_digitize_ai.AiExtractionStatusWidget">
+        <span t-if="isProcessing" class="badge text-bg-info">
+            <i class="fa fa-spinner fa-spin"/> Extraction in progress...
+        </span>
+        <span t-elif="isDone" class="badge text-bg-success">
+            <i class="fa fa-check"/> Done
+        </span>
+        <span t-elif="isFailed" class="badge text-bg-danger">
+            <i class="fa fa-times"/> Failed
+        </span>
+    </t>
+
+</templates>
