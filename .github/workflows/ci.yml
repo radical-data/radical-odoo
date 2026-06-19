@@ -25,9 +25,6 @@ jobs:
       - name: Set up just
         uses: extractions/setup-just@v4
 
-      - name: Install hadolint
-        run: sudo snap install hadolint
-
       - name: Check repository
         run: just check
 

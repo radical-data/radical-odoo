@@ -34,8 +34,8 @@ repos:
       - id: shfmt
         args: ["-w", "-i", "2", "-ci", "-sr"]
 
-  - repo: https://github.com/hadolint/hadolint
-    rev: v2.14.0
+  - repo: https://github.com/shenxianpeng/hadolint-pre-commit
+    rev: v2.14.0.1
     hooks:
       - id: hadolint
 
