@@ -21,7 +21,7 @@ logs:
 check:
 	uvx pre-commit run ruff-check --all-files
 	uvx pre-commit run shellcheck --all-files
-	uvx pre-commit run hadolint-docker --all-files
+	uvx pre-commit run hadolint --all-files
 	uvx pre-commit run check-json --all-files
 	uvx pre-commit run check-toml --all-files
 	uvx pre-commit run check-yaml --all-files
