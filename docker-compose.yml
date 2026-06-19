@@ -9,8 +9,8 @@ services:
     environment:
       - SERVICE_URL_ODOO_8069
       - HOST=db
-      - "USER=${SERVICE_USER_POSTGRES}"
-      - "PASSWORD=${SERVICE_PASSWORD_POSTGRES}"
+      - "USER=${SERVICE_USER_POSTGRES:?Set SERVICE_USER_POSTGRES}"
+      - "PASSWORD=${SERVICE_PASSWORD_POSTGRES:?Set SERVICE_PASSWORD_POSTGRES}"
     ports:
       - "${ODOO_PORT:-8069}:8069"
     volumes:
@@ -35,8 +35,8 @@ services:
     volumes:
       - postgresql-data:/var/lib/postgresql/data
     environment:
-      - "POSTGRES_USER=${SERVICE_USER_POSTGRES}"
-      - "POSTGRES_PASSWORD=${SERVICE_PASSWORD_POSTGRES}"
+      - "POSTGRES_USER=${SERVICE_USER_POSTGRES:?Set SERVICE_USER_POSTGRES}"
+      - "POSTGRES_PASSWORD=${SERVICE_PASSWORD_POSTGRES:?Set SERVICE_PASSWORD_POSTGRES}"
       - POSTGRES_DB=postgres
     healthcheck:
       test:

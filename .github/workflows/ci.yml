@@ -10,6 +10,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      SERVICE_USER_POSTGRES: odoo
+      SERVICE_PASSWORD_POSTGRES: odoo-ci-password
+      ODOO_PORT: 8069
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v6.0.3
