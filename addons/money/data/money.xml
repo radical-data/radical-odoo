@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <!-- Actions: Get Paid -->
+  <record id="action_money_customer_invoices" model="ir.actions.act_window">
+    <field name="name">Invoices</field>
+    <field name="res_model">account.move</field>
+    <field name="view_mode">list,kanban,form</field>
+    <field name="domain">[('move_type', 'in', ['out_invoice', 'out_refund', 'out_receipt'])]</field>
+    <field name="context">{'search_default_out_invoice': 1, 'search_default_out_receipt': 1, 'default_move_type': 'out_invoice'}</field>
+  </record>
+  <record id="action_money_customer_payments" model="ir.actions.act_window">
+    <field name="name">Payments</field>
+    <field name="res_model">account.payment</field>
+    <field name="view_mode">list,form</field>
+    <field name="context">{
+      'default_payment_type': 'inbound',
+      'default_partner_type': 'customer',
+      'search_default_inbound_filter': 1,
+      'default_move_journal_types': ('bank', 'cash'),
+      'display_account_trust': True
+    }</field>
+  </record>
+  <record id="action_money_customers" model="ir.actions.act_window">
+    <field name="name">Customers</field>
+    <field name="res_model">res.partner</field>
+    <field name="view_mode">kanban,list,form</field>
+    <field name="context">{'search_default_customer': 1, 'res_partner_search_mode': 'customer', 'default_is_company': True, 'default_customer_rank': 1}</field>
+  </record>
+  <!-- Actions: Pay Suppliers -->
+  <record id="action_money_supplier_bills" model="ir.actions.act_window">
+    <field name="name">Bills</field>
+    <field name="res_model">account.move</field>
+    <field name="view_mode">list,kanban,form</field>
+    <field name="domain">[('move_type', 'in', ['in_invoice', 'in_refund', 'in_receipt'])]</field>
+    <field name="context">{'search_default_in_invoice': 1, 'search_default_in_receipt': 1, 'default_move_type': 'in_invoice', 'display_account_trust': True}</field>
+  </record>
+  <record id="action_money_supplier_payments" model="ir.actions.act_window">
+    <field name="name">Payments</field>
+    <field name="res_model">account.payment</field>
+    <field name="view_mode">list,form</field>
+    <field name="context">{
+      'default_payment_type': 'outbound',
+      'default_partner_type': 'supplier',
+      'search_default_outbound_filter': 1,
+      'default_move_journal_types': ('bank', 'cash'),
+      'display_account_trust': True
+    }</field>
+  </record>
+  <record id="action_money_suppliers" model="ir.actions.act_window">
+    <field name="name">Suppliers</field>
+    <field name="res_model">res.partner</field>
+    <field name="view_mode">kanban,list,form</field>
+    <field name="context">{'search_default_supplier': 1, 'res_partner_search_mode': 'supplier', 'default_is_company': True, 'default_supplier_rank': 1}</field>
+  </record>
+  <!-- Actions: Match Transactions -->
+  <record id="action_money_bank_movements" model="ir.actions.act_window">
+    <field name="name">Bank Movements</field>
+    <field name="res_model">account.move.line</field>
+    <field name="view_mode">list,form</field>
+    <field name="domain">[('display_type', 'not in', ('line_section', 'line_subsection', 'line_note'))]</field>
+    <field name="context">{'journal_type': 'bank', 'search_default_group_by_move': 1, 'search_default_posted': 1, 'search_default_bank': 1, 'search_default_cash': 1, 'expand': 1}</field>
+  </record>
+  <record id="action_money_bank_statements" model="ir.actions.act_window">
+    <field name="name">Bank Statements</field>
+    <field name="res_model">account.bank.statement</field>
+    <field name="view_mode">list,form</field>
+    <field name="domain">[('journal_id.type', '=', 'bank')]</field>
+    <field name="context">{'journal_type': 'bank'}</field>
+  </record>
+  <record id="action_money_matching_rules" model="ir.actions.act_window">
+    <field name="name">Matching Rules</field>
+    <field name="res_model">account.reconcile.model</field>
+    <field name="view_mode">list,form</field>
+  </record>
+  <!-- Actions: Check the Books -->
+  <record id="action_money_overview" model="ir.actions.act_window">
+    <field name="name">Overview</field>
+    <field name="res_model">account.journal</field>
+    <field name="view_mode">kanban,list,form</field>
+    <field name="domain">[]</field>
+    <field name="context">{'search_default_dashboard': 1}</field>
+  </record>
+  <record id="action_money_receivables_payables" model="ir.actions.act_window">
+    <field name="name">Receivables &amp; Payables</field>
+    <field name="res_model">aged.partner.balance.report.wizard</field>
+    <field name="view_id" ref="account_financial_report.aged_partner_balance_wizard"/>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+    <field name="context">{}</field>
+  </record>
+  <record id="action_money_open_balances" model="ir.actions.act_window">
+    <field name="name">Open Balances</field>
+    <field name="res_model">open.items.report.wizard</field>
+    <field name="view_id" ref="account_financial_report.open_items_wizard"/>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+    <field name="context">{'default_receivable_accounts_only': 1, 'default_payable_accounts_only': 1}</field>
+  </record>
+  <record id="action_money_trial_balance" model="ir.actions.act_window">
+    <field name="name">Trial Balance</field>
+    <field name="res_model">trial.balance.report.wizard</field>
+    <field name="view_id" ref="account_financial_report.trial_balance_wizard"/>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+    <field name="context">{}</field>
+  </record>
+  <record id="action_money_vat" model="ir.actions.act_window">
+    <field name="name">VAT</field>
+    <field name="res_model">vat.report.wizard</field>
+    <field name="view_id" ref="account_financial_report.vat_report_wizard"/>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+    <field name="context">{}</field>
+  </record>
+  <!-- Menus -->
+  <menuitem
+    id="menu_money_root"
+    name="Money"
+    sequence="0"/>
+  <menuitem
+    id="menu_money_get_paid"
+    name="Get Paid"
+    parent="menu_money_root"
+    sequence="10"/>
+  <menuitem
+    id="menu_money_get_paid_invoices"
+    name="Invoices"
+    parent="menu_money_get_paid"
+    action="action_money_customer_invoices"
+    sequence="10"/>
+  <menuitem
+    id="menu_money_get_paid_payments"
+    name="Payments"
+    parent="menu_money_get_paid"
+    action="action_money_customer_payments"
+    sequence="20"/>
+  <menuitem
+    id="menu_money_get_paid_customers"
+    name="Customers"
+    parent="menu_money_get_paid"
+    action="action_money_customers"
+    sequence="30"/>
+  <menuitem
+    id="menu_money_pay_suppliers"
+    name="Pay Suppliers"
+    parent="menu_money_root"
+    sequence="20"/>
+  <menuitem
+    id="menu_money_pay_suppliers_bills"
+    name="Bills"
+    parent="menu_money_pay_suppliers"
+    action="action_money_supplier_bills"
+    sequence="10"/>
+  <menuitem
+    id="menu_money_pay_suppliers_payments"
+    name="Payments"
+    parent="menu_money_pay_suppliers"
+    action="action_money_supplier_payments"
+    sequence="20"/>
+  <menuitem
+    id="menu_money_pay_suppliers_suppliers"
+    name="Suppliers"
+    parent="menu_money_pay_suppliers"
+    action="action_money_suppliers"
+    sequence="30"/>
+  <menuitem
+    id="menu_money_match_transactions"
+    name="Match Transactions"
+    parent="menu_money_root"
+    sequence="30"/>
+  <menuitem
+    id="menu_money_match_transactions_bank_movements"
+    name="Bank Movements"
+    parent="menu_money_match_transactions"
+    action="action_money_bank_movements"
+    sequence="10"/>
+  <menuitem
+    id="menu_money_match_transactions_bank_statements"
+    name="Bank Statements"
+    parent="menu_money_match_transactions"
+    action="action_money_bank_statements"
+    sequence="20"/>
+  <menuitem
+    id="menu_money_match_transactions_matching_rules"
+    name="Matching Rules"
+    parent="menu_money_match_transactions"
+    action="action_money_matching_rules"
+    sequence="30"/>
+  <menuitem
+    id="menu_money_check_books"
+    name="Check the Books"
+    parent="menu_money_root"
+    sequence="40"/>
+  <menuitem
+    id="menu_money_check_books_overview"
+    name="Overview"
+    parent="menu_money_check_books"
+    action="action_money_overview"
+    sequence="10"/>
+  <menuitem
+    id="menu_money_check_books_receivables_payables"
+    name="Receivables &amp; Payables"
+    parent="menu_money_check_books"
+    action="action_money_receivables_payables"
+    sequence="20"/>
+  <menuitem
+    id="menu_money_check_books_open_balances"
+    name="Open Balances"
+    parent="menu_money_check_books"
+    action="action_money_open_balances"
+    sequence="30"/>
+  <menuitem
+    id="menu_money_check_books_trial_balance"
+    name="Trial Balance"
+    parent="menu_money_check_books"
+    action="action_money_trial_balance"
+    sequence="40"/>
+  <menuitem
+    id="menu_money_check_books_vat"
+    name="VAT"
+    parent="menu_money_check_books"
+    action="action_money_vat"
+    sequence="50"/>
+</odoo>

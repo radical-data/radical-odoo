@@ -12,10 +12,14 @@ SOURCE_ADDONS = {
     "account_invoice_digitize_ai": {
         "required_depends": {"account"},
     },
+    "money": {
+        "required_depends": {"account", "account_financial_report"},
+    },
 }
 
 PACKAGED_MODULES = (
     "odoo.addons.account_invoice_digitize_ai",
+    "odoo.addons.money",
     "odoo.addons.account_financial_report",
     "odoo.addons.date_range",
     "odoo.addons.report_xlsx",
